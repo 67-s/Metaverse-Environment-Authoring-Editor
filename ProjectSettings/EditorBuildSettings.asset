@@ -6,6 +6,9 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/Scenes/SolMenu.unity
+    guid: 74957ab9750c20544886ee1e1b51e7fc
+  - enabled: 1
     path: Assets/Scenes/Sol.unity
     guid: 4b7bbccce1d972b438e75ccacbf59298
   m_configObjects: {}

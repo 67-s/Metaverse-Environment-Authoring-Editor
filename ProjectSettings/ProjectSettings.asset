@@ -686,8 +686,13 @@ PlayerSettings:
   XboxOneOverrideIdentityPublisher: 
   vrEditorSettings: {}
   cloudServicesEnabled:
+    Build: 0
     Collab: 0
+    Game Performance: 0
+    Purchasing: 0
+    UDP: 0
     UNet: 1
+    Unity Ads: 0
   luminIcon:
     m_Name: 
     m_ModelFolderPath: 
@@ -701,11 +706,11 @@ PlayerSettings:
     m_VersionName: 
   apiCompatibilityLevel: 6
   activeInputHandler: 0
-  cloudProjectId: 89b16120-e436-4b9a-b99e-ebd1715d5262
+  cloudProjectId: f91bf16e-2b2f-4fd9-aa05-0be9208e3b16
   framebufferDepthMemorylessMode: 0
   qualitySettingsNames: []
-  projectName: Metaverse-Environment-Authoring-Editor
-  organizationId: secul5972
+  projectName: Metaverse-Environment-Authoring-Editor (1)
+  organizationId: han53461
   cloudEnabled: 0
   legacyClampBlendShapeWeights: 0
   playerDataPath: 

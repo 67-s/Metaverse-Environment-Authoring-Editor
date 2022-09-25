@@ -20,10 +20,9 @@ public class BtnClick : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 		switch (currentType)
 		{
 			case BtnType.Start:
-				CanvasGroupOn(nextGroup);
-				CanvasGroupOff(currGroup);
-				break;
 			case BtnType.Back:
+			case BtnType.MakeRoom:
+			case BtnType.AttendRoom:
 				CanvasGroupOn(nextGroup);
 				CanvasGroupOff(currGroup);
 				break;

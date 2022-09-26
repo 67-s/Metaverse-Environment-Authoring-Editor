@@ -11,4 +11,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Sol.unity
     guid: 4b7bbccce1d972b438e75ccacbf59298
+  - enabled: 1
+    path: Assets/Scenes/KdystGenerator.unity
+    guid: cc01c44bc04a1704ea9035eec3861a73
+  - enabled: 1
+    path: Assets/Scenes/KdystTemplate.unity
+    guid: f99122b58d6aa134aae9a15f3f715a76
   m_configObjects: {}

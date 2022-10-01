@@ -5,7 +5,7 @@ using UnityEngine.EventSystems;
 
 public class BtnClick : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
-	public BtnType currentType;
+	public BtnType currType;
 	public Transform buttonScale;
 	Vector3 defaultScale;
 	public CanvasGroup currGroup;
@@ -17,12 +17,13 @@ public class BtnClick : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 	}
 	public void BtnOnClick()
 	{
-		switch (currentType)
+		switch (currType)
 		{
 			case BtnType.Start:
 			case BtnType.Back:
 			case BtnType.MakeRoom:
 			case BtnType.AttendRoom:
+			case BtnType.Finished:
 				CanvasGroupOn(nextGroup);
 				CanvasGroupOff(currGroup);
 				break;

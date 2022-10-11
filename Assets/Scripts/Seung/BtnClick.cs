@@ -31,6 +31,8 @@ public class BtnClick : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 				break;
 			case BtnType.EditRoom:
 				roomObj.SetActive(true);
+				CameraMove.IsCamearActive = true;
+				Cursor.lockState = CursorLockMode.Confined;
 				CanvasGroupOn(nextGroup);
 				CanvasGroupOff(currGroup);
 				break;

@@ -11,6 +11,8 @@ public class BtnClick : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 	public CanvasGroup currGroup;
 	public CanvasGroup nextGroup;
 
+	public GameObject roomObj;
+
 	private void Start()
 	{
 		defaultScale = buttonScale.localScale;
@@ -24,6 +26,11 @@ public class BtnClick : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 			case BtnType.MakeRoom:
 			case BtnType.AttendRoom:
 			case BtnType.Finished:
+				CanvasGroupOn(nextGroup);
+				CanvasGroupOff(currGroup);
+				break;
+			case BtnType.EditRoom:
+				roomObj.SetActive(true);
 				CanvasGroupOn(nextGroup);
 				CanvasGroupOff(currGroup);
 				break;

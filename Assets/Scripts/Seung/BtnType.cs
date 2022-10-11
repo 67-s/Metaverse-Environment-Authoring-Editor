@@ -10,5 +10,6 @@ public enum BtnType
 	Quit,
     MakeRoom,
     AttendRoom,
-	Finished
+	Finished,
+	EditRoom
 }

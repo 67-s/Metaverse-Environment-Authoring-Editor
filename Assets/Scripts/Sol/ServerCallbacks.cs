@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Photon.Bolt;
+using UdpKit;
+using Photon.Bolt.Utils;
 
 [BoltGlobalBehaviour(BoltNetworkModes.Server)]
 public class ServerCallbacks : GlobalEventListener
@@ -19,4 +21,5 @@ public class ServerCallbacks : GlobalEventListener
         log.Message = string.Format("{0} disconnected", connection.RemoteEndPoint);
         log.Send();
     }
+
 }

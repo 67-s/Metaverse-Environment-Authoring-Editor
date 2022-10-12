@@ -4,11 +4,12 @@ using UnityEngine;
 
 public enum BtnType
 {
-	NONE,
+	None,
 	Start,
 	Back,
 	Quit,
     MakeRoom,
     AttendRoom,
-	Finished
+	Finished,
+	EditRoom
 }

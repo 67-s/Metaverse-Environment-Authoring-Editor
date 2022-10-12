@@ -5,11 +5,13 @@ using UnityEngine.EventSystems;
 
 public class BtnClick : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
-	public BtnType currentType;
+	public BtnType currType;
 	public Transform buttonScale;
 	Vector3 defaultScale;
 	public CanvasGroup currGroup;
 	public CanvasGroup nextGroup;
+
+	public GameObject roomObj;
 
 	private void Start()
 	{
@@ -17,12 +19,20 @@ public class BtnClick : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 	}
 	public void BtnOnClick()
 	{
-		switch (currentType)
+		switch (currType)
 		{
 			case BtnType.Start:
 			case BtnType.Back:
 			case BtnType.MakeRoom:
 			case BtnType.AttendRoom:
+			case BtnType.Finished:
+				CanvasGroupOn(nextGroup);
+				CanvasGroupOff(currGroup);
+				break;
+			case BtnType.EditRoom:
+				roomObj.SetActive(true);
+				CameraMove.IsCamearActive = true;
+				Cursor.lockState = CursorLockMode.Confined;
 				CanvasGroupOn(nextGroup);
 				CanvasGroupOff(currGroup);
 				break;

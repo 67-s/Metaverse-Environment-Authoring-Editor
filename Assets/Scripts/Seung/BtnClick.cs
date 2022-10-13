@@ -10,28 +10,39 @@ public class BtnClick : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 	Vector3 defaultScale;
 	public CanvasGroup currGroup;
 	public CanvasGroup nextGroup;
-
+	
 	public GameObject roomObj;
+
+	CameraMove cameraMove;
 
 	private void Start()
 	{
 		defaultScale = buttonScale.localScale;
+		cameraMove = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<CameraMove>();
 	}
 	public void BtnOnClick()
 	{
 		switch (currType)
 		{
 			case BtnType.Start:
-			case BtnType.Back:
 			case BtnType.MakeRoom:
 			case BtnType.AttendRoom:
 			case BtnType.Finished:
+			case BtnType.Back:
+				CanvasGroupOn(nextGroup);
+				CanvasGroupOff(currGroup);
+				break;
+			case BtnType.EditRoomBack:
+				roomObj.SetActive(false);
+				cameraMove.SetIsCameraActive(false);
+				cameraMove.CameraReset();
+				Cursor.lockState = CursorLockMode.None;
 				CanvasGroupOn(nextGroup);
 				CanvasGroupOff(currGroup);
 				break;
 			case BtnType.EditRoom:
 				roomObj.SetActive(true);
-				CameraMove.IsCamearActive = true;
+				cameraMove.SetIsCameraActive(true);
 				Cursor.lockState = CursorLockMode.Confined;
 				CanvasGroupOn(nextGroup);
 				CanvasGroupOff(currGroup);

@@ -12,5 +12,6 @@ public enum BtnType
     AttendRoom,
 	Finished,
 	EditRoom,
-	GotoMetaverse
+	GotoMetaverse,
+	EditRoomBack
 }

@@ -36,6 +36,9 @@ public class BtnClick : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 				CanvasGroupOn(nextGroup);
 				CanvasGroupOff(currGroup);
 				break;
+			case BtnType.GotoMetaverse:
+				SceneLoader.LoadSceneHandle("Scene2");
+				break;
 			case BtnType.Quit:
 #if UNITY_EDITOR
 				UnityEditor.EditorApplication.isPlaying = false;

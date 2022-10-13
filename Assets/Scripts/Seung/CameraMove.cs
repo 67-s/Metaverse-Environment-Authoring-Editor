@@ -7,16 +7,21 @@ public class CameraMove : MonoBehaviour
 	const float kTurnSpeedX = 2.0f; // 마우스 회전 속도
 	const float kTurnSpeedY = 5.0f; // 마우스 회전 속도
 	const float kMoveSpeed = 2.0f; // 이동 속도
-	public static bool IsCamearActive = false;
+	static bool IsCameraActive = false;
 	void Update()
 	{
-		if (IsCamearActive)
+		if (IsCameraActive)
 		{
 			MouseRotation();
 			KeyboardMove();
 		}
 		if (Input.GetButtonDown("CameraActive"))
-			IsCamearActive = !IsCamearActive;
+			IsCameraActive = !IsCameraActive;
+	}
+
+	public void SetIsCameraActive(bool val)
+	{
+		IsCameraActive = val;
 	}
 
 	// 카메라 회전
@@ -38,5 +43,10 @@ public class CameraMove : MonoBehaviour
 	void KeyboardMove()
 	{
 		transform.Translate(new Vector3(Input.GetAxis("Horizontal"), Input.GetAxis("Up"), Input.GetAxis("Vertical")) * kMoveSpeed * Time.deltaTime);
+	}
+	public void CameraReset()
+	{
+		transform.position = new Vector3(0, 1, 0);
+		transform.eulerAngles = new Vector3(0, 0, 0);
 	}
 }

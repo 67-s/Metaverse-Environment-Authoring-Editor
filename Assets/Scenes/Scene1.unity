@@ -2688,7 +2688,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e712249343b0e63469f32c8672f1851d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currType: 2
+  currType: 9
   buttonScale: {fileID: 980561179}
   currGroup: {fileID: 956036350}
   nextGroup: {fileID: 732869601}
@@ -9674,7 +9674,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 2098052849}
   m_Direction: 2
   m_Value: 0
-  m_Size: 0.9999363
+  m_Size: 0.9999533
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -10071,7 +10071,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0.023206742}
+  m_AnchoredPosition: {x: 0, y: 0.00011422468}
   m_SizeDelta: {x: 0, y: 300}
   m_Pivot: {x: 0, y: 1}
 --- !u!1 &1673261449

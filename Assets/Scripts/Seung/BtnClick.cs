@@ -28,10 +28,11 @@ public class BtnClick : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 			case BtnType.MakeRoom:
 			case BtnType.AttendRoom:
 			case BtnType.Finished:
+			case BtnType.Back:
 				CanvasGroupOn(nextGroup);
 				CanvasGroupOff(currGroup);
 				break;
-			case BtnType.Back:
+			case BtnType.EditRoomBack:
 				roomObj.SetActive(false);
 				cameraMove.SetIsCameraActive(false);
 				cameraMove.CameraReset();

@@ -9,7 +9,6 @@ using Photon.Bolt.Utils;
 public class NetworkCallbacks : GlobalEventListener
 {
     List<string> logMessages = new List<string>();
-    List<string> infos = new List<string>();
 
     void OnGUI()
     {
@@ -23,9 +22,6 @@ public class NetworkCallbacks : GlobalEventListener
             GUILayout.Label(logMessages[i]);
         }
 
-        for (int i = 0; i < infos.Count; ++i)
-            GUILayout.Label(infos[i]);
-
         GUILayout.EndArea();
     }
     public override void SceneLoadLocalDone(string scene, IProtocolToken token)
@@ -37,6 +33,12 @@ public class NetworkCallbacks : GlobalEventListener
 
         // instantiate Person
         BoltNetwork.Instantiate(BoltPrefabs.Person, spawnPosition, Quaternion.identity);
+
+        
+        var mt = token as MapInfoToken;
+        var cubePosition = new Vector3(mt.mapInfos[0], mt.mapInfos[1], mt.mapInfos[2]);
+
+        BoltNetwork.Instantiate(BoltPrefabs.Cube, cubePosition, Quaternion.identity);
     }
 
     public override void OnEvent(LogEvent evnt)
@@ -44,11 +46,9 @@ public class NetworkCallbacks : GlobalEventListener
         logMessages.Insert(0, evnt.Message);
     }
 
-    public override void ConnectRequest(UdpEndPoint endpoint, IProtocolToken token)
+    public override void OnEvent(ChatEvent evnt)
     {
-        base.ConnectRequest(endpoint, token);
-        BoltNetwork.Accept(endpoint);
-        infos.Add(endpoint.ToString());
+        logMessages.Insert(0,evnt.Message);
     }
 
     public override void ConnectRefused(UdpEndPoint endpoint, IProtocolToken token)
@@ -61,4 +61,10 @@ public class NetworkCallbacks : GlobalEventListener
     {
         base.ConnectAttempt(endpoint, token);
     }
+    /*
+    public override void ConnectRequest(UdpEndPoint endpoint, IProtocolToken token)
+    {
+        base.ConnectRequest(endpoint, token);
+        BoltNetwork.Accept(endpoint);
+    }*/
 }

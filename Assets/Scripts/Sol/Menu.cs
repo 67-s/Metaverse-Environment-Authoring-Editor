@@ -15,44 +15,30 @@ public class Menu : GlobalEventListener
     public override void BoltStartBegin()
     {
         base.BoltStartBegin();
+        BoltNetwork.RegisterTokenClass<MapInfoToken>();
     }
-    /*
-    void OnGUI()
-    {
-        
-        GUILayout.BeginArea(new Rect(10, 10, Screen.width - 20, Screen.height - 20));
-
-        roomName = GUILayout.TextField(roomName);
-        password = GUILayout.TextField(password);
-        connectionLimit = Int32.Parse(GUILayout.TextField(connectionLimit.ToString()));
-
-        if (GUILayout.Button("Make a room", GUILayout.ExpandWidth(true), GUILayout.ExpandHeight(true)))
-        {
-            BoltLauncher.StartServer();
-        }
-        
-        if (GUILayout.Button("Start Client", GUILayout.ExpandWidth(true), GUILayout.ExpandHeight(true)))
-        {
-            BoltLauncher.StartClient(); 
-        }
-
-        GUILayout.EndArea();
-    }
-    */
+    
     public override void BoltStartDone()
     {
         if (BoltNetwork.IsServer)
         {
             //string matchName = Guid.NewGuid().ToString();
             PhotonRoomProperties props = new PhotonRoomProperties();
+            MapInfoToken mt = new MapInfoToken();
+            mt.mapInfos = new byte[10];
+            mt.mapInfos[0] = 5;
+            mt.mapInfos[1] = 0;
+            mt.mapInfos[2] = 5;
+
             props.AddRoomProperty("roomName", roomName,true);
             props.AddRoomProperty("password", password);
             props.AddRoomProperty("connectionLimit", connectionLimit);
             
             BoltMatchmaking.CreateSession(
                 sessionID: roomName,
-                sceneToLoad: "Sol",
-                token: props
+                sceneToLoad: "Scene2",
+                token: props,
+                sceneToken : mt //이 토큰이 scene로드할 때 올라감
             );
         }
     }
@@ -65,7 +51,7 @@ public class Menu : GlobalEventListener
         {
             UdpSession udpSession = session.Value as UdpSession;
             PhotonSession photonSession = udpSession as PhotonSession;
-
+            
             if(photonSession.Properties.ContainsKey("roomName"))
             {
                 object Value = photonSession.Properties["roomName"];
@@ -83,7 +69,6 @@ public class Menu : GlobalEventListener
                 object Value = photonSession.Properties["connectionLimit"];
                 Debug.Log("@@@@@connectionLimit@@@@@: " + Value.ToString());
             }
-
 
             if (udpSession.HostName.Equals(roomName))
             {

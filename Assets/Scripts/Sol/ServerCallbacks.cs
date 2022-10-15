@@ -21,5 +21,20 @@ public class ServerCallbacks : GlobalEventListener
         log.Message = string.Format("{0} disconnected", connection.RemoteEndPoint);
         log.Send();
     }
+    
+    public override void ConnectRequest(UdpEndPoint endpoint, IProtocolToken token)
+    {
+        base.ConnectRequest(endpoint, token);
+        BoltNetwork.Accept(endpoint);
+    }
 
+    public override void SceneLoadLocalDone(string scene, IProtocolToken token)
+    {
+        base.SceneLoadLocalDone(scene, token);
+
+        var mt = token as MapInfoToken;
+        var cubePosition = new Vector3(mt.mapInfos[0], mt.mapInfos[1], mt.mapInfos[2]);
+
+        BoltNetwork.Instantiate(BoltPrefabs.Cube, cubePosition, Quaternion.identity);
+    }
 }

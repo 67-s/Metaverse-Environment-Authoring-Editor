@@ -47,9 +47,10 @@ public class CubeBehaviour : EntityEventListener<IMyCubeState>
 
     public override void SimulateOwner()
     {
+        /*
         var speed = 4f;
         var movement = Vector3.zero;
-
+        
         if (Input.GetKey(KeyCode.W)) { movement.z += 1; }
         if (Input.GetKey(KeyCode.S)) { movement.z -= 1; }
         if (Input.GetKey(KeyCode.A)) { movement.x -= 1; }
@@ -72,6 +73,7 @@ public class CubeBehaviour : EntityEventListener<IMyCubeState>
             flash.FlashColor = Color.red;
             flash.Send();
         }
+        */
     }
 
     void OnGUI()

@@ -12,6 +12,7 @@ public class BtnClick : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 	public CanvasGroup nextGroup;
 	
 	public GameObject roomObj;
+	public TwoDiMap twoDiMap;
 
 	CameraMove cameraMove;
 
@@ -43,9 +44,10 @@ public class BtnClick : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 			case BtnType.EditRoom:
 				roomObj.SetActive(true);
 				cameraMove.SetIsCameraActive(true);
-				Cursor.lockState = CursorLockMode.Confined;
+				//Cursor.lockState = CursorLockMode.Confined;
 				CanvasGroupOn(nextGroup);
 				CanvasGroupOff(currGroup);
+				twoDiMap.Make2dMap();
 				break;
 			case BtnType.GotoMetaverse:
 				SceneLoader.LoadSceneHandle("Scene2");

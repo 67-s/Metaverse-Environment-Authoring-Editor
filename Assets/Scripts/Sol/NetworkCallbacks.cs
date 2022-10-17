@@ -9,7 +9,7 @@ using Photon.Bolt.Utils;
 public class NetworkCallbacks : GlobalEventListener
 {
     List<string> logMessages = new List<string>();
-
+    /*
     void OnGUI()
     {
         // only display max the 5 latest log messages
@@ -24,21 +24,17 @@ public class NetworkCallbacks : GlobalEventListener
 
         GUILayout.EndArea();
     }
+    */
     public override void SceneLoadLocalDone(string scene, IProtocolToken token)
     {
         base.SceneLoadLocalDone(scene, token);
-        // randomize a position
-        
+
+        //캐릭터 생성 부분
+        /*
         var spawnPosition = new Vector3(Random.Range(-8, 8), 0, Random.Range(-8, 8));
 
-        // instantiate Person
         BoltNetwork.Instantiate(BoltPrefabs.Person, spawnPosition, Quaternion.identity);
-
-        
-        var mt = token as MapInfoToken;
-        var cubePosition = new Vector3(mt.mapInfos[0], mt.mapInfos[1], mt.mapInfos[2]);
-
-        BoltNetwork.Instantiate(BoltPrefabs.Cube, cubePosition, Quaternion.identity);
+        */
     }
 
     public override void OnEvent(LogEvent evnt)

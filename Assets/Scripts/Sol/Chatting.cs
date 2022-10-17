@@ -21,6 +21,11 @@ public class Chatting : GlobalEventListener
         PhotonNetwork.IsMessageQueueRunning = true;
         scroll_rect = GameObject.FindObjectOfType<ScrollRect>();
         */
+        //input = GameObject.FindObjectOfType<InputField>();
+        input = gameObject.GetComponentInChildren<InputField>();
+        chatLog = gameObject.GetComponentInChildren<Text>();
+        input.text = "Hello!!!";
+        chatLog.text = "hi";
     }
     public void SendButtonOnClicked()
     {
@@ -39,10 +44,10 @@ public class Chatting : GlobalEventListener
         chatterUpdate();
         if (Input.GetKeyDown(KeyCode.Return) && !input.isFocused) SendButtonOnClicked();
         */
-        if (Input.GetKeyDown(KeyCode.Z))
+        if (Input.GetKeyDown(KeyCode.Return))
         {
             var chat = ChatEvent.Create();
-            chat.Message = "something typed";
+            chat.Message = input.text;
             chat.Send();
         }
     }
@@ -57,10 +62,16 @@ public class Chatting : GlobalEventListener
         chattingList.text = chatters;
         */
     }
-    //[PunRPC]
+    /*[PunRPC]
     public void ReceiveMsg(string msg)
     {
         chatLog.text += "\n" + msg;
         scroll_rect.verticalNormalizedPosition = 0.0f;
+    }*/
+
+    public override void OnEvent(ChatEvent evnt)
+    {
+        base.OnEvent(evnt);
+        chatLog.text += "\n" + evnt.Message;
     }
 }

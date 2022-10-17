@@ -41,12 +41,7 @@ public class NetworkCallbacks : GlobalEventListener
     {
         logMessages.Insert(0, evnt.Message);
     }
-
-    public override void OnEvent(ChatEvent evnt)
-    {
-        logMessages.Insert(0,evnt.Message);
-    }
-
+   
     public override void ConnectRefused(UdpEndPoint endpoint, IProtocolToken token)
     {
         base.ConnectRefused(endpoint, token);

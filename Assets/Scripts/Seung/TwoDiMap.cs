@@ -10,15 +10,15 @@ public class TwoDiMap : MonoBehaviour
 	float width = 0;
 	float height = 0;
 
-	public int column = 3;
-	public int row = 3;
+	int colCnt = 3;
+	int rowCnt = 3;
 
 	public GameObject btn;
 	List<GameObject[]> btns;
 
     void Start()
     {
-		Debug.Log(transform.position);
+
 	}
 
     // Update is called once per frame
@@ -29,14 +29,13 @@ public class TwoDiMap : MonoBehaviour
 
 	public void Make2dMap()
 	{
-		width = GetComponent<RectTransform>().rect.width / column;
-		height = GetComponent<RectTransform>().rect.height / row;
-		Debug.Log(new Vector2(width, height));
+		width = GetComponent<RectTransform>().rect.width / colCnt;
+		height = GetComponent<RectTransform>().rect.height / rowCnt;
 		btns = new List<GameObject[]>();
-		for(int i=0;i< row; i++)
+		for(int i=0;i< rowCnt; i++)
 		{
-			btns.Add(new GameObject[column]);
-			for(int j=0;j<column;j++)
+			btns.Add(new GameObject[colCnt]);
+			for(int j=0;j<colCnt;j++)
 			{
 				btns[i][j] = Instantiate(btn, this.transform.position + new Vector3(width * j, height * i, 0), new Quaternion(0,0,0,1));
 				btns[i][j].transform.SetParent(transform);
@@ -46,5 +45,15 @@ public class TwoDiMap : MonoBehaviour
 				rect.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, height);
 			}
 		}
+	}
+
+	public void SetRowCnt(int cnt)
+	{
+		rowCnt = cnt;
+	}
+
+	public void SetColCnt(int cnt)
+	{
+		colCnt = cnt;
 	}
 }

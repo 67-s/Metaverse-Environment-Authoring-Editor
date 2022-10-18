@@ -7,30 +7,40 @@ public class RoomData : MonoBehaviour
 {
 	public IFType currType;
 	public TMP_InputField inputField;
-	static string Name;
-	static string Intro;
-	static string NumberOfPeople;
-	static string Password;
+	static string roomName;
+	static string intro;
+	static string numberOfPeople;
+	static string password;
+	public static int rowCnt;
+	public static int colCnt;
 	public void OnEndEdit()
 	{
 		switch(currType)
 		{
 			case IFType.RmName:
-				Name = inputField.text.ToString();
+				roomName = inputField.text.ToString();
 				break;
 			case IFType.RmIntro:
-				Intro = inputField.text.ToString();
+				intro = inputField.text.ToString();
 				break;
 			case IFType.RmLmtNum:
-				NumberOfPeople = inputField.text.ToString();
+				numberOfPeople = inputField.text.ToString();
 				break;
 			case IFType.RmPwd:
-				Password = inputField.text.ToString();
+				password = inputField.text.ToString();
+				break;
+			case IFType.RmRowCnt:
+				rowCnt = int.Parse(inputField.text);
+				break;
+			case IFType.RmColCnt:
+				colCnt = int.Parse(inputField.text);
 				break;
 		}
-		Debug.Log(Name);
-		Debug.Log(Intro);
-		Debug.Log(NumberOfPeople);
-		Debug.Log(Password);
+		Debug.Log(roomName);
+		Debug.Log(intro);
+		Debug.Log(numberOfPeople);
+		Debug.Log(password);
+		Debug.Log(rowCnt);
+		Debug.Log(colCnt);
 	}
 }

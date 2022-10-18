@@ -47,6 +47,8 @@ public class BtnClick : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 				//Cursor.lockState = CursorLockMode.Confined;
 				CanvasGroupOn(nextGroup);
 				CanvasGroupOff(currGroup);
+				twoDiMap.SetRowCnt(RoomData.rowCnt);
+				twoDiMap.SetColCnt(RoomData.colCnt);
 				twoDiMap.Make2dMap();
 				break;
 			case BtnType.GotoMetaverse:

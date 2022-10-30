@@ -22,10 +22,12 @@ public class Chatting : GlobalEventListener
         scroll_rect = GameObject.FindObjectOfType<ScrollRect>();
         */
         //input = GameObject.FindObjectOfType<InputField>();
+        scroll_rect = GameObject.FindObjectOfType<ScrollRect>();
         input = gameObject.GetComponentInChildren<InputField>();
         chatLog = gameObject.GetComponentInChildren<Text>();
-        input.text = "Hello!!!";
+        //input.text = "Hello!!!";
         chatLog.text = "hi";
+        input.ActivateInputField();
     }
     public void SendButtonOnClicked()
     {
@@ -40,38 +42,35 @@ public class Chatting : GlobalEventListener
     }
     void Update()
     {
-        /*
-        chatterUpdate();
-        if (Input.GetKeyDown(KeyCode.Return) && !input.isFocused) SendButtonOnClicked();
-        */
+        //
+        //chatterUpdate();
+        //if (Input.GetKeyDown(KeyCode.Return) && !input.isFocused) SendButtonOnClicked();
+        //
         if (Input.GetKeyDown(KeyCode.Return))
         {
             var chat = ChatEvent.Create();
             chat.Message = input.text;
             chat.Send();
+            input.Select();
+            input.text = "";
         }
     }
     void chatterUpdate()
     {
-        /*
         chatters = "Player List\n";
+        /*
         foreach (Player p in PhotonNetwork.PlayerList)
         {
             chatters += p.NickName + "\n";
         }
-        chattingList.text = chatters;
         */
+        chattingList.text = chatters;
     }
-    /*[PunRPC]
-    public void ReceiveMsg(string msg)
-    {
-        chatLog.text += "\n" + msg;
-        scroll_rect.verticalNormalizedPosition = 0.0f;
-    }*/
 
     public override void OnEvent(ChatEvent evnt)
     {
         base.OnEvent(evnt);
         chatLog.text += "\n" + evnt.Message;
+        scroll_rect.verticalNormalizedPosition = 0.0f;
     }
 }

@@ -12,6 +12,7 @@ public class BtnClick : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 	public CanvasGroup nextGroup;
 	
 	public GameObject roomObj;
+	public TwoDiMap twoDiMap, miniMap;
 
 	CameraMove cameraMove;
 
@@ -39,11 +40,23 @@ public class BtnClick : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 				Cursor.lockState = CursorLockMode.None;
 				CanvasGroupOn(nextGroup);
 				CanvasGroupOff(currGroup);
+				twoDiMap.DestroyMap();
+				miniMap.DestroyMap();
 				break;
 			case BtnType.EditRoom:
 				roomObj.SetActive(true);
-				cameraMove.SetIsCameraActive(true);
-				Cursor.lockState = CursorLockMode.Confined;
+				//cameraMove.SetIsCameraActive(true);
+				//Cursor.lockState = CursorLockMode.Confined;
+				CanvasGroupOn(nextGroup);
+				CanvasGroupOff(currGroup);
+				twoDiMap.SetRowCnt(RoomData.rowCnt);
+				twoDiMap.SetColCnt(RoomData.colCnt);
+				twoDiMap.Make2dMap();
+				miniMap.SetRowCnt(RoomData.rowCnt);
+				miniMap.SetColCnt(RoomData.colCnt);
+				miniMap.Make2dMap();
+				break;
+			case BtnType.MiniMapTog:
 				CanvasGroupOn(nextGroup);
 				CanvasGroupOff(currGroup);
 				break;

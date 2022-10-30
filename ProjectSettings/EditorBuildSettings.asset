@@ -9,7 +9,7 @@ EditorBuildSettings:
     path: Assets/Scenes/SolMenu.unity
     guid: 74957ab9750c20544886ee1e1b51e7fc
   - enabled: 1
-    path: Assets/Scenes/Sol.unity
+    path: Assets/Scenes/Scene2.unity
     guid: 4b7bbccce1d972b438e75ccacbf59298
   - enabled: 1
     path: Assets/Scenes/Scene1.unity
@@ -17,7 +17,4 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/LoadingScene.unity
     guid: f7d9a9e64a96d2f45b58e3dcd517bc20
-  - enabled: 1
-    path: Assets/Scenes/Scene2.unity
-    guid: a9e05600ca96a3344b292dc1fa30e57e
   m_configObjects: {}

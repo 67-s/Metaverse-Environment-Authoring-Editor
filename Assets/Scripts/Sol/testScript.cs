@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Photon.Bolt;
 using UnityEngine;
+using UnityEngine.UI;
 
 [RequireComponent(typeof(Menu))]
 public class testScript : MonoBehaviour

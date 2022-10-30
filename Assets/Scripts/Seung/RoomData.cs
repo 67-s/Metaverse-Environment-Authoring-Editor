@@ -11,8 +11,8 @@ public class RoomData : MonoBehaviour
 	static string intro;
 	static string numberOfPeople;
 	static string password;
-	public static int rowCnt;
-	public static int colCnt;
+	public static int rowCnt = 3;
+	public static int colCnt = 3;
 	public void OnEndEdit()
 	{
 		switch(currType)

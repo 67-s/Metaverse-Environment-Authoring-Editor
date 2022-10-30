@@ -14,9 +14,14 @@ public class TwoDiMap : MonoBehaviour
 	int rowCnt = 3;
 
 	public GameObject prefab;
-	List<GameObject[]> prefabs;
+	List<List<GameObject>> prefabs = null;
 
-    void Start()
+	private static int fstRow = -1;
+	private static int fstCol = -1;
+	private static int sndRow = -1;
+	private static int sndCol = -1;
+
+	void Start()
     {
 
 	}
@@ -31,13 +36,14 @@ public class TwoDiMap : MonoBehaviour
 	{
 		width = GetComponent<RectTransform>().rect.width / colCnt;
 		height = GetComponent<RectTransform>().rect.height / rowCnt;
-		prefabs = new List<GameObject[]>();
+
+		prefabs = new List<List<GameObject>>();
 		for(int i=0;i< rowCnt; i++)
 		{
-			prefabs.Add(new GameObject[colCnt]);
+			prefabs.Add(new List<GameObject>());
 			for(int j=0;j<colCnt;j++)
 			{
-				prefabs[i][j] = Instantiate(prefab, this.transform.position + new Vector3(width * j, height * i, 0), new Quaternion(0,0,0,1));
+				prefabs[i].Add(Instantiate(prefab, this.transform.position + new Vector3(width * j, height * i, 0), new Quaternion(0,0,0,1)));
 				prefabs[i][j].transform.SetParent(transform);
 
 				RectTransform rect = prefabs[i][j].GetComponent<RectTransform>();
@@ -55,5 +61,78 @@ public class TwoDiMap : MonoBehaviour
 	public void SetColCnt(int cnt)
 	{
 		colCnt = cnt;
+	}
+
+	public void SetPrefapColorWithGameObj(GameObject fstGameObject, GameObject sndGameObject)
+	{
+		int findFlag = 0;
+
+		for (int i = 0; i < rowCnt; i++) 
+		{
+			int idx;
+			if ((idx = prefabs[i].IndexOf(fstGameObject)) != -1)
+			{
+				findFlag &= 1;
+				fstRow = i;
+				fstCol = idx;
+			}
+			if ((idx = prefabs[i].IndexOf(sndGameObject)) !=-1)
+			{
+				findFlag &= 2;
+				sndRow = i;
+				sndCol = idx;
+			}
+			if (findFlag == 3)
+				break;
+		}
+
+		if (fstRow == -1 || sndRow == -1 || fstCol == -1 || sndRow == -1)
+			return;
+
+		if (fstRow > sndRow)
+			(fstRow, sndRow) = (sndRow, fstRow);
+		if (fstCol > sndCol)
+			(fstCol, sndCol) = (sndCol, fstCol);
+
+		for (int i = fstRow; i <= sndRow; i++)
+		{
+			for (int j = fstCol; j <= sndCol; j++)
+			{ 
+				prefabs[i][j].GetComponent<Image>().color = new Color(0.5f, 0.2f, 0.3f);
+			}
+		}
+	}
+
+	public void SetPrefapColorWithPos()
+	{
+		if (fstRow == -1 || sndRow == -1 || fstCol == -1 || sndRow == -1)
+			return;
+
+		if (fstRow > sndRow)
+			(fstRow, sndRow) = (sndRow, fstRow);
+		if (fstCol > sndCol)
+			(fstCol, sndCol) = (sndCol, fstCol);
+
+		for (int i = fstRow; i <= sndRow; i++)
+		{
+			for (int j = fstCol; j <= sndCol; j++)
+			{
+				prefabs[i][j].GetComponent<Image>().color = new Color(0.5f, 0.2f, 0.3f);
+			}
+		}
+		fstRow = -1;
+		fstCol = -1;
+		sndRow = -1;
+		sndCol = -1;
+	}
+	public void DestroyMap()
+	{
+		for (int i = 0; i < rowCnt; i++)
+		{
+			for (int j = 0; j < colCnt; j++)
+			{
+				Destroy(prefabs[i][j]);
+			}
+		}
 	}
 }

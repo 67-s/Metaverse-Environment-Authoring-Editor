@@ -40,6 +40,8 @@ public class BtnClick : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 				Cursor.lockState = CursorLockMode.None;
 				CanvasGroupOn(nextGroup);
 				CanvasGroupOff(currGroup);
+				twoDiMap.DestroyMap();
+				miniMap.DestroyMap();
 				break;
 			case BtnType.EditRoom:
 				roomObj.SetActive(true);

@@ -71,6 +71,6 @@ public class Chatting : GlobalEventListener
     {
         base.OnEvent(evnt);
         chatLog.text += "\n" + evnt.Message;
-        scroll_rect.verticalNormalizedPosition = 0.0f;
+        //scroll_rect.verticalNormalizedPosition = 0.0f;
     }
 }

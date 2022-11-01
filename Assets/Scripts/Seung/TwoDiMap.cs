@@ -18,7 +18,7 @@ public class TwoDiMap : MonoBehaviour
 
 	public GameObject prefab;
 	List<List<GameObject>> prefabs = null;
-	Dictionary<Area, int> buildArea = null;
+	Dictionary<Area, AreaData> buildArea = null;
 
 	private static int fstRow = -1;
 	private static int fstCol = -1;
@@ -33,7 +33,7 @@ public class TwoDiMap : MonoBehaviour
 		height = rectHeight / rowCnt;
 
 		prefabs = new List<List<GameObject>>();
-		buildArea = new Dictionary<Area, int>();
+		buildArea = new Dictionary<Area, AreaData>();
 
 		for (int i=0;i< rowCnt; i++)
 		{
@@ -91,7 +91,7 @@ public class TwoDiMap : MonoBehaviour
 		if (fstCol > sndCol)
 			(fstCol, sndCol) = (sndCol, fstCol);
 
-		buildArea.Add(new Area(fstRow, fstCol, sndRow, sndCol), 1);
+		buildArea.Add(new Area(fstRow, fstCol, sndRow, sndCol), new AreaData(fstRow, fstCol, sndRow, sndCol));
 
 		for (int i = fstRow; i <= sndRow; i++)
 		{
@@ -137,15 +137,15 @@ public class TwoDiMap : MonoBehaviour
 		}
 	}
 
-	public Dictionary<Area, int>GetBuildArea()
+	public Dictionary<Area, AreaData>GetBuildArea()
 	{
 		return buildArea;
 	}
 	public void DebugBuildArea()
 	{
-		foreach(KeyValuePair<Area, int> item in buildArea)
+		foreach(KeyValuePair<Area, AreaData> item in buildArea)
 		{
-			Debug.Log($"{ item.Key.FstRow},{item.Key.FstCol},{item.Key.SndRow},{item.Key.SndCol}");
+			Debug.Log($"{ item.Value.FstRow},{item.Value.FstCol},{item.Value.SndRow},{item.Value.SndCol}");
 		}
 	}
 }

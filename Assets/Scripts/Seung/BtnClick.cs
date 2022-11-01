@@ -60,6 +60,9 @@ public class BtnClick : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 				CanvasGroupOn(nextGroup);
 				CanvasGroupOff(currGroup);
 				break;
+			case BtnType.Create:
+				twoDiMap.DebugBuildArea();
+				break;
 			case BtnType.GotoMetaverse:
 				SceneLoader.LoadSceneHandle("Scene2");
 				break;

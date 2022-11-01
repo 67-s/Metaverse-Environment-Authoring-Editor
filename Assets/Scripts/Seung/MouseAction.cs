@@ -19,17 +19,17 @@ public class MouseAction : MonoBehaviour
     {
 		if (Input.GetMouseButtonDown(0))
 		{
-			Debug.Log("down");
 			var ped = new PointerEventData(null);
 			ped.position = Input.mousePosition;
 			List<RaycastResult> results = new List<RaycastResult>();
 			gRay.Raycast(ped, results);
 			if (results.Count > 0)
 				fstGameObject = results[0].gameObject.transform.parent.gameObject;
+			if (fstGameObject != null && !fstGameObject.CompareTag("MiniMapTile"))
+				fstGameObject = null;
 		}
 		if (Input.GetMouseButtonUp(0))
 		{
-			Debug.Log("up");
 			if (fstGameObject != null)
 			{
 				var ped = new PointerEventData(null);
@@ -38,8 +38,11 @@ public class MouseAction : MonoBehaviour
 				gRay.Raycast(ped, results);
 				if (results.Count > 0)
 					sndGameObject = results[0].gameObject.transform.parent.gameObject;
-				twoDiMap.SetPrefapColorWithGameObj(fstGameObject, sndGameObject);
-				miniMap.SetPrefapColorWithPos();
+				if (sndGameObject != null)
+				{
+					twoDiMap.SetPrefapColorWithGameObj(fstGameObject, sndGameObject);
+					miniMap.SetPrefapColorWithPos();
+				}
 			}
 			fstGameObject = null;
 			sndGameObject = null;

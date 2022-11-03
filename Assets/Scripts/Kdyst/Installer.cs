@@ -5,6 +5,10 @@ using UnityEngine;
 
 public class Installer : MonoBehaviour
 {
+    /*
+     * Belows are the variables
+     *  which are related to tiles of the world.
+     */
     //default tile: It means that the tile data is broken.
     [SerializeField]
     private GameObject tileDefault;
@@ -24,7 +28,13 @@ public class Installer : MonoBehaviour
     
     //This is the map.
     private GameObject[,] tileMap = null;
-    
+
+    /*
+     * The variables of the Building.
+     */
+    [SerializeField]
+    private GameObject[] buildSet;
+
     //Make a clone of the gameObject and place it
     GameObject CloneTile(int x, int z, int key)
     {
@@ -66,23 +76,32 @@ public class Installer : MonoBehaviour
         (_, tileMap) = (tileMap, temporary);
     }
 
-    // Change the tile data
-    public void ChangeTile(int x, int z, int xWidth, int zWidth, int key)
+    // Verify that it points to the correct space
+    private bool Verify(int x, int z, int xWidth, int zWidth)
     {
-        //exceptions
-        if (x < 0 || z < 0 
-            || xWidth <= 0 || zWidth <= 0 
+        if (x < 0 || z < 0
+            || xWidth <= 0 || zWidth <= 0
             || x + xWidth > tileMap.GetLength(0) || z + zWidth > tileMap.GetLength(1))
         {
-            Func<int, int, string> foo = (a,  b) => "(" + a + ", " + b + ")";
-            string front = "kdyst/Installer.cs: Installer.ChangeTile():";
-            Debug.Log(front 
+            Func<int, int, string> foo = (a, b) => "(" + a + ", " + b + ")";
+            string front = "kdyst/Installer.cs: Installer.Verify():";
+            Debug.Log(front
                 + " (x, z) == " + foo(x, z)
                 + ", (xWidth, zWidth) == " + foo(xWidth, zWidth)
                 + "(xSize, ySize) == " + foo(tileMap.GetLength(0), tileMap.GetLength(1))
                 );
-            return;
+            return false;
         }
+        return true;
+    }
+
+    // Change the tile data
+    public void ChangeTile(int x, int z, int xWidth, int zWidth, int key)
+    {
+        //exceptions
+        if (!Verify(x, z, xWidth, zWidth))
+            return;
+
         for(int xDiff = 0; xDiff < xWidth; xDiff++)
             for (int zDiff = 0; zDiff < zWidth; zDiff++)
             {
@@ -92,10 +111,26 @@ public class Installer : MonoBehaviour
             }
     }
 
+    //construct new building
+    public void Build(int x, int z, int xWidth, int zWidth, int key, EBuildDirection direction)
+    {
+        //exceptions
+        if (!Verify(x, z, xWidth, zWidth))
+            return;
+        if (0 <= key && key < buildSet.Length)
+        {
+            GameObject target = Instantiate(buildSet[key], gameObject.transform);
+            target.transform.Translate(new Vector3(x, 0, z) * tileLength);
+            target.GetComponent<IBuilder>().Initialize(tileLength, xWidth, zWidth, direction);
+            target.SetActive(true);
+        }
+    }
+
     // Start is called before the first frame update
     void Start()
     {
-        Resize(defaultXSize, defaultZSize, 1);
+        if(tileMap == null)
+            Resize(defaultXSize, defaultZSize, 1);
     }
 
     public bool actionResize = false;
@@ -106,6 +141,14 @@ public class Installer : MonoBehaviour
     public int actionChangeTileX, actionChangTileZ;
     public int actionChangeTileXWidth, actionChangTileZWidth;
     public int actionChangeTileKey;
+
+    public bool actionBuild = false;
+    public int actionBuildX, actionBuildZ;
+    public int actionBuildXWidth, actionBuildZWidth;
+    public int actionBuildKey;
+    public EBuildDirection actionBuildDirection;
+
+
     // Update is called once per frame
     void Update()
     {
@@ -118,6 +161,11 @@ public class Installer : MonoBehaviour
         {
             actionChangeTile = false;
             ChangeTile(actionChangeTileX, actionChangTileZ, actionChangeTileXWidth, actionChangTileZWidth, actionChangeTileKey);
+        }
+        if(actionBuild)
+        {
+            actionBuild = false;
+            Build(actionBuildX, actionBuildZ, actionBuildXWidth, actionBuildZWidth, actionBuildKey, actionBuildDirection);
         }
     }
 }

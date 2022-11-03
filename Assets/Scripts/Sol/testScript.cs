@@ -16,9 +16,9 @@ public class testScript : MonoBehaviour
     {
         m = gameObject.GetComponent<Menu>();
 
-        m.SetRoomName("myFirstRoom");
-        m.SetPassword("101010");
-        m.SetConnectionLimit(15);
+        //m.SetRoomName("myFirstRoom");
+        //m.SetPassword("101010");
+        //m.SetConnectionLimit(15);
 
         roomNames = new List<string>();
     }
@@ -44,7 +44,7 @@ public class testScript : MonoBehaviour
         }
         else if (Input.GetKeyDown(KeyCode.R))
         {
-            m.JoinRoom("myFirstRoom");
+            m.JoinRoom();
         }
     }
 

@@ -34,14 +34,12 @@ public class ServerCallbacks : GlobalEventListener
 
         //맵 생성 부분
 
-        /*
         var mt = token as MapInfoToken;
-
+        /*
         var cubePosition = new Vector3(mt.mapInfos[0], mt.mapInfos[1], mt.mapInfos[2]);
 
         BoltNetwork.Instantiate(BoltPrefabs.Cube, cubePosition, Quaternion.identity);
         */
-        var mt = token as MapInfoToken;
 
         if (mt == null)
             return;

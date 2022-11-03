@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/Scripts/Kdyst/BoxContainer.cs.meta
+guid: 950783003f7e11b42aa37717462e64b5
+========
+guid: 4fe650b1e2885854cb4bf8cb83121188
+>>>>>>>> develop:Assets/Scripts/Seung/Area.cs.meta
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

@@ -21,6 +21,10 @@ public class Menu : GlobalEventListener
     
     public override void BoltStartDone()
     {
+        roomName = GameObject.Find("RmNameInputField").GetComponent<RoomData>().getRoomName();
+        password = GameObject.Find("RmPwdInputField").GetComponent<RoomData>().getPassword();
+        connectionLimit = GameObject.Find("RmLimitNumberInputField").GetComponent<RoomData>().getNumberOfPeople();
+
         if (BoltNetwork.IsServer)
         {
             //string matchName = Guid.NewGuid().ToString();
@@ -28,6 +32,7 @@ public class Menu : GlobalEventListener
             MapInfoToken mt = new MapInfoToken(30);
             mt.AddTwoByte(256 + 8 + 512);
             mt.AddTwoByte(8 + 1024);
+
 
             props.AddRoomProperty("roomName", roomName,true);
             props.AddRoomProperty("password", password);
@@ -104,7 +109,7 @@ public class Menu : GlobalEventListener
         BoltLauncher.StartClient();
     }
 
-    public void JoinRoom(string roomName)
+    public void JoinRoom()
     {
         BoltMatchmaking.JoinSession(roomName);
     }

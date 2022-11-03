@@ -8,5 +8,7 @@ public enum IFType
 	RmName,
 	RmIntro,
 	RmLmtNum,
-	RmPwd
+	RmPwd,
+	RmRowCnt,
+	RmColCnt
 }

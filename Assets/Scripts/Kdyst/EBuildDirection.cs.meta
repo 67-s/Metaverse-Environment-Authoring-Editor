@@ -1,9 +1,5 @@
 fileFormatVersion: 2
-<<<<<<<< HEAD:Assets/Scripts/Kdyst/BoxContainer.cs.meta
-guid: f12adacd8e7a2fc4c91ad711f071dab8
-========
-guid: 4fe650b1e2885854cb4bf8cb83121188
->>>>>>>> develop:Assets/Scripts/Seung/Area.cs.meta
+guid: 7a848f8b0b8999e40b604401c97c5417
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2

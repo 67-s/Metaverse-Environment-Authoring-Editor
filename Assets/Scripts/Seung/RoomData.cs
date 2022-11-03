@@ -43,4 +43,19 @@ public class RoomData : MonoBehaviour
 		Debug.Log(rowCnt);
 		Debug.Log(colCnt);
 	}
+
+	public string getRoomName()
+    {
+		return roomName;
+    }
+
+	public string getPassword()
+    {
+		return password;
+    }
+
+	public int getNumberOfPeople()
+    {
+		return int.Parse(numberOfPeople);
+    }
 }

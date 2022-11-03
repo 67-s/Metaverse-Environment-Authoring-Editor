@@ -53,7 +53,8 @@ public class Chatting : GlobalEventListener
             chat.Send();
             input.Select();
             input.text = "";
-        }
+			input.ActivateInputField();
+		}
     }
     void chatterUpdate()
     {

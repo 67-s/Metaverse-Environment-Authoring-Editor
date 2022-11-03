@@ -35,6 +35,7 @@ public class NetworkCallbacks : GlobalEventListener
 
         BoltNetwork.Instantiate(BoltPrefabs.Person, spawnPosition, Quaternion.identity);
         */
+
     }
 
     public override void OnEvent(LogEvent evnt)

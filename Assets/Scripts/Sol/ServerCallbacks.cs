@@ -33,11 +33,31 @@ public class ServerCallbacks : GlobalEventListener
         base.SceneLoadLocalDone(scene, token);
 
         //맵 생성 부분
+
         /*
         var mt = token as MapInfoToken;
+
         var cubePosition = new Vector3(mt.mapInfos[0], mt.mapInfos[1], mt.mapInfos[2]);
 
         BoltNetwork.Instantiate(BoltPrefabs.Cube, cubePosition, Quaternion.identity);
         */
+        var mt = token as MapInfoToken;
+
+        if (mt == null)
+            return;
+
+        Debug.Log(mt.mapInfos[0]);
+        Debug.Log(mt.mapInfos[1]);
+        Debug.Log(mt.mapInfos[2]);
+        Debug.Log(mt.mapInfos[3]);
+
+        for (int i = 0; i < 2; ++i)
+        {
+            var cubePosition = new Vector3(mt.mapInfos[2*i+0],0, mt.mapInfos[2*i+1]);
+
+            BoltNetwork.Instantiate(BoltPrefabs.Cube, cubePosition, Quaternion.identity);
+        }
+
+
     }
 }

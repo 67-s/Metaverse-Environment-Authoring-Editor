@@ -25,11 +25,9 @@ public class Menu : GlobalEventListener
         {
             //string matchName = Guid.NewGuid().ToString();
             PhotonRoomProperties props = new PhotonRoomProperties();
-            MapInfoToken mt = new MapInfoToken();
-            mt.mapInfos = new byte[10];
-            mt.mapInfos[0] = 5;
-            mt.mapInfos[1] = 0;
-            mt.mapInfos[2] = 5;
+            MapInfoToken mt = new MapInfoToken(30);
+            mt.AddTwoByte(256 + 8 + 512);
+            mt.AddTwoByte(8 + 1024);
 
             props.AddRoomProperty("roomName", roomName,true);
             props.AddRoomProperty("password", password);

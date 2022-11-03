@@ -41,6 +41,7 @@ public class ServerCallbacks : GlobalEventListener
         BoltNetwork.Instantiate(BoltPrefabs.Cube, cubePosition, Quaternion.identity);
         */
 
+        /*
         if (mt == null)
             return;
 
@@ -55,7 +56,7 @@ public class ServerCallbacks : GlobalEventListener
 
             BoltNetwork.Instantiate(BoltPrefabs.Cube, cubePosition, Quaternion.identity);
         }
-
+        */
 
     }
 }

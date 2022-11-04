@@ -461,23 +461,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1086118733
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3156150362887813462}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 752d3af7a2d3c4df6a81dcc90f3b7752, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  chatList: []
-  sendBtn: {fileID: 0}
-  chatLog: {fileID: 3156150361465879327}
-  chattingList: {fileID: 0}
-  input: {fileID: 3156150361238742994}
 --- !u!114 &1086118734
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1530,9 +1513,9 @@ GameObject:
   - component: {fileID: 3156150362887813451}
   - component: {fileID: 3156150362887813460}
   - component: {fileID: 3156150362887813461}
-  - component: {fileID: 1086118733}
   - component: {fileID: 1086118734}
   - component: {fileID: 1086118735}
+  - component: {fileID: 3156150362887813463}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -1540,6 +1523,23 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &3156150362887813463
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3156150362887813462}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 752d3af7a2d3c4df6a81dcc90f3b7752, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  chatList: []
+  sendBtn: {fileID: 0}
+  chatLog: {fileID: 0}
+  chattingList: {fileID: 0}
+  input: {fileID: 0}
 --- !u!222 &3156150362984572450
 CanvasRenderer:
   m_ObjectHideFlags: 0

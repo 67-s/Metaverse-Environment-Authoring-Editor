@@ -83,6 +83,9 @@ public class Menu : GlobalEventListener
                     //BoltMatchmaking.JoinSession(udpSession);
                 }
             }
+
+            RoomListScrollView roomList = GameObject.Find("RoomList").GetComponentInChildren<RoomListScrollView>();
+            roomList.WhenRoomCreated();
         }        
     }
 

@@ -11,6 +11,7 @@ public class testScript : MonoBehaviour
     // Start is called before the first frame update
     Menu m;
     List<string> roomNames;
+    RoomListScrollView roomList;
 
     void Start()
     {

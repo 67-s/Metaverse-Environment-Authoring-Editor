@@ -8,7 +8,7 @@ using UnityEngine.UI;
 public class RoomListScrollView : MonoBehaviour
 {
 	public GameObject roomContent;
-	static int roomCount = 0;
+	private static int roomCount = 0;
 
 	public void WhenRoomCreated()
 	{
@@ -21,7 +21,7 @@ public class RoomListScrollView : MonoBehaviour
 		newRoomContent.SetActive(true);
 	}
 
-	public void OnChkClick()
+	private void OnChkClick()
 	{
 		var currObject = EventSystem.current.currentSelectedGameObject;
 		TMP_Text btnText = currObject.GetComponentInChildren<TMP_Text>();

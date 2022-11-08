@@ -11,9 +11,12 @@ public class MouseAction : MonoBehaviour
 	GameObject fstGameObject = null;
 	GameObject sndGameObject = null;
 	GraphicRaycaster gRay;
+	BuildListScrollView buildListScrollView;
+
 	private void Awake()
 	{
 		gRay = GetComponent<GraphicRaycaster>();
+		buildListScrollView = FindObjectOfType<BuildListScrollView>();
 	}
 	void Update()
     {
@@ -40,8 +43,15 @@ public class MouseAction : MonoBehaviour
 					sndGameObject = results[0].gameObject.transform.parent.gameObject;
 				if (sndGameObject != null)
 				{
-					twoDiMap.SetPrefapColorWithGameObj(fstGameObject, sndGameObject);
-					miniMap.SetPrefapColorWithPos();
+					Area currArea = twoDiMap.ChangeObjToArea(fstGameObject, sndGameObject);
+					if (currArea != null)
+					{
+						twoDiMap.SetPrefapColorWithGameObj(currArea);
+						miniMap.SetPrefapColorWithPos(currArea);
+						buildListScrollView.WhenBuildCreated(currArea);
+					}
+					else
+						Debug.Log("Error");
 				}
 			}
 			fstGameObject = null;

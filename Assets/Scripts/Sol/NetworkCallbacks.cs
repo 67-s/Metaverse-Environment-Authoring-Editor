@@ -30,11 +30,11 @@ public class NetworkCallbacks : GlobalEventListener
         base.SceneLoadLocalDone(scene, token);
 
         //캐릭터 생성 부분
-        /*
-        var spawnPosition = new Vector3(Random.Range(-8, 8), 0, Random.Range(-8, 8));
+        
+        var spawnPosition = new Vector3(Random.Range(-8, 8), 0.0f, Random.Range(-8, 8));
 
-        BoltNetwork.Instantiate(BoltPrefabs.Person, spawnPosition, Quaternion.identity);
-        */
+        BoltNetwork.Instantiate(BoltPrefabs.Ch_01, spawnPosition, Quaternion.identity);
+        
     }
 
     public override void OnEvent(LogEvent evnt)

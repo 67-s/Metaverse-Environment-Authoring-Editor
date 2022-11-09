@@ -18,7 +18,7 @@ public class TwoDiMap : MonoBehaviour
 
 	public GameObject prefab;
 	List<List<GameObject>> prefabs = null;
-	Dictionary<Area, AreaData> buildArea = null;
+	static Dictionary<Area, AreaData> buildArea = null;
 
 	public void Make2dMap()
 	{
@@ -86,7 +86,7 @@ public class TwoDiMap : MonoBehaviour
 			return null;
 		return new Area(fstRow, fstCol, sndRow, sndCol);
 	}
-	public void SetPrefapColorWithGameObj(Area area)
+	public void SetPrefapColor(Area area)
 	{
 		int fstRow = area.FstRow;
 		int fstCol = area.FstCol;
@@ -97,8 +97,6 @@ public class TwoDiMap : MonoBehaviour
 			(fstRow, sndRow) = (sndRow, fstRow);
 		if (fstCol > sndCol)
 			(fstCol, sndCol) = (sndCol, fstCol);
-
-		buildArea.Add(area, new AreaData(fstRow, fstCol, sndRow, sndCol));
 
 		for (int i = fstRow; i <= sndRow; i++)
 		{
@@ -109,26 +107,11 @@ public class TwoDiMap : MonoBehaviour
 		}
 	}
 
-	public void SetPrefapColorWithPos(Area area)
+	public void AddInBuildArea(Area area, int buildIdx)
 	{
-		int fstRow = area.FstRow;
-		int fstCol = area.FstCol;
-		int sndRow = area.SndRow;
-		int sndCol = area.SndCol;
-
-		if (fstRow > sndRow)
-			(fstRow, sndRow) = (sndRow, fstRow);
-		if (fstCol > sndCol)
-			(fstCol, sndCol) = (sndCol, fstCol);
-
-		for (int i = fstRow; i <= sndRow; i++)
-		{
-			for (int j = fstCol; j <= sndCol; j++)
-			{
-				prefabs[i][j].GetComponent<Image>().color = new Color(0.5f, 0.2f, 0.3f);
-			}
-		}
+		buildArea.Add(area, new AreaData(area, buildIdx));
 	}
+
 	public void DestroyMap()
 	{
 		if (prefabs == null) return;

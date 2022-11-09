@@ -1,22 +1,29 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 public class MouseAction : MonoBehaviour
 {
-	public TwoDiMap twoDiMap, miniMap;
+	TwoDiMap twoDiMap, miniMap;
 
 	GameObject fstGameObject = null;
 	GameObject sndGameObject = null;
 	GraphicRaycaster gRay;
 	BuildListScrollView buildListScrollView;
 
+	TMP_Dropdown buildDropDown;
+
 	private void Awake()
 	{
-		gRay = GetComponent<GraphicRaycaster>();
+		gRay = GameObject.Find("Canvas").GetComponent<GraphicRaycaster>();
 		buildListScrollView = FindObjectOfType<BuildListScrollView>();
+		buildDropDown = GameObject.Find("SelectBuildDropDown").GetComponent<TMP_Dropdown>();
+		
+		twoDiMap = GameObject.Find("TwoDiMapEditor").GetComponentInChildren<TwoDiMap>();
+		miniMap = GameObject.Find("MiniMapViewer").GetComponentInChildren<TwoDiMap>();
 	}
 	void Update()
     {
@@ -46,9 +53,10 @@ public class MouseAction : MonoBehaviour
 					Area currArea = twoDiMap.ChangeObjToArea(fstGameObject, sndGameObject);
 					if (currArea != null)
 					{
-						twoDiMap.SetPrefapColorWithGameObj(currArea);
-						miniMap.SetPrefapColorWithPos(currArea);
-						buildListScrollView.WhenBuildCreated(currArea);
+						twoDiMap.SetPrefapColor(currArea);
+						twoDiMap.AddInBuildArea(currArea, buildDropDown.value);
+						miniMap.SetPrefapColor(currArea);
+						buildListScrollView.WhenBuildCreated(currArea, buildDropDown.captionText.text);
 					}
 					else
 						Debug.Log("Error");

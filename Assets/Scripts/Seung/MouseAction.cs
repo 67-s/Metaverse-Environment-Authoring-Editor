@@ -59,7 +59,7 @@ public class MouseAction : MonoBehaviour
 						twoDiMap.SetPrefapColor(currArea, BasicColor.basicColor[colorDropDown.value]);
 						twoDiMap.AddInBuildArea(currArea, buildDropDown.value);
 						miniMap.SetPrefapColor(currArea, BasicColor.basicColor[colorDropDown.value]);
-						buildListScrollView.WhenBuildCreated(currArea, buildDropDown.captionText.text);
+						buildListScrollView.WhenBuildCreated(currArea, buildDropDown.captionText.text, BasicColor.basicColor[colorDropDown.value]);
 					}
 					else
 						Debug.Log("Error");

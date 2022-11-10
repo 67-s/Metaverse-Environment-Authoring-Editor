@@ -1,6 +1,3 @@
-using JetBrains.Annotations;
-using System.Collections;
-using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -16,7 +13,7 @@ public class BuildListScrollView : MonoBehaviour
 		twoDiMap = GameObject.Find("TwoDiMapEditor").GetComponentInChildren<TwoDiMap>();
 		miniMap = GameObject.Find("MiniMapViewer").GetComponentInChildren<TwoDiMap>();
 	}
-	public void WhenBuildCreated(Area area, string buildName)
+	public void WhenBuildCreated(Area area, string buildName, Color color)
 	{
 		GameObject newObjContent = Instantiate(buildContent);
 		Button delBtn = newObjContent.GetComponentInChildren<Button>();
@@ -25,6 +22,7 @@ public class BuildListScrollView : MonoBehaviour
 		delBtn.onClick.AddListener(DelBuild);
 		newObjContent.GetComponent<BuildContent>().Area = area;
 		newObjContent.GetComponentInChildren<TMP_Text>().text = buildName;
+		newObjContent.transform.Find("Color").GetComponent<Image>().color = color;
 
 		newObjContent.SetActive(true);
 	}

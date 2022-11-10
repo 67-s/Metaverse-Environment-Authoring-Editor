@@ -86,7 +86,7 @@ public class TwoDiMap : MonoBehaviour
 			return null;
 		return new Area(fstRow, fstCol, sndRow, sndCol);
 	}
-	public void SetPrefapColor(Area area)
+	public void SetPrefapColor(Area area, Color color)
 	{
 		int fstRow = area.FstRow;
 		int fstCol = area.FstCol;
@@ -101,8 +101,8 @@ public class TwoDiMap : MonoBehaviour
 		for (int i = fstRow; i <= sndRow; i++)
 		{
 			for (int j = fstCol; j <= sndCol; j++)
-			{ 
-				prefabs[i][j].GetComponent<Image>().color = new Color(0.5f, 0.2f, 0.3f);
+			{
+				prefabs[i][j].GetComponent<Image>().color = color;
 			}
 		}
 	}

@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+// Data Structure for Build Algorithm
 public class AreaData
 {
 	public int FstRow { get; set; }

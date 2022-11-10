@@ -17,7 +17,6 @@ public class MouseAction : MonoBehaviour
 	TMP_Dropdown buildDropDown;
 	TMP_Dropdown colorDropDown;
 
-
 	private void Awake()
 	{
 		gRay = GameObject.Find("Canvas").GetComponent<GraphicRaycaster>();
@@ -54,7 +53,7 @@ public class MouseAction : MonoBehaviour
 				if (sndGameObject != null)
 				{
 					Area currArea = twoDiMap.ChangeObjToArea(fstGameObject, sndGameObject);
-					if (currArea != null)
+					if (currArea != null && twoDiMap.CheckArea(currArea))
 					{
 						twoDiMap.SetPrefapColor(currArea, BasicColor.basicColor[colorDropDown.value]);
 						twoDiMap.AddInBuildArea(currArea, buildDropDown.value);

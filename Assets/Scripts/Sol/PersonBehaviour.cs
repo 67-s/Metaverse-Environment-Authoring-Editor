@@ -13,6 +13,7 @@ public class PersonBehaviour : EntityEventListener<IPersonState>
         state.SetTransforms(state.PersonTransform, transform);
         rigid = GetComponent<Rigidbody>();
         animator = GetComponent<Animator>();
+        state.SetAnimator(animator);
     }
 
     public override void SimulateOwner()

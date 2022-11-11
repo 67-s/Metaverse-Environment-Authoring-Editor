@@ -7,6 +7,7 @@ public class PersonBehaviour : EntityEventListener<IPersonState>
 {
     Rigidbody rigid;
     Animator animator;
+    Camera cam;
 
     public override void Attached()
     {
@@ -14,6 +15,7 @@ public class PersonBehaviour : EntityEventListener<IPersonState>
         rigid = GetComponent<Rigidbody>();
         animator = GetComponent<Animator>();
         state.SetAnimator(animator);
+        cam = GameObject.FindObjectOfType<Camera>();
     }
 
     public override void SimulateOwner()
@@ -44,6 +46,12 @@ public class PersonBehaviour : EntityEventListener<IPersonState>
         {
             animator.SetBool("isRun", false);
         }
+
+        Vector3 newPosition = transform.position;
+        newPosition.y += 8.0f;
+        newPosition.z -= 10.0f;
+
+        cam.transform.position = newPosition;
 
     }
 

@@ -32,8 +32,8 @@ public class BuildListScrollView : MonoBehaviour
 		GameObject currObject = EventSystem.current.currentSelectedGameObject.transform.parent.gameObject;
 		Area currArea = currObject.GetComponent<BuildContent>().Area;
 
-		twoDiMap.DelBuildArea(currArea);
-		miniMap.DelBuildArea(currArea);
+		twoDiMap.DelBuildArea(currArea, true);
+		miniMap.DelBuildArea(currArea, false);
 		Destroy(currObject);
 	}
 }

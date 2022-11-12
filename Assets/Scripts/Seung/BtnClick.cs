@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -11,7 +12,7 @@ public class BtnClick : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 	public CanvasGroup currGroup;
 	public CanvasGroup nextGroup;
 	
-	public GameObject roomObj;
+	private GameObject roomObj;
 	public TwoDiMap twoDiMap, miniMap;
 
 	CameraMove cameraMove;
@@ -20,6 +21,7 @@ public class BtnClick : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 	{
 		defaultScale = buttonScale.localScale;
 		cameraMove = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<CameraMove>();
+		roomObj = GameObject.Find("Mediator").GetComponent<Mediator>().element;
 	}
 	public void BtnOnClick()
 	{
@@ -44,6 +46,7 @@ public class BtnClick : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 				miniMap.DestroyMap();
 				break;
 			case BtnType.EditRoom:
+				roomObj.GetComponent<Installer>().Resize(RoomData.rowCnt, RoomData.colCnt);
 				roomObj.SetActive(true);
 				//cameraMove.SetIsCameraActive(true);
 				//Cursor.lockState = CursorLockMode.Confined;
@@ -62,6 +65,15 @@ public class BtnClick : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 				break;
 			case BtnType.Create:
 				twoDiMap.DebugBuildArea();
+				Installer installer = roomObj.GetComponent<Installer>();
+				foreach(var obj in twoDiMap.GetBuildArea())
+				{
+					int x = Math.Min(obj.Value.FstRow, obj.Value.SndRow);
+					int z = Math.Min(obj.Value.FstCol, obj.Value.SndCol);
+                    int xWidth = Math.Abs(obj.Value.FstRow - obj.Value.SndRow) + 1;
+                    int zWidth = Math.Abs(obj.Value.FstCol - obj.Value.SndCol) + 1;
+					installer.Build(x, z, xWidth, zWidth, 1, EBuildDirection.North);
+                }
 				break;
 			case BtnType.GotoMetaverse:
 				SceneLoader.LoadSceneHandle("Scene2");

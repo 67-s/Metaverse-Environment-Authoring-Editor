@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class Installer : MonoBehaviour
 {
+    private const int NONE = -1;
     /*
      * Belows are the variables
      *  which are related to tiles of the world.
@@ -35,6 +36,13 @@ public class Installer : MonoBehaviour
     [SerializeField]
     private GameObject[] buildSet;
 
+    //The sparse table of buildings
+    private readonly Dictionary<int, (int x, int z, int xWidth, int zWidth, GameObject gameObject)> buildList = new();
+    private int buildListID = 0;
+
+    //Maps for locating buildings
+    private int[,] buildMap = null;
+
     //Make a clone of the gameObject and place it
     GameObject CloneTile(int x, int z, int key)
     {
@@ -56,20 +64,32 @@ public class Installer : MonoBehaviour
             return;
         }
 
+        //clear all the previous buildings
+        buildMap = new int[xSize, zSize];
+        buildListID = 0;
+        foreach (var elem in buildList)
+            Destroy(elem.Value.gameObject);
+        buildList.Clear();
+
+        //ready to allocate new tiles
         GameObject[,] temporary = new GameObject[xSize, zSize];
         tileMap ??= new GameObject[0, 0];
+        
+        //loop for each new tiles.
         for(int x = 0; x < xSize; x++)
             for(int z = 0; z < zSize; z++)
             {
-                if (x < tileMap.GetLength(0) && z < tileMap.GetLength(1))
-                {
-                    temporary[x, z] = tileMap[x, z];
-                    tileMap[x, z] = null;
-                }
-                else
-                {
-                    temporary[x, z] = CloneTile(x, z, key);
-                }
+                buildMap[x, z] = NONE;
+                temporary[x, z] = CloneTile(x, z, key);
+                //if (x < tileMap.GetLength(0) && z < tileMap.GetLength(1))
+                //{
+                //    temporary[x, z] = tileMap[x, z];
+                //    tileMap[x, z] = null;
+                //}
+                //else
+                //{
+                //    temporary[x, z] = CloneTile(x, z, key);
+                //}
             }
         foreach (var gameObject in tileMap)
             Destroy(gameObject);
@@ -83,7 +103,7 @@ public class Installer : MonoBehaviour
             || xWidth <= 0 || zWidth <= 0
             || x + xWidth > tileMap.GetLength(0) || z + zWidth > tileMap.GetLength(1))
         {
-            Func<int, int, string> foo = (a, b) => "(" + a + ", " + b + ")";
+            static string foo(int a, int b) => "(" + a + ", " + b + ")";
             string front = "kdyst/Installer.cs: Installer.Verify():";
             Debug.Log(front
                 + " (x, z) == " + foo(x, z)
@@ -96,11 +116,11 @@ public class Installer : MonoBehaviour
     }
 
     // Change the tile data
-    public void ChangeTile(int x, int z, int xWidth, int zWidth, int key)
+    public bool ChangeTile(int x, int z, int xWidth, int zWidth, int key)
     {
         //exceptions
         if (!Verify(x, z, xWidth, zWidth))
-            return;
+            return false;
 
         for(int xDiff = 0; xDiff < xWidth; xDiff++)
             for (int zDiff = 0; zDiff < zWidth; zDiff++)
@@ -109,21 +129,64 @@ public class Installer : MonoBehaviour
                 tileMap[x + xDiff, z + zDiff] = CloneTile(x + xDiff, z + zDiff, key);
                 Destroy(temp);
             }
+        return true;
     }
 
     //construct new building
-    public void Build(int x, int z, int xWidth, int zWidth, int key, EBuildDirection direction)
+    public bool Build(int x, int z, int xWidth, int zWidth, int key, EBuildDirection direction)
     {
         //exceptions
         if (!Verify(x, z, xWidth, zWidth))
-            return;
+            return false;
+        for(int dx = 0; dx < xWidth; dx++)
+            for(int dz = 0; dz < zWidth; dz++)
+                if (buildMap[x + dx, z + dz] != NONE)
+                {
+                    string front = "kdyst/Installer.cs: Installer.Build():";
+                    static string foo(int a, int b) => "(" + a + ", " + b + ")";
+                    Debug.Log(front + "There is an another building in " + foo(x + dx, z + dz) + ", the index " + buildMap[x + dx, z + dz]);
+                    return false;
+                }
+
         if (0 <= key && key < buildSet.Length)
         {
+            //spawn building
             GameObject target = Instantiate(buildSet[key], gameObject.transform);
             target.transform.Translate(new Vector3(x, 0, z) * tileLength);
             target.GetComponent<IBuilder>().Initialize(tileLength, xWidth, zWidth, direction);
             target.SetActive(true);
+
+            //write on map and register
+            for (int dx = 0; dx < xWidth; dx++)
+                for (int dz = 0; dz < zWidth; dz++)
+                    buildMap[x + dx, z + dz] = buildListID;
+            buildList.Add(buildListID++, (x, z, xWidth, zWidth, target));
         }
+        return true;
+    }
+
+    //remove all buildings in the area.(fails <==> ret < 0) (not found <==> ret == 0) (success <==> ret > 0)
+    public int Remove(int x, int z, int xWidth, int zWidth)
+    {
+        //exceptions
+        if (!Verify(x, z, xWidth, zWidth))
+            return -1;
+        int count = 0;
+        for(int dx = 0; dx < xWidth; dx++)
+            for(int dz = 0; dz < zWidth; dz++)
+                if (buildMap[x + dx, z + dz] != NONE)
+                {
+                    int key = buildMap[x + dx, z + dz];
+                    var elem = buildList[key];
+                    Destroy(elem.gameObject);
+                    for (int i = elem.x; i < elem.x + elem.xWidth; i++)
+                        for (int j = elem.z; j < elem.z + elem.zWidth; j++)
+                            buildMap[i, j] = NONE;
+                    buildList.Remove(key);
+                    count++;
+                }
+        Debug.Log("kdyst/Installer.cs: Installer.Remove(): remove " + count + " building(s).");
+        return count;
     }
 
     // Start is called before the first frame update
@@ -136,6 +199,7 @@ public class Installer : MonoBehaviour
     public bool actionResize = false;
     [Range(0, 33)]
     public int actionResizeXSize, actionResizeZSize;
+    public int actionResizeKey = 0;
 
     public bool actionChangeTile = false;
     public int actionChangeTileX, actionChangTileZ;
@@ -148,6 +212,9 @@ public class Installer : MonoBehaviour
     public int actionBuildKey;
     public EBuildDirection actionBuildDirection;
 
+    public bool actionRemove = false;
+    public int actionRemoveX, actionRemoveZ;
+    public int actionRemoveXWidth, actionRemoveZWidth;
 
     // Update is called once per frame
     void Update()
@@ -155,7 +222,7 @@ public class Installer : MonoBehaviour
         if (actionResize)
         {
             actionResize = false;
-            Resize(actionResizeXSize, actionResizeZSize, 2);
+            Resize(actionResizeXSize, actionResizeZSize, actionResizeKey);
         }
         if(actionChangeTile)
         {
@@ -166,6 +233,11 @@ public class Installer : MonoBehaviour
         {
             actionBuild = false;
             Build(actionBuildX, actionBuildZ, actionBuildXWidth, actionBuildZWidth, actionBuildKey, actionBuildDirection);
+        }
+        if(actionRemove)
+        {
+            actionRemove = false;
+            Remove(actionRemoveX, actionRemoveZ, actionRemoveXWidth, actionRemoveZWidth);
         }
     }
 }

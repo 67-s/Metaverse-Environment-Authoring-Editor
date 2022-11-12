@@ -4711,7 +4711,7 @@
       "$type": "Photon.Bolt.Compiler.StateDefinition, bolt.compiler",
       "Properties": [
         {
-          "Name": "RobotTransform",
+          "Name": "PersonTransform",
           "Enabled": true,
           "Expanded": true,
           "ReplicationMode": 1,

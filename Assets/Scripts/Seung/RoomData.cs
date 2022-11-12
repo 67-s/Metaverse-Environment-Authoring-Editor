@@ -36,12 +36,6 @@ public class RoomData : MonoBehaviour
 				colCnt = int.Parse(inputField.text);
 				break;
 		}
-		Debug.Log(roomName);
-		Debug.Log(intro);
-		Debug.Log(numberOfPeople);
-		Debug.Log(password);
-		Debug.Log(rowCnt);
-		Debug.Log(colCnt);
 	}
 
 	public string getRoomName()

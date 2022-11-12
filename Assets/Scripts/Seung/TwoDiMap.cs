@@ -1,12 +1,6 @@
-using ExitGames.Client.Photon.StructWrapping;
-using System;
-using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting.Antlr3.Runtime.Tree;
 using UnityEngine;
-using UnityEngine.EventSystems;
 using UnityEngine.UI;
-
 
 public class TwoDiMap : MonoBehaviour
 {
@@ -18,13 +12,16 @@ public class TwoDiMap : MonoBehaviour
 
 	public GameObject prefab;
 	List<List<GameObject>> prefabs = null;
-	Dictionary<Area, AreaData> buildArea = null;
+	static Dictionary<Area, AreaData> buildArea = null;
 
-	private static int fstRow = -1;
-	private static int fstCol = -1;
-	private static int sndRow = -1;
-	private static int sndCol = -1;
+	Vector3 defaultPrefabScale;
 
+	private void Awake()
+	{
+		defaultPrefabScale = prefab.transform.localScale;
+		buildArea = new Dictionary<Area, AreaData>();
+	}
+	
 	public void Make2dMap()
 	{
 		int rectHeight = (int)GetComponent<RectTransform>().rect.height;
@@ -33,7 +30,6 @@ public class TwoDiMap : MonoBehaviour
 		height = rectHeight / rowCnt;
 
 		prefabs = new List<List<GameObject>>();
-		buildArea = new Dictionary<Area, AreaData>();
 
 		for (int i=0;i< rowCnt; i++)
 		{
@@ -60,11 +56,15 @@ public class TwoDiMap : MonoBehaviour
 		colCnt = cnt;
 	}
 
-	public void SetPrefapColorWithGameObj(GameObject fstGameObject, GameObject sndGameObject)
+	public Area ChangeObjToArea(GameObject fstGameObject, GameObject sndGameObject)
 	{
 		int findFlag = 0;
+		int fstRow = -1;
+		int fstCol = -1;
+		int sndRow = -1;
+		int sndCol = -1;
 
-		for (int i = 0; i < rowCnt; i++) 
+		for (int i = 0; i < rowCnt; i++)
 		{
 			int idx;
 			if ((idx = prefabs[i].IndexOf(fstGameObject)) != -1)
@@ -73,7 +73,7 @@ public class TwoDiMap : MonoBehaviour
 				fstRow = i;
 				fstCol = idx;
 			}
-			if ((idx = prefabs[i].IndexOf(sndGameObject)) !=-1)
+			if ((idx = prefabs[i].IndexOf(sndGameObject)) != -1)
 			{
 				findFlag &= 2;
 				sndRow = i;
@@ -83,47 +83,37 @@ public class TwoDiMap : MonoBehaviour
 				break;
 		}
 
-		if (fstRow == -1 || sndRow == -1 || fstCol == -1 || sndRow == -1)
-			return;
+		if (fstRow == -1 || fstCol == -1 || sndRow == -1 || sndRow == -1)
+			return null;
 
 		if (fstRow > sndRow)
 			(fstRow, sndRow) = (sndRow, fstRow);
 		if (fstCol > sndCol)
 			(fstCol, sndCol) = (sndCol, fstCol);
 
-		buildArea.Add(new Area(fstRow, fstCol, sndRow, sndCol), new AreaData(fstRow, fstCol, sndRow, sndCol));
-
-		for (int i = fstRow; i <= sndRow; i++)
-		{
-			for (int j = fstCol; j <= sndCol; j++)
-			{ 
-				prefabs[i][j].GetComponent<Image>().color = new Color(0.5f, 0.2f, 0.3f);
-			}
-		}
+		return new Area(fstRow, fstCol, sndRow, sndCol);
 	}
-
-	public void SetPrefapColorWithPos()
+	public void SetPrefapColor(Area area, Color color)
 	{
-		if (fstRow == -1 || sndRow == -1 || fstCol == -1 || sndRow == -1)
-			return;
-
-		if (fstRow > sndRow)
-			(fstRow, sndRow) = (sndRow, fstRow);
-		if (fstCol > sndCol)
-			(fstCol, sndCol) = (sndCol, fstCol);
+		int fstRow = area.FstRow;
+		int fstCol = area.FstCol;
+		int sndRow = area.SndRow;
+		int sndCol = area.SndCol;
 
 		for (int i = fstRow; i <= sndRow; i++)
 		{
 			for (int j = fstCol; j <= sndCol; j++)
 			{
-				prefabs[i][j].GetComponent<Image>().color = new Color(0.5f, 0.2f, 0.3f);
+				prefabs[i][j].GetComponent<Image>().color = color;
 			}
 		}
-		fstRow = -1;
-		fstCol = -1;
-		sndRow = -1;
-		sndCol = -1;
 	}
+
+	public void AddInBuildArea(Area area, int buildIdx)
+	{
+		buildArea.Add(area, new AreaData(area, buildIdx));
+	}
+
 	public void DestroyMap()
 	{
 		if (prefabs == null) return;
@@ -141,11 +131,62 @@ public class TwoDiMap : MonoBehaviour
 	{
 		return buildArea;
 	}
+
+	public bool CheckArea(Area area)
+	{
+		if (area == null) return false;
+
+		for (int i = area.FstRow; i <= area.SndRow; i++)
+		{
+			for (int j = area.FstCol; j <= area.SndCol; j++)
+			{
+				if (prefabs[i][j].GetComponent<Image>().color != Color.white)
+					return false;
+			}
+		}
+		return true;
+	}
+	public void DelBuildArea(Area area, bool twoDiFlag)
+	{
+		if (area == null) return;
+
+		if (twoDiFlag && !buildArea.Remove(area)) return;
+
+		for (int i = area.FstRow; i <= area.SndRow; i++)
+		{
+			for (int j = area.FstCol; j <= area.SndCol; j++)
+			{
+				prefabs[i][j].GetComponent<Image>().color = Color.white;
+			}
+		}
+	}
 	public void DebugBuildArea()
 	{
 		foreach(KeyValuePair<Area, AreaData> item in buildArea)
 		{
 			Debug.Log($"{ item.Value.FstRow},{item.Value.FstCol},{item.Value.SndRow},{item.Value.SndCol}");
+		}
+	}
+
+	public void AreaHighlight(Area area)
+	{
+		for (int i = area.FstRow; i <= area.SndRow; i++)
+		{
+			for (int j = area.FstCol; j <= area.SndCol; j++)
+			{
+				prefabs[i][j].GetComponent<Image>().color *= 0.8f;
+			}
+		}
+	}
+
+	public void AreaHighlightReset(Area area)
+	{
+		for (int i = area.FstRow; i <= area.SndRow; i++)
+		{
+			for (int j = area.FstCol; j <= area.SndCol; j++)
+			{
+				prefabs[i][j].GetComponent<Image>().color *= 1.25f;
+			}
 		}
 	}
 }

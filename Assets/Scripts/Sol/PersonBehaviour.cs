@@ -7,6 +7,7 @@ public class PersonBehaviour : EntityEventListener<IPersonState>
 {
     Rigidbody rigid;
     Animator animator;
+    Camera cam;
     //yhchon11
     [SerializeField] float xVelocity = 2f;
     [SerializeField] float yForce = 10f;
@@ -19,6 +20,8 @@ public class PersonBehaviour : EntityEventListener<IPersonState>
         state.SetTransforms(state.PersonTransform, transform);
         rigid = GetComponent<Rigidbody>();
         animator = GetComponent<Animator>();
+        cam = GameObject.FindObjectOfType<Camera>();
+
     }
 
     public override void SimulateOwner()
@@ -72,6 +75,8 @@ public class PersonBehaviour : EntityEventListener<IPersonState>
             isJump = false;
         }//coroutine: n초 동안 cpu에게 권한을 넘긴다, 그후 받는다
         //
+
+        cam.transform.position.Set(transform.position.x, 30.0f, transform.position.z);
     }
 
 }

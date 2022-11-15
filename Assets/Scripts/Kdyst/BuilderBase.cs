@@ -4,13 +4,33 @@ using UnityEngine;
 
 public abstract class BuilderBase : MonoBehaviour
 {
+    /*
+     * These are properties of the BuilderBase.
+     * They will be initialized by Installer
+     * , and be used by it's child classes.
+     */
     [SerializeField] protected float unit;
     [SerializeField] protected int xWidth;
     [SerializeField] protected int zWidth;
 
     [SerializeField] protected EBuildDirection direction;
     [SerializeField] protected int seed;
+
+    /*
+     * This is the list of GameObjects spawned by BuilderBase.Spawn().
+     * It will be returned;
+     */
+    private readonly List<GameObject> ingredients = new();
+    public IList<GameObject> Ingredients { 
+        get {
+            return ingredients.AsReadOnly();
+        }
+    }
     
+    /*
+     * These are setter of properties.
+     * They returns the BuilderBase itself.
+     */
     public BuilderBase SetUnit(float unit)
     {
         this.unit = unit;
@@ -36,11 +56,15 @@ public abstract class BuilderBase : MonoBehaviour
         return this;
     }
 
-
+    /*
+     * Spawn(): copy $(prefab) and place on $(position) from BuilderBase.
+     * The object will be managed in arrays.
+     */
     protected void Spawn(GameObject prefab, Vector3 position, float angle)
     {
         GameObject target = Instantiate(prefab, transform);
         target.transform.localPosition = position;
         target.transform.Rotate(Vector3.up, angle);
+        ingredients.Add(target);
     }
 }

@@ -1,5 +1,59 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &5748419187065534857
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5546951718819483021}
+  - component: {fileID: 9090033357832220561}
+  m_Layer: 0
+  m_Name: Forest
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!4 &5546951718819483021
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5748419187065534857}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 8132737080449030736}
+  m_RootOrder: 8
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &9090033357832220561
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5748419187065534857}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2aa20aad49cd47241942ed9190c1adcc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  unit: 0
+  xWidth: 0
+  zWidth: 0
+  direction: 0
+  seed: 0
+  treeSet:
+  - {fileID: 182984, guid: 08c9a4d48a0bffe4d8c1c7a0314de037, type: 3}
+  - {fileID: 118352, guid: abc3267f8e411394fa30664dcbf64546, type: 3}
+  - {fileID: 110834, guid: 5668aa894ea51e84786e2073020e7692, type: 3}
+  numberOfTreePerTile: 5
 --- !u!1 &7988261959144437122
 GameObject:
   m_ObjectHideFlags: 0
@@ -47,6 +101,8 @@ MonoBehaviour:
   unit: 5
   xWidth: 3
   zWidth: 2
+  direction: 0
+  seed: 0
   wallPrefab: {fileID: 141082, guid: 024b25fa4b8d0aa4c887fcd5e2324142, type: 3}
   cornerPrefab: {fileID: 194238, guid: 2d8b2b573ff5d1446ad22ce91ce6b07a, type: 3}
   floorPrefab: {fileID: 193064, guid: 1304e9c16edcf5647b285a7357a404a8, type: 3}
@@ -99,6 +155,8 @@ MonoBehaviour:
   unit: 0
   xWidth: 0
   zWidth: 0
+  direction: 0
+  seed: 0
   marginRatio: 0.01
   heightRatio: 1.2
 --- !u!33 &8132737080229861570
@@ -222,6 +280,7 @@ Transform:
   - {fileID: 8132737081883017432}
   - {fileID: 8132737080229861583}
   - {fileID: 3671803989953542062}
+  - {fileID: 5546951718819483021}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -250,6 +309,7 @@ MonoBehaviour:
   buildSet:
   - {fileID: 8132737080229861582}
   - {fileID: 7988261959144437122}
+  - {fileID: 5748419187065534857}
   actionResize: 0
   actionResizeXSize: 0
   actionResizeZSize: 0

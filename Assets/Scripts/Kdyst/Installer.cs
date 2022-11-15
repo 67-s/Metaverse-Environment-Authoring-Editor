@@ -37,7 +37,7 @@ public class Installer : MonoBehaviour
     private GameObject[] buildSet;
 
     //The sparse table of buildings
-    private readonly Dictionary<int, (int x, int z, int xWidth, int zWidth, GameObject gameObject)> buildList = new();
+    private readonly Dictionary<int, (int x, int z, int xWidth, int zWidth, int seed, GameObject gameObject)> buildList = new();
     private int buildListID = 0;
 
     //Maps for locating buildings
@@ -81,15 +81,6 @@ public class Installer : MonoBehaviour
             {
                 buildMap[x, z] = NONE;
                 temporary[x, z] = CloneTile(x, z, key);
-                //if (x < tileMap.GetLength(0) && z < tileMap.GetLength(1))
-                //{
-                //    temporary[x, z] = tileMap[x, z];
-                //    tileMap[x, z] = null;
-                //}
-                //else
-                //{
-                //    temporary[x, z] = CloneTile(x, z, key);
-                //}
             }
         foreach (var gameObject in tileMap)
             Destroy(gameObject);
@@ -150,17 +141,23 @@ public class Installer : MonoBehaviour
 
         if (0 <= key && key < buildSet.Length)
         {
+            int seed = UnityEngine.Random.Range(int.MinValue, int.MaxValue);
+
             //spawn building
             GameObject target = Instantiate(buildSet[key], gameObject.transform);
+            target.GetComponent<BuilderBase>()
+                .SetUnit(tileLength)
+                .SetGrid(xWidth, zWidth)
+                .SetDirection(direction)
+                .SetSeed(seed);
             target.transform.Translate(new Vector3(x, 0, z) * tileLength);
-            target.GetComponent<IBuilder>().Initialize(tileLength, xWidth, zWidth, direction);
             target.SetActive(true);
 
             //write on map and register
             for (int dx = 0; dx < xWidth; dx++)
                 for (int dz = 0; dz < zWidth; dz++)
                     buildMap[x + dx, z + dz] = buildListID;
-            buildList.Add(buildListID++, (x, z, xWidth, zWidth, target));
+            buildList.Add(buildListID++, (x, z, xWidth, zWidth, seed, target));
         }
         return true;
     }

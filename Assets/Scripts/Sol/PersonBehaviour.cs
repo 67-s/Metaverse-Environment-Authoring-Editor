@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Photon.Bolt;
@@ -8,6 +8,7 @@ public class PersonBehaviour : EntityEventListener<IPersonState>
     Rigidbody rigid;
     Animator animator;
     Camera cam;
+
 
     public override void Attached()
     {
@@ -22,7 +23,6 @@ public class PersonBehaviour : EntityEventListener<IPersonState>
     {
         var speed = 4f;
         var movement = Vector3.zero;
-
         if (Input.GetKey(KeyCode.W)) { movement.z += 1; }
         if (Input.GetKey(KeyCode.S)) { movement.z -= 1; }
         if (Input.GetKey(KeyCode.A)) { movement.x -= 1; }

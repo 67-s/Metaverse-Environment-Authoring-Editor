@@ -21,12 +21,8 @@ public abstract class BuilderBase : MonoBehaviour
      * It will be returned;
      */
     private readonly List<GameObject> ingredients = new();
-    public IList<GameObject> Ingredients { 
-        get {
-            return ingredients.AsReadOnly();
-        }
-    }
-    
+    public IList<GameObject> Ingredients => ingredients.AsReadOnly();
+
     /*
      * These are setter of properties.
      * They returns the BuilderBase itself.
@@ -57,6 +53,14 @@ public abstract class BuilderBase : MonoBehaviour
     }
 
     /*
+     * Register(): register
+     */
+    protected void Register(GameObject target)
+    {
+        ingredients.Add(target);
+    }
+
+    /*
      * Spawn(): copy $(prefab) and place on $(position) from BuilderBase.
      * The object will be managed in arrays.
      */
@@ -65,6 +69,6 @@ public abstract class BuilderBase : MonoBehaviour
         GameObject target = Instantiate(prefab, transform);
         target.transform.localPosition = position;
         target.transform.Rotate(Vector3.up, angle);
-        ingredients.Add(target);
+        Register(target);
     }
 }

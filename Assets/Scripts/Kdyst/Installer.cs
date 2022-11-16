@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Linq;
 
 public class Installer : MonoBehaviour
 {
@@ -184,6 +185,23 @@ public class Installer : MonoBehaviour
                 }
         Debug.Log("kdyst/Installer.cs: Installer.Remove(): remove " + count + " building(s).");
         return count;
+    }
+
+    // extract all of the Gameobjects that have mesh.
+    public List<GameObject> Extract()
+    {
+        List<GameObject> list = new();
+        
+        //extract tiles
+        foreach (var obj in tileMap)
+            list.Add(obj);
+        
+        //extract copied objects from buildings
+        foreach(var keyValue in buildList)
+            list.AddRange(keyValue.Value.gameObject.GetComponent<BuilderBase>().Ingredients);
+        
+        //return the list of the object
+        return list;
     }
 
     // Start is called before the first frame update

@@ -13,12 +13,13 @@ public class BoxContainer : BuilderBase
     // Start is called before the first frame update
     void Start()
     {
-        Vector3 vector = new Vector3(xWidth, heightRatio, zWidth);
+        Vector3 vector = new(xWidth, heightRatio, zWidth);
         box = GameObject.CreatePrimitive(PrimitiveType.Cube);
         box.transform.SetParent(transform);
         box.transform.localPosition = vector * unit / 2;
         box.transform.localScale = (vector - 2 * marginRatio * new Vector3(1, 0, 1)) * unit;
-        box.GetComponent<Renderer>().material.color = Color.Lerp(Color.black, Color.white, Random.value);
+        box.GetComponent<Renderer>().material.color = Color.Lerp(Color.black, Color.white, (float)(new System.Random(seed).NextDouble()));
+        Register(box);
     }
 
     // Update is called once per frame

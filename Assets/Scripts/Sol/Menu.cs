@@ -37,8 +37,8 @@ public class Menu : GlobalEventListener
             mt.mapInfos[1] = 5;
             */
 
-            for(int i=0; i<500; ++i)
-                mt.add(i, i);
+            for(int i=0; i<5000; ++i)
+                mt.add(i%3);
             
             props.AddRoomProperty("roomName", roomName,true);
             props.AddRoomProperty("password", password);

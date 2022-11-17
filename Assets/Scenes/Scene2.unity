@@ -1391,7 +1391,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 3156150362984572460}
   m_Direction: 2
   m_Value: 0
-  m_Size: 1
+  m_Size: 0
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -1553,7 +1553,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d82bab379429fc44eaa8d7efd5e9fac3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  prefab: {fileID: 9085385227917151403, guid: 472dad8f6929c584e99f8ca3a9212779, type: 3}
+  prefab1: {fileID: 194238, guid: 2d8b2b573ff5d1446ad22ce91ce6b07a, type: 3}
+  prefab2: {fileID: 131338, guid: 116737305aa4efa47a46823ce79fd449, type: 3}
+  prefab3: {fileID: 128788, guid: 0912ae1a0e5d8534f9347911cacbdc3e, type: 3}
 --- !u!222 &3156150362984572450
 CanvasRenderer:
   m_ObjectHideFlags: 0

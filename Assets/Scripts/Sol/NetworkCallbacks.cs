@@ -9,7 +9,9 @@ using Photon.Bolt.Utils;
 public class NetworkCallbacks : GlobalEventListener
 {
     List<string> logMessages = new List<string>();
-    public GameObject prefab;
+    public GameObject prefab1;
+    public GameObject prefab2;
+    public GameObject prefab3;
     /*
     void OnGUI()
     {
@@ -40,11 +42,18 @@ public class NetworkCallbacks : GlobalEventListener
 
         if (mt != null)
         {
-            for (int i = 0; i < 500; ++i)
+            /*
+            for (int i = 0; i < 5000; ++i)
             {
-                var cubePosition = new Vector3(mt.mapInfos[i * 2], 0.0f, mt.mapInfos[i * 2 + 1]);
-                Instantiate(prefab, cubePosition, Quaternion.identity);
+                var cubePosition = new Vector3(i/30, 0.0f, i%30);
+                if(mt.mapInfos[i] == 0)
+                    Instantiate(prefab1, cubePosition, Quaternion.identity);
+                else if (mt.mapInfos[i] == 1)
+                    Instantiate(prefab2, cubePosition, Quaternion.identity);
+                else
+                    Instantiate(prefab3, cubePosition, Quaternion.identity);
             }
+            */
         }
     }
 

@@ -21,25 +21,25 @@ public class Menu : GlobalEventListener
     
     public override void BoltStartDone()
     {
-        roomName = GameObject.Find("RmNameInputField").GetComponent<RoomData>().getRoomName();
-        password = GameObject.Find("RmPwdInputField").GetComponent<RoomData>().getPassword();
-        connectionLimit = GameObject.Find("RmLimitNumberInputField").GetComponent<RoomData>().getNumberOfPeople();
+        roomName = GameObject.Find("RmNameInputField").GetComponent<RoomData>().GetRoomName();
+        password = GameObject.Find("RmPwdInputField").GetComponent<RoomData>().GetPassword();
+        connectionLimit = GameObject.Find("RmLimitNumberInputField").GetComponent<RoomData>().GetNumberOfPeople();
 
         if (BoltNetwork.IsServer)
         {
             //string matchName = Guid.NewGuid().ToString();
             PhotonRoomProperties props = new PhotonRoomProperties();
             MapInfoToken mt = new MapInfoToken();
-            mt.mapInfos = new byte[1000000];
-            mt.mapInfos[0] = 5;
-            mt.mapInfos[1] = 0;
-            mt.mapInfos[2] = 5;
-            /*
-            for(int i=0;i<1000000;++i)
-            {
-                mt.mapInfos[i] = (byte)(i % 100);
-            }*/
 
+            /*
+            mt.mapInfos = new byte[10];
+            mt.mapInfos[0] = 5;
+            mt.mapInfos[1] = 5;
+            */
+
+            for(int i=0; i<5000; ++i)
+                mt.add(i%3);
+            
             props.AddRoomProperty("roomName", roomName,true);
             props.AddRoomProperty("password", password);
             props.AddRoomProperty("connectionLimit", connectionLimit);
@@ -89,7 +89,8 @@ public class Menu : GlobalEventListener
             }
 
             RoomListScrollView roomList = GameObject.Find("RoomList").GetComponentInChildren<RoomListScrollView>();
-            roomList.WhenRoomCreated();
+			// roomList.WhenRoomCreated(roomName, roomIntro);
+			// roomList.ClearList();
         }        
     }
 

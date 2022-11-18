@@ -5,10 +5,13 @@ using Photon.Bolt;
 using UdpKit;
 using Photon.Bolt.Utils;
 
-[BoltGlobalBehaviour]
+//[BoltGlobalBehaviour]
 public class NetworkCallbacks : GlobalEventListener
 {
     List<string> logMessages = new List<string>();
+    public GameObject prefab1;
+    public GameObject prefab2;
+    public GameObject prefab3;
     /*
     void OnGUI()
     {
@@ -34,7 +37,24 @@ public class NetworkCallbacks : GlobalEventListener
         var spawnPosition = new Vector3(Random.Range(-8, 8), 0.0f, Random.Range(-8, 8));
 
         BoltNetwork.Instantiate(BoltPrefabs.Ch_01, spawnPosition, Quaternion.identity);
-        
+
+        MapInfoToken mt = token as MapInfoToken;
+
+        if (mt != null)
+        {
+            /*
+            for (int i = 0; i < 5000; ++i)
+            {
+                var cubePosition = new Vector3(i/30, 0.0f, i%30);
+                if(mt.mapInfos[i] == 0)
+                    Instantiate(prefab1, cubePosition, Quaternion.identity);
+                else if (mt.mapInfos[i] == 1)
+                    Instantiate(prefab2, cubePosition, Quaternion.identity);
+                else
+                    Instantiate(prefab3, cubePosition, Quaternion.identity);
+            }
+            */
+        }
     }
 
     public override void OnEvent(LogEvent evnt)

@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _config:
     framesPerSecond: 60
-    packetSize: 1200
+    packetSize: 5000
     packetMaxEventSize: 512
     packetStreamSize: 4096
     maxEntityPriority: 65536

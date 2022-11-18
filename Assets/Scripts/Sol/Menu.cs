@@ -57,6 +57,9 @@ public class Menu : GlobalEventListener
     {
         Debug.LogFormat("Session list updated: {0} total sessions", sessionList.Count);
 
+        RoomListScrollView roomList = GameObject.Find("RoomList").GetComponentInChildren<RoomListScrollView>();
+		roomList.ClearList();
+
         foreach (var session in sessionList)
         {
             UdpSession udpSession = session.Value as UdpSession;
@@ -88,9 +91,7 @@ public class Menu : GlobalEventListener
                 }
             }
 
-            RoomListScrollView roomList = GameObject.Find("RoomList").GetComponentInChildren<RoomListScrollView>();
-			// roomList.WhenRoomCreated(roomName, roomIntro);
-			// roomList.ClearList();
+			roomList.WhenRoomCreated(roomName,"roomIntro");
         }        
     }
 

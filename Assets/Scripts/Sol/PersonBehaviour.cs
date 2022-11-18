@@ -7,30 +7,22 @@ public class PersonBehaviour : EntityEventListener<IPersonState>
 {
     Rigidbody rigid;
     Animator animator;
-    //yhchon11
-    [SerializeField] float xVelocity = 2f;
-    [SerializeField] float yForce = 10f;
-    [SerializeField] float zVelocity = 2f;
-    [SerializeField] float overAir = 1.7f;
-    private bool isJump = false;
-    //
+    Camera cam;
+
+
     public override void Attached()
     {
         state.SetTransforms(state.PersonTransform, transform);
         rigid = GetComponent<Rigidbody>();
         animator = GetComponent<Animator>();
+        state.SetAnimator(animator);
+        cam = GameObject.FindObjectOfType<Camera>();
     }
 
     public override void SimulateOwner()
     {
         var speed = 4f;
         var movement = Vector3.zero;
-        //yhchon11
-        float horizontal = Input.GetAxis("Horizontal") * Time.deltaTime * xVelocity;
-        float vertical = Input.GetAxis("Vertical") * Time.deltaTime * zVelocity;
-        float zump = Input.GetAxis("Jump") * Time.deltaTime * yForce;
-        transform.Translate(new Vector3(horizontal, 0, vertical));
-        //
         if (Input.GetKey(KeyCode.W)) { movement.z += 1; }
         if (Input.GetKey(KeyCode.S)) { movement.z -= 1; }
         if (Input.GetKey(KeyCode.A)) { movement.x -= 1; }
@@ -55,23 +47,12 @@ public class PersonBehaviour : EntityEventListener<IPersonState>
             animator.SetBool("isRun", false);
         }
 
-        //yhchon11
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            if (!isJump)
-            {
-                StartCoroutine(Jump());
-            }
-        }
+        Vector3 newPosition = transform.position;
+        newPosition.y += 8.0f;
+        newPosition.z -= 10.0f;
 
-        IEnumerator Jump()
-        {
-            isJump = true;
-            rigid.AddForce(Vector3.up * yForce, ForceMode.Impulse);
-            yield return new WaitForSeconds(overAir);//받는 파트
-            isJump = false;
-        }//coroutine: n초 동안 cpu에게 권한을 넘긴다, 그후 받는다
-        //
+        cam.transform.position = newPosition;
+
     }
 
 }

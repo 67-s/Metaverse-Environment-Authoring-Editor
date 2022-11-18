@@ -89,7 +89,8 @@ public class Menu : GlobalEventListener
             }
 
             RoomListScrollView roomList = GameObject.Find("RoomList").GetComponentInChildren<RoomListScrollView>();
-            roomList.WhenRoomCreated();
+			// roomList.WhenRoomCreated(roomName, roomIntro);
+			// roomList.ClearList();
         }        
     }
 

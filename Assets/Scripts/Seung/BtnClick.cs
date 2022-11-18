@@ -60,8 +60,10 @@ public class BtnClick : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 				miniMap.Make2dMap();
 				break;
 			case BtnType.MiniMapTog:
-				CanvasGroupOn(nextGroup);
-				CanvasGroupOff(currGroup);
+				if (nextGroup != null)
+					CanvasGroupOn(nextGroup);
+				if (currGroup != null)
+					CanvasGroupOff(currGroup);
 				break;
 			case BtnType.Create:
 				twoDiMap.DebugBuildArea();

@@ -9,16 +9,29 @@ public class RoomListScrollView : MonoBehaviour
 {
 	public GameObject roomContent;
 	private static int roomCount = 0;
+	private Dictionary<string, GameObject> roomLists = new Dictionary<string, GameObject>();
 
-	public void WhenRoomCreated()
+	public void WhenRoomCreated(string roomName, string roomIntro)
 	{
 		GameObject newRoomContent = Instantiate(roomContent);
 		Button check = newRoomContent.GetComponentInChildren<Button>();
+		TMP_Text text = newRoomContent.GetComponentInChildren<TMP_Text>();
 
 		newRoomContent.transform.SetParent(transform);
 		check.onClick.AddListener(OnChkClick);
+		text.text = roomName + " : " + roomIntro;
 
+		roomLists.Add(roomName, newRoomContent);
 		newRoomContent.SetActive(true);
+	}
+
+	public void ClearList()
+	{
+		foreach(var roomList in roomLists)
+		{
+			Destroy(roomList.Value);
+		}
+		roomLists.Clear();
 	}
 
 	private void OnChkClick()

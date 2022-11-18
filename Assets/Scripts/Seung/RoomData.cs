@@ -9,7 +9,7 @@ public class RoomData : MonoBehaviour
 	public TMP_InputField inputField;
 	static string roomName;
 	static string intro;
-	static string numberOfPeople;
+	static string numberOfPeople = "0";
 	static string password;
 	public static int rowCnt = 3;
 	public static int colCnt = 3;
@@ -38,17 +38,22 @@ public class RoomData : MonoBehaviour
 		}
 	}
 
-	public string getRoomName()
+	public string GetRoomName()
     {
 		return roomName;
     }
 
-	public string getPassword()
+	public string GetPassword()
     {
 		return password;
     }
 
-	public int getNumberOfPeople()
+	public string GetIntro()
+	{
+		return intro;
+	}
+
+	public int GetNumberOfPeople()
     {
 		return int.Parse(numberOfPeople);
     }

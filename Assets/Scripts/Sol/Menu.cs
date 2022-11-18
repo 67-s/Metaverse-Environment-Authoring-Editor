@@ -21,9 +21,9 @@ public class Menu : GlobalEventListener
     
     public override void BoltStartDone()
     {
-        roomName = GameObject.Find("RmNameInputField").GetComponent<RoomData>().getRoomName();
-        password = GameObject.Find("RmPwdInputField").GetComponent<RoomData>().getPassword();
-        connectionLimit = GameObject.Find("RmLimitNumberInputField").GetComponent<RoomData>().getNumberOfPeople();
+        roomName = GameObject.Find("RmNameInputField").GetComponent<RoomData>().GetRoomName();
+        password = GameObject.Find("RmPwdInputField").GetComponent<RoomData>().GetPassword();
+        connectionLimit = GameObject.Find("RmLimitNumberInputField").GetComponent<RoomData>().GetNumberOfPeople();
 
         if (BoltNetwork.IsServer)
         {

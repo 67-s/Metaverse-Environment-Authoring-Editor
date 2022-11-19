@@ -14,21 +14,41 @@ public class DragAndDropBtn : MonoBehaviour
 {
 	public DragAndDropBtnType currType;
 	public GameObject[] prefabs;
-	// Start is called before the first frame update
-	void Start()
-    {
-        
-    }
+	private Boolean dragFlag = false;
+	private GameObject currObj = null;
 
-	public void OnBtnClick()
+	public void BeginDrag()
 	{
-		CreatePrefab((int)currType);
+		Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+		RaycastHit hit;
+
+		if (Physics.Raycast(ray, out hit, 1000f))
+		{
+			Vector3 hitPos = hit.point;
+			hitPos.y = 0.3f;
+
+			currObj = Instantiate(prefabs[(int)currType]);
+			currObj.transform.position = hitPos;
+			currObj.GetComponentInChildren<BoxCollider>().enabled = false;
+		}
 	}
 
-	public void CreatePrefab(int idx)
+	public void OnDrag()
 	{
-		GameObject newGameObject = Instantiate(prefabs[idx], Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, Input.mousePosition.z)), new Quaternion(0, 0, 0, 1));
+		Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+		RaycastHit hit;
 
-		newGameObject.transform.localScale *= 5;
+		if (Physics.Raycast(ray, out hit, 1000f))
+		{
+			Vector3 hitPos = hit.point;
+			hitPos.y = 0.3f;
+
+			currObj.transform.position = hitPos;
+		}
+	}
+
+	public void EndDrag()
+	{
+		currObj.GetComponentInChildren<BoxCollider>().enabled = true;
 	}
 }

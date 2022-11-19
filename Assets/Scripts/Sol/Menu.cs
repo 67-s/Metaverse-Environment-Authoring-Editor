@@ -12,6 +12,7 @@ public class Menu : GlobalEventListener
     string roomName;
     string password;
     int connectionLimit;
+    string roomIntro;
 
     public override void BoltStartBegin()
     {
@@ -24,6 +25,7 @@ public class Menu : GlobalEventListener
         roomName = GameObject.Find("RmNameInputField").GetComponent<RoomData>().GetRoomName();
         password = GameObject.Find("RmPwdInputField").GetComponent<RoomData>().GetPassword();
         connectionLimit = GameObject.Find("RmLimitNumberInputField").GetComponent<RoomData>().GetNumberOfPeople();
+        roomIntro = GameObject.Find("RmIntroInputField").GetComponent<RoomData>().GetIntro();
 
         if (BoltNetwork.IsServer)
         {
@@ -43,6 +45,7 @@ public class Menu : GlobalEventListener
             props.AddRoomProperty("roomName", roomName,true);
             props.AddRoomProperty("password", password);
             props.AddRoomProperty("connectionLimit", connectionLimit);
+            props.AddRoomProperty("roomIntro", roomIntro);
             
             BoltMatchmaking.CreateSession(
                 sessionID: roomName,
@@ -58,30 +61,41 @@ public class Menu : GlobalEventListener
         Debug.LogFormat("Session list updated: {0} total sessions", sessionList.Count);
 
         RoomListScrollView roomList = GameObject.Find("RoomList").GetComponentInChildren<RoomListScrollView>();
-		roomList.ClearList();
+        roomList.ClearList();
 
         foreach (var session in sessionList)
         {
             UdpSession udpSession = session.Value as UdpSession;
             PhotonSession photonSession = udpSession as PhotonSession;
-            
+
+            string rm = null;
+            string ri = null;
+
             if(photonSession.Properties.ContainsKey("roomName"))
             {
                 object Value = photonSession.Properties["roomName"];
-                Debug.Log("@@@@@roomName@@@@@: " + Value.ToString());
+                rm = Value.ToString();
+                //Debug.Log("@@@@@roomName@@@@@: " + Value.ToString());
             }
             if (photonSession.Properties.ContainsKey("password"))
             {
                 object Value = photonSession.Properties["password"];
-                Debug.Log("@@@@@password@@@@@: " + Value.ToString());
+                //Debug.Log("@@@@@password@@@@@: " + Value.ToString());
                 if (password != Value.ToString())
                     continue;
             }
             if (photonSession.Properties.ContainsKey("connectionLimit"))
             {
                 object Value = photonSession.Properties["connectionLimit"];
-                Debug.Log("@@@@@connectionLimit@@@@@: " + Value.ToString());
+                //Debug.Log("@@@@@connectionLimit@@@@@: " + Value.ToString());
             }
+            if (photonSession.Properties.ContainsKey("roomIntro"))
+            {
+                object Value = photonSession.Properties["roomIntro"];
+                //Debug.Log("@@@@@roomIntro@@@@@: " + Value.ToString());
+                ri = Value.ToString();
+            }
+
 
             if (udpSession.HostName.Equals(roomName))
             {
@@ -91,7 +105,7 @@ public class Menu : GlobalEventListener
                 }
             }
 
-			roomList.WhenRoomCreated(roomName,"roomIntro");
+			roomList.WhenRoomCreated(rm,ri);
         }        
     }
 

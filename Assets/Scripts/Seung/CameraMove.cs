@@ -8,6 +8,14 @@ public class CameraMove : MonoBehaviour
 	const float kTurnSpeedY = 5.0f; // 마우스 회전 속도
 	const float kMoveSpeed = 2.0f; // 이동 속도
 	static bool IsCameraActive = false;
+	float tan20;
+	float tan80;
+
+	private void Awake()
+	{
+		tan20 = Mathf.Tan(20 * Mathf.PI / 180);
+		tan80 = Mathf.Tan(80 * Mathf.PI / 180);
+	}
 	void Update()
 	{
 		if (IsCameraActive)
@@ -44,9 +52,11 @@ public class CameraMove : MonoBehaviour
 	{
 		transform.Translate(new Vector3(Input.GetAxis("Horizontal"), Input.GetAxis("Up"), Input.GetAxis("Vertical")) * kMoveSpeed * Time.deltaTime);
 	}
-	public void CameraReset()
+	public void CameraSetting(int row, int col)
 	{
-		transform.position = new Vector3(0, 1, 0);
-		transform.eulerAngles = new Vector3(0, 0, 0);
+		float zp = tan20 * row * 5 / (tan80 - tan20);
+
+		transform.position = new Vector3((float)col*5/2, zp * tan80, -zp *tan80 / tan20);
+		transform.eulerAngles = new Vector3(50, 0, 0);
 	}
 }

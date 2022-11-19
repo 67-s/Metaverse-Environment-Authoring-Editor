@@ -1439,6 +1439,7 @@ GameObject:
   - component: {fileID: 68444729}
   - component: {fileID: 68444728}
   - component: {fileID: 68444727}
+  - component: {fileID: 68444731}
   m_Layer: 5
   m_Name: Btn
   m_TagString: Untagged
@@ -1482,7 +1483,8 @@ MonoBehaviour:
   currType: 1
   prefabs:
   - {fileID: 0}
-  - {fileID: 116160, guid: c13ef054aa9e40e4b8aef72ba1ddb551, type: 3}
+  - {fileID: 7679683282719616065, guid: 20151277fedba46428988873c1277659, type: 3}
+  centerTofloor: 0000000001000000
 --- !u!114 &68444728
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1526,19 +1528,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 68444729}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 68444727}
-        m_TargetAssemblyTypeName: DragAndDropBtn, Assembly-CSharp
-        m_MethodName: OnBtnClick
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &68444729
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1577,6 +1567,67 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 68444725}
   m_CullTransparentMesh: 1
+--- !u!114 &68444731
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 68444725}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 13
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 68444727}
+          m_TargetAssemblyTypeName: DragAndDropBtn, Assembly-CSharp
+          m_MethodName: BeginDrag
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - eventID: 5
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 68444727}
+          m_TargetAssemblyTypeName: DragAndDropBtn, Assembly-CSharp
+          m_MethodName: OnDrag
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - eventID: 14
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 68444727}
+          m_TargetAssemblyTypeName: DragAndDropBtn, Assembly-CSharp
+          m_MethodName: EndDrag
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1 &69919316
 GameObject:
   m_ObjectHideFlags: 0

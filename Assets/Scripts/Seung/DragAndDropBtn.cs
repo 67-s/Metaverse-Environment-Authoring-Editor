@@ -14,7 +14,7 @@ public class DragAndDropBtn : MonoBehaviour
 {
 	public DragAndDropBtnType currType;
 	public GameObject[] prefabs;
-	private Boolean dragFlag = false;
+	public int[] centerTofloor;
 	private GameObject currObj = null;
 
 	public void BeginDrag()
@@ -24,11 +24,14 @@ public class DragAndDropBtn : MonoBehaviour
 
 		if (Physics.Raycast(ray, out hit, 1000f))
 		{
-			Vector3 hitPos = hit.point;
-			hitPos.y = 0.3f;
-
 			currObj = Instantiate(prefabs[(int)currType]);
-			currObj.transform.position = hitPos;
+			currObj.transform.position = new Vector3(hit.point.x, hit.point.y + currObj.transform.localScale.y / 2, hit.point.z);
+			currObj.GetComponentInChildren<BoxCollider>().enabled = false;
+		}
+		else
+		{
+			currObj = Instantiate(prefabs[(int)currType]);
+			currObj.transform.position = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, 10));
 			currObj.GetComponentInChildren<BoxCollider>().enabled = false;
 		}
 	}
@@ -40,15 +43,17 @@ public class DragAndDropBtn : MonoBehaviour
 
 		if (Physics.Raycast(ray, out hit, 1000f))
 		{
-			Vector3 hitPos = hit.point;
-			hitPos.y = 0.3f;
-
-			currObj.transform.position = hitPos;
+			currObj.transform.position = new Vector3(hit.point.x, hit.point.y + currObj.transform.localScale.y / 2, hit.point.z);
+		}
+		else
+		{
+			currObj.transform.position = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, 10));
 		}
 	}
 
 	public void EndDrag()
 	{
 		currObj.GetComponentInChildren<BoxCollider>().enabled = true;
+		currObj = null;
 	}
 }

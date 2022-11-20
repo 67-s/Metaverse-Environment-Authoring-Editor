@@ -2,22 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BoxContainer : MonoBehaviour, IBuilder
+public class BoxContainer : BuilderBase
 {
-    public float unit;
-    public int xWidth;
-    public int zWidth;
     [Range(0, 0.5f)]
     public float marginRatio = 0.01f;
     public float heightRatio = 1.2f;
 
-    private GameObject box;    
-    public void Initialize(float unit, int xWidth, int zWidth, EBuildDirection direction)
-    {
-        this.unit = unit;
-        this.xWidth = xWidth;
-        this.zWidth = zWidth;
-    }
+    private GameObject box;
 
     // Start is called before the first frame update
     void Start()

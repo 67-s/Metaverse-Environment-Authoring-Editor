@@ -5,6 +5,19 @@ using Photon.Bolt;
 public class MapInfoToken : IProtocolToken
 {
     public byte[] mapInfos;
+    int cnt;
+
+    public MapInfoToken()
+    {
+        cnt = 0;
+        mapInfos = new byte[5000];
+    }
+
+    public void add(int x)
+    {
+        mapInfos[cnt] = (byte)x;
+        ++cnt;
+    }
 
     public void Write(UdpKit.UdpPacket packet)
     {
@@ -14,6 +27,6 @@ public class MapInfoToken : IProtocolToken
 
     public void Read(UdpKit.UdpPacket packet)
     {
-        mapInfos = packet.ReadByteArray(10);
+        mapInfos = packet.ReadByteArray(5000);
     }
 }

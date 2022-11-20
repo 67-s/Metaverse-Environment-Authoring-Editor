@@ -9,6 +9,10 @@ public class PersonBehaviour : EntityEventListener<IPersonState>
     Animator animator;
     Camera cam;
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 6a568a6481387dc06c8f0977abf2d65e2499a348
     public override void Attached()
     {
         state.SetTransforms(state.PersonTransform, transform);
@@ -22,7 +26,10 @@ public class PersonBehaviour : EntityEventListener<IPersonState>
     {
         var speed = 4f;
         var movement = Vector3.zero;
+<<<<<<< HEAD
 
+=======
+>>>>>>> 6a568a6481387dc06c8f0977abf2d65e2499a348
         if (Input.GetKey(KeyCode.W)) { movement.z += 1; }
         if (Input.GetKey(KeyCode.S)) { movement.z -= 1; }
         if (Input.GetKey(KeyCode.A)) { movement.x -= 1; }

@@ -19,6 +19,7 @@ public class TwoDiMap : MonoBehaviour
 	private void Awake()
 	{
 		defaultPrefabScale = prefab.transform.localScale;
+		buildArea = new Dictionary<Area, AreaData>();
 	}
 	
 	public void Make2dMap()
@@ -29,7 +30,6 @@ public class TwoDiMap : MonoBehaviour
 		height = rectHeight / rowCnt;
 
 		prefabs = new List<List<GameObject>>();
-		buildArea = new Dictionary<Area, AreaData>();
 
 		for (int i=0;i< rowCnt; i++)
 		{
@@ -146,11 +146,11 @@ public class TwoDiMap : MonoBehaviour
 		}
 		return true;
 	}
-	public void DelBuildArea(Area area)
+	public void DelBuildArea(Area area, bool twoDiFlag)
 	{
 		if (area == null) return;
 
-		if (!buildArea.Remove(area)) return;
+		if (twoDiFlag && !buildArea.Remove(area)) return;
 
 		for (int i = area.FstRow; i <= area.SndRow; i++)
 		{

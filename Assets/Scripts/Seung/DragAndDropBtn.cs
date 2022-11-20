@@ -16,14 +16,13 @@ public class DragAndDropBtn : MonoBehaviour
 	public GameObject[] prefabs;
 	public int[] centerTofloor;
 	private GameObject currObj = null;
-	int i = 0;
+
 	public void BeginDrag()
 	{
 		Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 		RaycastHit hit;
 
 		currObj = Instantiate(prefabs[(int)currType]);
-		currObj.name += i++;
 		currObj.GetComponentInChildren<BoxCollider>().enabled = false;
 
 		if (Physics.Raycast(ray, out hit, 1000f))

@@ -4,12 +4,10 @@ using UnityEngine;
 
 public class PrefabObj : MonoBehaviour
 {
-	public bool isSelected = false;
-
 	Material outline;
-
 	Renderer renderers;
 	List<Material> materialList = new List<Material>();
+
 	void Start()
 	{
 		outline = new Material(Shader.Find("Outlined/NewOcclusionOutline"));
@@ -17,7 +15,6 @@ public class PrefabObj : MonoBehaviour
 
 	private void OnMouseDown()
 	{
-		Debug.Log(gameObject.name);
 		renderers = this.GetComponent<Renderer>();
 
 		materialList.Clear();
@@ -25,6 +22,7 @@ public class PrefabObj : MonoBehaviour
 		materialList.Add(outline);
 
 		renderers.materials = materialList.ToArray();
+		gameObject.GetComponentInChildren<BoxCollider>().enabled = false;
 	}
 
 	private void OnMouseUp()
@@ -36,6 +34,17 @@ public class PrefabObj : MonoBehaviour
 		materialList.Remove(outline);
 
 		renderer.materials = materialList.ToArray();
+		gameObject.GetComponentInChildren<BoxCollider>().enabled = true;
 	}
 
+	public void OnMouseDrag()
+	{
+		Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+		RaycastHit hit;
+
+		if (Physics.Raycast(ray, out hit, 1000f))
+			gameObject.transform.position = new Vector3(hit.point.x, hit.point.y + gameObject.transform.localScale.y / 2, hit.point.z);
+		else
+			gameObject.transform.position = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, 10));
+	}
 }

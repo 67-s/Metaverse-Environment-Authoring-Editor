@@ -125,7 +125,7 @@ public class Installer : MonoBehaviour
     }
 
     //construct new building
-    public bool Build(int x, int z, int xWidth, int zWidth, int key, EBuildDirection direction)
+    public bool Build(int x, int z, int xWidth, int zWidth, int key, EBuildDirection direction = EBuildDirection.North)
     {
         //exceptions
         if (!Verify(x, z, xWidth, zWidth))

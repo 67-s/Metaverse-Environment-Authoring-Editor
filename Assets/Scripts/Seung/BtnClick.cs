@@ -38,7 +38,7 @@ public class BtnClick : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 			case BtnType.EditRoomBack:
 				roomObj.SetActive(false);
 				cameraMove.SetIsCameraActive(false);
-				cameraMove.CameraReset();
+				cameraMove.CameraSetting(0, 0);
 				Cursor.lockState = CursorLockMode.None;
 				CanvasGroupOn(nextGroup);
 				CanvasGroupOff(currGroup);
@@ -58,6 +58,7 @@ public class BtnClick : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 				miniMap.SetRowCnt(RoomData.rowCnt);
 				miniMap.SetColCnt(RoomData.colCnt);
 				miniMap.Make2dMap();
+				cameraMove.CameraSetting(RoomData.rowCnt, RoomData.colCnt);
 				break;
 			case BtnType.MiniMapTog:
 				CanvasGroupOn(nextGroup);

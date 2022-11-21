@@ -9,10 +9,7 @@ public class PersonBehaviour : EntityEventListener<IPersonState>
     Animator animator;
     Camera cam;
 
-<<<<<<< HEAD
-=======
-
->>>>>>> 6a568a6481387dc06c8f0977abf2d65e2499a348
+   
     public override void Attached()
     {
         state.SetTransforms(state.PersonTransform, transform);
@@ -26,10 +23,7 @@ public class PersonBehaviour : EntityEventListener<IPersonState>
     {
         var speed = 4f;
         var movement = Vector3.zero;
-<<<<<<< HEAD
-
-=======
->>>>>>> 6a568a6481387dc06c8f0977abf2d65e2499a348
+ 
         if (Input.GetKey(KeyCode.W)) { movement.z += 1; }
         if (Input.GetKey(KeyCode.S)) { movement.z -= 1; }
         if (Input.GetKey(KeyCode.A)) { movement.x -= 1; }
@@ -59,6 +53,23 @@ public class PersonBehaviour : EntityEventListener<IPersonState>
         newPosition.z -= 10.0f;
 
         cam.transform.position = newPosition;
+        /*
+        //yhchon11
+        float temp=1f;
+        Vector3 cam_position = new Vector3(cam.transform.position.x-transform.position.x,cam.transform.position.y-transform.position.y,cam.transform.position.z-transform.position.z);
+        if (cam_position.sqrMagnitude < temp)
+        {
+            Debug.Log("cam"+cam_position.sqrMagnitude);
+            Debug.Log("temp"+temp);
+            cam.transform.position = transform.position;
+        }
+        else
+        {
+            Debug.Log("cam"+cam_position.sqrMagnitude);
+            Debug.Log("temp"+temp);
+            cam.transform.position += cam_position * (-0.2f);
+        }
+        */
 
     }
 

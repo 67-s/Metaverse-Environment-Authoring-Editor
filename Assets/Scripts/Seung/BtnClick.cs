@@ -16,14 +16,16 @@ public class BtnClick : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 	public TwoDiMap twoDiMap, miniMap;
 
 	CameraMove cameraMove;
+    Menu m;
 
-	private void Start()
+    private void Start()
 	{
 		defaultScale = buttonScale.localScale;
 		cameraMove = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<CameraMove>();
 		roomObj = GameObject.Find("Mediator").GetComponent<Mediator>().element;
-	}
-	public void BtnOnClick()
+		m = GameObject.Find("Canvas").GetComponent<Menu>();
+    }
+    public void BtnOnClick()
 	{
 		switch (currType)
 		{
@@ -31,7 +33,9 @@ public class BtnClick : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 			case BtnType.MakeRoom:
 			case BtnType.AttendRoom:
 			case BtnType.Finished:
-			case BtnType.Back:
+                m.StartAsServer();
+				break;
+            case BtnType.Back:
 				CanvasGroupOn(nextGroup);
 				CanvasGroupOff(currGroup);
 				break;

@@ -42,7 +42,7 @@ public class NetworkCallbacks : GlobalEventListener
 
         if (mt != null)
         {
-            /*
+            
             for (int i = 0; i < 5000; ++i)
             {
                 var cubePosition = new Vector3(i/30, 0.0f, i%30);
@@ -53,7 +53,7 @@ public class NetworkCallbacks : GlobalEventListener
                 else
                     Instantiate(prefab3, cubePosition, Quaternion.identity);
             }
-            */
+            
         }
     }
 

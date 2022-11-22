@@ -134,6 +134,12 @@ public class Menu : GlobalEventListener
         BoltLauncher.StartClient();
     }
 
+    public void ShurDown()
+    {
+        BoltLauncher.Shutdown();
+    }
+
+
     public void JoinRoom()
     {
         BoltMatchmaking.JoinSession(roomName);

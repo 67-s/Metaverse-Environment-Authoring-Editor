@@ -26,6 +26,7 @@ public class Menu : GlobalEventListener
         password = GameObject.Find("RmPwdInputField").GetComponent<RoomData>().GetPassword();
         connectionLimit = GameObject.Find("RmLimitNumberInputField").GetComponent<RoomData>().GetNumberOfPeople();
         roomIntro = GameObject.Find("RmIntroInputField").GetComponent<RoomData>().GetIntro();
+        List<GameObject> maps = GameObject.Find("Mediator").GetComponent<Mediator>().element.GetComponent<Installer>().Extract(); // 4) Installer 스크립트
 
         if (BoltNetwork.IsServer)
         {
@@ -39,9 +40,21 @@ public class Menu : GlobalEventListener
             mt.mapInfos[1] = 5;
             */
 
+            if(maps != null)
+            {
+                foreach(var map in maps)
+                {
+                    mt.add(map.transform.position.x);
+                    mt.add(map.transform.position.y);
+                    mt.add(map.transform.position.z);
+                }
+            }
+
+            /*
             for(int i=0; i<5000; ++i)
                 mt.add(i%3);
-            
+            */
+
             props.AddRoomProperty("roomName", roomName,true);
             props.AddRoomProperty("password", password);
             props.AddRoomProperty("connectionLimit", connectionLimit);

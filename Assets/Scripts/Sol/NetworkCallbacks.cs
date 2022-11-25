@@ -12,6 +12,7 @@ public class NetworkCallbacks : GlobalEventListener
     public GameObject prefab1;
     public GameObject prefab2;
     public GameObject prefab3;
+
     /*
     void OnGUI()
     {
@@ -46,7 +47,7 @@ public class NetworkCallbacks : GlobalEventListener
             for (int i = 0; i < 5000; ++i)
             {
                 var cubePosition = new Vector3(i/30, 0.0f, i%30);
-                if(mt.mapInfos[i] == 0)
+                if (mt.mapInfos[i] == 0)
                     Instantiate(prefab1, cubePosition, Quaternion.identity);
                 else if (mt.mapInfos[i] == 1)
                     Instantiate(prefab2, cubePosition, Quaternion.identity);

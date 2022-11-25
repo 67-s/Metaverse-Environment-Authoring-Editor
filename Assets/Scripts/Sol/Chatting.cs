@@ -12,6 +12,7 @@ public class Chatting : GlobalEventListener
     public Text chatLog;
     public Text chattingList;
     public InputField input;
+    public int flag = 0;
     ScrollRect scroll_rect = null;
     string chatters;
     // Start is called before the first frame update
@@ -53,7 +54,8 @@ public class Chatting : GlobalEventListener
             chat.Send();
             input.Select();
             input.text = "";
-			input.ActivateInputField();
+			input.DeactivateInputField();
+
 		}
     }
     void chatterUpdate()

@@ -26,19 +26,13 @@ public class Menu : GlobalEventListener
         password = GameObject.Find("RmPwdInputField").GetComponent<RoomData>().GetPassword();
         connectionLimit = GameObject.Find("RmLimitNumberInputField").GetComponent<RoomData>().GetNumberOfPeople();
         roomIntro = GameObject.Find("RmIntroInputField").GetComponent<RoomData>().GetIntro();
-        List<GameObject> maps = GameObject.Find("Mediator").GetComponent<Mediator>().element.GetComponent<Installer>().Extract(); // 4) Installer 스크립트
 
         if (BoltNetwork.IsServer)
         {
             //string matchName = Guid.NewGuid().ToString();
             PhotonRoomProperties props = new PhotonRoomProperties();
             MapInfoToken mt = new MapInfoToken();
-
-            /*
-            mt.mapInfos = new byte[10];
-            mt.mapInfos[0] = 5;
-            mt.mapInfos[1] = 5;
-            */
+            List<GameObject> maps = GameObject.Find("Mediator").GetComponent<Mediator>().element.GetComponent<Installer>().Extract();
 
             if(maps != null)
             {
@@ -88,37 +82,34 @@ public class Menu : GlobalEventListener
             {
                 object Value = photonSession.Properties["roomName"];
                 rm = Value.ToString();
-                //Debug.Log("@@@@@roomName@@@@@: " + Value.ToString());
             }
             if (photonSession.Properties.ContainsKey("password"))
             {
                 object Value = photonSession.Properties["password"];
-                //Debug.Log("@@@@@password@@@@@: " + Value.ToString());
-                if (password != Value.ToString())
-                    continue;
+                //if (password != Value.ToString())
+                //    continue;
             }
             if (photonSession.Properties.ContainsKey("connectionLimit"))
             {
                 object Value = photonSession.Properties["connectionLimit"];
-                //Debug.Log("@@@@@connectionLimit@@@@@: " + Value.ToString());
             }
             if (photonSession.Properties.ContainsKey("roomIntro"))
             {
                 object Value = photonSession.Properties["roomIntro"];
-                //Debug.Log("@@@@@roomIntro@@@@@: " + Value.ToString());
                 ri = Value.ToString();
             }
 
-
+            /*
             if (udpSession.HostName.Equals(roomName))
             {
                 if (udpSession.Source == UdpSessionSource.Photon)
                 {
-                    //BoltMatchmaking.JoinSession(udpSession);
+                    BoltMatchmaking.JoinSession(udpSession);
                 }
             }
-
+            */
 			roomList.WhenRoomCreated(rm,ri);
+            Debug.Log("roomlist create!");
         }        
     }
 

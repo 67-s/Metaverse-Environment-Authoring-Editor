@@ -31,10 +31,7 @@ public class BtnClick : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 		{
 			case BtnType.Start:
 			case BtnType.MakeRoom:
-			case BtnType.AttendRoom:
 			case BtnType.Finished:
-                m.StartAsServer();
-				break;
             case BtnType.Back:
 				CanvasGroupOn(nextGroup);
 				CanvasGroupOff(currGroup);
@@ -81,7 +78,7 @@ public class BtnClick : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
                 }
 				break;
 			case BtnType.GotoMetaverse:
-				SceneLoader.LoadSceneHandle("Scene2");
+                m.StartAsServer();
 				break;
 			case BtnType.Quit:
 #if UNITY_EDITOR
@@ -89,6 +86,12 @@ public class BtnClick : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 #else
 		Application.Quit();
 #endif
+				break;
+			
+			case BtnType.AttendRoom:
+				CanvasGroupOn(nextGroup);
+				CanvasGroupOff(currGroup);
+				m.StartAsClient();
 				break;
 		}
 	}

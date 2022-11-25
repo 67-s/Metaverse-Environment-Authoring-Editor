@@ -73,7 +73,15 @@ public class BtnClick : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 					int z = Math.Min(obj.Value.FstCol, obj.Value.SndCol);
                     int xWidth = Math.Abs(obj.Value.FstRow - obj.Value.SndRow) + 1;
                     int zWidth = Math.Abs(obj.Value.FstCol - obj.Value.SndCol) + 1;
-					installer.Build(x, z, xWidth, zWidth, obj.Value.BuildIndex);
+					if(obj.Value.BuildIndex >= installer.NumberOfBuildingTypes)
+					{
+						int index = obj.Value.BuildIndex - installer.NumberOfBuildingTypes;
+						installer.ChangeTile(x, z, xWidth, zWidth, index);
+					}
+					else
+					{
+                        installer.Build(x, z, xWidth, zWidth, obj.Value.BuildIndex);
+                    }
                 }
 				break;
 			case BtnType.GotoMetaverse:

@@ -10975,11 +10975,21 @@ MonoBehaviour:
   m_Value: 0
   m_Options:
     m_Options:
-    - m_Text: Box Container
+    - m_Text: B:Box
       m_Image: {fileID: 0}
-    - m_Text: OpenCovered House
+    - m_Text: B:OpenCover
       m_Image: {fileID: 0}
-    - m_Text: Forest
+    - m_Text: B:Forest
+      m_Image: {fileID: 0}
+    - m_Text: T:Ground
+      m_Image: {fileID: 0}
+    - m_Text: T:Grass
+      m_Image: {fileID: 0}
+    - m_Text: T:Stone
+      m_Image: {fileID: 0}
+    - m_Text: T:Water
+      m_Image: {fileID: 0}
+    - m_Text: T:Snow
       m_Image: {fileID: 0}
   m_OnValueChanged:
     m_PersistentCalls:
@@ -15844,7 +15854,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Box Container
+  m_text: B:Box
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}

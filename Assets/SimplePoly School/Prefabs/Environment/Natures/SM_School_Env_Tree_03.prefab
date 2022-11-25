@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 3371344}
   - component: {fileID: 2313978}
   - component: {fileID: -1289202358218514407}
-  - component: {fileID: -5339643384559658955}
+  - component: {fileID: 8360376754674750360}
   m_Layer: 0
   m_Name: SM_School_Env_Tree_03
   m_TagString: Untagged
@@ -97,8 +97,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 90fbeea7ae1fe3249aa152d99faa994b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!136 &-5339643384559658955
-CapsuleCollider:
+--- !u!65 &8360376754674750360
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -107,7 +107,6 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 2.0925999
-  m_Height: 5.216438
-  m_Direction: 1
+  serializedVersion: 2
+  m_Size: {x: 3.765027, y: 5.216438, z: 4.1851997}
   m_Center: {x: 0.22019535, y: 2.6082184, z: 0.058804154}

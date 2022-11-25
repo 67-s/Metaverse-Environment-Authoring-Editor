@@ -44,6 +44,10 @@ public class Installer : MonoBehaviour
     //Maps for locating buildings
     private int[,] buildMap = null;
 
+    //Count of tiles and buildings
+    public int NumberOfTileTypes => tileSet.Length;
+    public int NumberOfBuildingTypes => buildSet.Length;
+
     //Make a clone of the gameObject and place it
     GameObject CloneTile(int x, int z, int key)
     {

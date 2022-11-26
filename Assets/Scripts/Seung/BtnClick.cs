@@ -17,6 +17,7 @@ public class BtnClick : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 
 	CameraMove cameraMove;
     Menu m;
+	static bool attend = false;
 
     private void Start()
 	{
@@ -35,6 +36,11 @@ public class BtnClick : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
             case BtnType.Back:
 				CanvasGroupOn(nextGroup);
 				CanvasGroupOff(currGroup);
+                if (attend)
+                {
+					attend = false;
+					m.ShurDown();
+                }
 				break;
 			case BtnType.EditRoomBack:
 				roomObj.SetActive(false);
@@ -91,6 +97,7 @@ public class BtnClick : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 			case BtnType.AttendRoom:
 				CanvasGroupOn(nextGroup);
 				CanvasGroupOff(currGroup);
+				attend = true;
 				m.StartAsClient();
 				break;
 		}

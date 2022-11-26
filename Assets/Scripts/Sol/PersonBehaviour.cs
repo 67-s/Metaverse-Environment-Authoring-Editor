@@ -17,6 +17,11 @@ public class PersonBehaviour : EntityEventListener<IPersonState>
         animator = GetComponent<Animator>();
         state.SetAnimator(animator);
         cam = GameObject.FindObjectOfType<Camera>();
+
+        Vector3 newPosition = transform.position;
+        newPosition.y += 8.0f;
+        newPosition.z -= 10.0f;
+        cam.transform.position = newPosition;
     }
 
     public override void SimulateOwner()
@@ -31,6 +36,7 @@ public class PersonBehaviour : EntityEventListener<IPersonState>
         if (movement != Vector3.zero)
         {
             transform.position = transform.position + (movement.normalized * speed * BoltNetwork.FrameDeltaTime);
+            cam.transform.position = cam.transform.position + (movement.normalized * 8.0f * BoltNetwork.FrameDeltaTime);
         }
 
         if (Input.GetKeyDown(KeyCode.Space))
@@ -46,13 +52,13 @@ public class PersonBehaviour : EntityEventListener<IPersonState>
         {
             animator.SetBool("isRun", false);
         }
-
+        /*
         Vector3 newPosition = transform.position;
         newPosition.y += 8.0f;
         newPosition.z -= 10.0f;
 
         cam.transform.position = newPosition;
-
+        */
     }
 
 }

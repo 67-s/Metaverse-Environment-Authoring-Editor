@@ -44,11 +44,6 @@ public class Menu : GlobalEventListener
                 }
             }
 
-            /*
-            for(int i=0; i<5000; ++i)
-                mt.add(i%3);
-            */
-
             props.AddRoomProperty("roomName", roomName,true);
             props.AddRoomProperty("password", password);
             props.AddRoomProperty("connectionLimit", connectionLimit);
@@ -86,8 +81,6 @@ public class Menu : GlobalEventListener
             if (photonSession.Properties.ContainsKey("password"))
             {
                 object Value = photonSession.Properties["password"];
-                //if (password != Value.ToString())
-                //    continue;
             }
             if (photonSession.Properties.ContainsKey("connectionLimit"))
             {
@@ -109,7 +102,6 @@ public class Menu : GlobalEventListener
             }
             */
 			roomList.WhenRoomCreated(rm,ri);
-            Debug.Log("roomlist create!");
         }        
     }
 

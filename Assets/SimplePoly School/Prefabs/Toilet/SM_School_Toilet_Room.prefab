@@ -42,6 +42,8 @@ GameObject:
   m_Component:
   - component: {fileID: 456642}
   - component: {fileID: 13702100}
+  - component: {fileID: 1248720400265390684}
+  - component: {fileID: 8878385330409260327}
   m_Layer: 0
   m_Name: SM_School_Toilet_Room01
   m_TagString: Untagged
@@ -119,6 +121,31 @@ SkinnedMeshRenderer:
     m_Center: {x: -0.00000011920929, y: 0.9999995, z: -0.024999738}
     m_Extent: {x: 0.51999986, y: 0.9999999, z: 0.8050002}
   m_DirtyAABB: 0
+--- !u!65 &1248720400265390684
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 134968}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.0399997, y: 1.9999999, z: 1.6100005}
+  m_Center: {x: 0.49999985, y: 0.9999999, z: 0.0050002486}
+--- !u!114 &8878385330409260327
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 134968}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 90fbeea7ae1fe3249aa152d99faa994b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &138294
 GameObject:
   m_ObjectHideFlags: 0

@@ -88,13 +88,13 @@ public class BtnClick : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 				break;
 		}
 	}
-	public void CanvasGroupOn(CanvasGroup cg)
+	public static void CanvasGroupOn(CanvasGroup cg)
 	{
 		cg.alpha = 1;
 		cg.interactable = true;
 		cg.blocksRaycasts = true;
 	}
-	public void CanvasGroupOff(CanvasGroup cg)
+	public static void CanvasGroupOff(CanvasGroup cg)
 	{
 		cg.alpha = 0;
 		cg.interactable = false;

@@ -4,29 +4,24 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum DragAndDropBtnType
-{
-	None,
-	WallSplitDoor,
-}
-
 public class DragAndDropBtn : MonoBehaviour
 {
-	public DragAndDropBtnType currType;
-	public GameObject[] prefabs;
+	public GameObject prefab;
 	public int[] centerTofloor;
 	private GameObject currObj = null;
+	public CanvasGroup[] canvasGroups;
+	private static int canvasGroupIdx = 0;
 
 	public void BeginDrag()
 	{
 		Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 		RaycastHit hit;
 
-		currObj = Instantiate(prefabs[(int)currType]);
+		currObj = Instantiate(prefab);
 		currObj.GetComponentInChildren<BoxCollider>().enabled = false;
 
 		if (Physics.Raycast(ray, out hit, 1000f))
-			currObj.transform.position = new Vector3(hit.point.x, hit.point.y + currObj.transform.localScale.y / 2, hit.point.z);
+			currObj.transform.position = new Vector3(hit.point.x, hit.point.y, hit.point.z);
 		else
 			currObj.transform.position = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, 10));
 	}
@@ -37,7 +32,7 @@ public class DragAndDropBtn : MonoBehaviour
 		RaycastHit hit;
 
 		if (Physics.Raycast(ray, out hit, 1000f))
-			currObj.transform.position = new Vector3(hit.point.x, hit.point.y + currObj.transform.localScale.y / 2, hit.point.z);
+			currObj.transform.position = new Vector3(hit.point.x, hit.point.y, hit.point.z);
 		else
 			currObj.transform.position = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, 10));
 	}
@@ -46,5 +41,18 @@ public class DragAndDropBtn : MonoBehaviour
 	{
 		currObj.GetComponentInChildren<BoxCollider>().enabled = true;
 		currObj = null;
+	}
+
+	public void PrevBtn()
+	{
+		BtnClick.CanvasGroupOff(canvasGroups[canvasGroupIdx]);
+		canvasGroupIdx = (canvasGroupIdx + canvasGroups.Length - 1) % canvasGroups.Length;
+		BtnClick.CanvasGroupOn(canvasGroups[canvasGroupIdx]);
+	}
+	public void NextBtn()
+	{
+		BtnClick.CanvasGroupOff(canvasGroups[canvasGroupIdx]);
+		canvasGroupIdx = (canvasGroupIdx + 1) % canvasGroups.Length;
+		BtnClick.CanvasGroupOn(canvasGroups[canvasGroupIdx]);
 	}
 }

@@ -18,6 +18,7 @@ public class Menu : GlobalEventListener
     {
         base.BoltStartBegin();
         BoltNetwork.RegisterTokenClass<MapInfoToken>();
+        BoltNetwork.RegisterTokenClass<authenticationToken>();
     }
     
     public override void BoltStartDone()
@@ -130,7 +131,7 @@ public class Menu : GlobalEventListener
         BoltLauncher.StartClient();
     }
 
-    public void ShurDown()
+    public void ShutDown()
     {
         BoltLauncher.Shutdown();
     }
@@ -138,7 +139,10 @@ public class Menu : GlobalEventListener
 
     public void JoinRoom()
     {
-        BoltMatchmaking.JoinSession(roomName);
+        authenticationToken at = new authenticationToken();
+        at.roomName = roomName;
+        at.password = password;
+        BoltMatchmaking.JoinSession(roomName,(IProtocolToken)at);
     }
 
     public List<string> GetRoomNames()

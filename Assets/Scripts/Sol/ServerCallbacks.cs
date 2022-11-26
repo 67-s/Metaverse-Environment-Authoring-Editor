@@ -4,10 +4,17 @@ using UnityEngine;
 using Photon.Bolt;
 using UdpKit;
 using Photon.Bolt.Utils;
+using UdpKit.Platform.Photon;
+
 
 [BoltGlobalBehaviour(BoltNetworkModes.Server)]
 public class ServerCallbacks : GlobalEventListener
 {
+    //public Map<string, string> roomNameToPassword = new Map<string,string>();
+    public Dictionary<string, string> roomNameToPassword = new Dictionary<string, string>();
+    //public string roomName;
+    //public string password;
+
     public override void Connected(BoltConnection connection)
     {
         var log = LogEvent.Create();
@@ -25,7 +32,15 @@ public class ServerCallbacks : GlobalEventListener
     public override void ConnectRequest(UdpEndPoint endpoint, IProtocolToken token)
     {
         base.ConnectRequest(endpoint, token);
-        BoltNetwork.Accept(endpoint);
+        Debug.Log("connect request!!!");
+        authenticationToken at = token as authenticationToken;
+
+        //if(roomName.Equals(at.roomName) && password.Equals(at.password))
+        if (roomNameToPassword[at.roomName].Equals(at.password))
+            BoltNetwork.Accept(endpoint);
+        
+
+        BoltNetwork.Refuse(endpoint);
     }
 
     public override void SceneLoadLocalDone(string scene, IProtocolToken token)
@@ -46,5 +61,15 @@ public class ServerCallbacks : GlobalEventListener
             }
         }
         */
+    }
+
+    public override void SessionCreatedOrUpdated(UdpSession session)
+    {
+        base.SessionCreatedOrUpdated(session);
+        PhotonSession photonSession = session as PhotonSession;
+        string rm = photonSession.Properties["roomName"].ToString();
+        string pw = photonSession.Properties["password"].ToString();
+
+        roomNameToPassword.Add(rm, pw);
     }
 }

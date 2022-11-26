@@ -39,7 +39,7 @@ public class BtnClick : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
                 if (attend)
                 {
 					attend = false;
-					m.ShurDown();
+					m.ShutDown();
                 }
 				break;
 			case BtnType.EditRoomBack:

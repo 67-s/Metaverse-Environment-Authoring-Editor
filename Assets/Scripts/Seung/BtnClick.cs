@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
@@ -16,6 +17,8 @@ public class BtnClick : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 	public TwoDiMap twoDiMap, miniMap;
 
 	CameraMove cameraMove;
+
+	public TMP_Text text;
 
 	private void Start()
 	{
@@ -85,6 +88,10 @@ public class BtnClick : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 #else
 		Application.Quit();
 #endif
+				break;
+			case BtnType.Access:
+				//비밀번호 받아오기
+				Debug.Log(text.text.ToString());
 				break;
 		}
 	}

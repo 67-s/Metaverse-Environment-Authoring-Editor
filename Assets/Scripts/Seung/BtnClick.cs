@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
@@ -16,6 +17,8 @@ public class BtnClick : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 	public TwoDiMap twoDiMap, miniMap;
 
 	CameraMove cameraMove;
+
+	public TMP_Text text;
 
 	private void Start()
 	{
@@ -86,15 +89,19 @@ public class BtnClick : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 		Application.Quit();
 #endif
 				break;
+			case BtnType.Access:
+				//비밀번호 받아오기
+				Debug.Log(text.text.ToString());
+				break;
 		}
 	}
-	public void CanvasGroupOn(CanvasGroup cg)
+	public static void CanvasGroupOn(CanvasGroup cg)
 	{
 		cg.alpha = 1;
 		cg.interactable = true;
 		cg.blocksRaycasts = true;
 	}
-	public void CanvasGroupOff(CanvasGroup cg)
+	public static void CanvasGroupOff(CanvasGroup cg)
 	{
 		cg.alpha = 0;
 		cg.interactable = false;

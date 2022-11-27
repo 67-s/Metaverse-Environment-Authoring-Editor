@@ -11,6 +11,8 @@ GameObject:
   - component: {fileID: 439824}
   - component: {fileID: 3396102}
   - component: {fileID: 2349656}
+  - component: {fileID: 1311822019740802215}
+  - component: {fileID: 8592366610830679094}
   m_Layer: 0
   m_Name: SM_School_ScienceClass_Props10
   m_TagString: Untagged
@@ -84,3 +86,28 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &1311822019740802215
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 172000}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.40000018, y: 0.33808166, z: 0.12000006}
+  m_Center: {x: 0, y: 0.16904083, z: 0.0000000037252903}
+--- !u!114 &8592366610830679094
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 172000}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 90fbeea7ae1fe3249aa152d99faa994b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

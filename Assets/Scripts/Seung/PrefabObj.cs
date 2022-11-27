@@ -32,7 +32,7 @@ public class PrefabObj : MonoBehaviour
 			renderers = this.GetComponent<Renderer>();
 
 			materialList.Clear();
-			materialList.Add(renderers.sharedMaterials.ToArray()[0]);
+			//materialList.Add(renderers.sharedMaterials.ToArray()[0]);
 			materialList.Add(ColorBtn.colorMaterial);
 
 			renderers.materials = materialList.ToArray();
@@ -66,7 +66,7 @@ public class PrefabObj : MonoBehaviour
 			RaycastHit hit;
 
 			if (Physics.Raycast(ray, out hit, 1000f))
-				gameObject.transform.position = new Vector3(hit.point.x, hit.point.y + gameObject.transform.localScale.y / 2, hit.point.z);
+				gameObject.transform.position = new Vector3(hit.point.x, hit.point.y, hit.point.z);
 			else
 				gameObject.transform.position = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, 10));
 		}

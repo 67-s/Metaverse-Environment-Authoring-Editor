@@ -11,6 +11,8 @@ GameObject:
   - component: {fileID: 469204}
   - component: {fileID: 3334920}
   - component: {fileID: 2364894}
+  - component: {fileID: 1550815710314648205}
+  - component: {fileID: 862336658230863352}
   m_Layer: 0
   m_Name: SM_School_Canteen_Snacks
   m_TagString: Untagged
@@ -83,3 +85,28 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &1550815710314648205
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 189246}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.11182027, y: 0.18893567, z: 0.08191666}
+  m_Center: {x: -0.0020166151, y: 0.09446783, z: 0.00055607036}
+--- !u!114 &862336658230863352
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 189246}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 90fbeea7ae1fe3249aa152d99faa994b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

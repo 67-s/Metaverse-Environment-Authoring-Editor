@@ -38,10 +38,38 @@ public class PersonBehaviour : EntityEventListener<IPersonState>
         }
         var speed = 4f;
         var movement = Vector3.zero;
-        if (Input.GetKey(KeyCode.W)) { movement.z += 1; }
-        if (Input.GetKey(KeyCode.S)) { movement.z -= 1; }
-        if (Input.GetKey(KeyCode.A)) { movement.x -= 1; }
-        if (Input.GetKey(KeyCode.D)) { movement.x += 1; }
+        if (Input.GetKey(KeyCode.W)) { 
+            movement.z += 1;
+            transform.eulerAngles = new Vector3(0, 0, 0);
+        }
+        if (Input.GetKey(KeyCode.S)) {
+            movement.z -= 1; 
+            transform.eulerAngles = new Vector3(0, 180, 0);
+        }
+        if (Input.GetKey(KeyCode.A)) { 
+            movement.x -= 1;
+            transform.eulerAngles = new Vector3(0, 270, 0);
+        }
+        if (Input.GetKey(KeyCode.D)) { 
+            movement.x += 1;
+            transform.eulerAngles = new Vector3(0, 90, 0);
+        }
+        if (Input.GetKey(KeyCode.A) && Input.GetKey(KeyCode.W))
+        {
+            transform.eulerAngles = new Vector3(0, 315, 0);
+        }
+        if (Input.GetKey(KeyCode.A) && Input.GetKey(KeyCode.S))
+        {
+            transform.eulerAngles = new Vector3(0, 225, 0);
+        }
+        if (Input.GetKey(KeyCode.D) && Input.GetKey(KeyCode.W))
+        {
+            transform.eulerAngles = new Vector3(0, 45, 0);
+        }
+        if (Input.GetKey(KeyCode.D) && Input.GetKey(KeyCode.S))
+        {
+            transform.eulerAngles = new Vector3(0, 135, 0);
+        }
 
         if (movement != Vector3.zero)
         {

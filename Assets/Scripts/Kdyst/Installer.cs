@@ -196,10 +196,6 @@ public class Installer : MonoBehaviour
     {
         List<GameObject> list = new();
         
-        //extract tiles
-        foreach (var obj in tileMap)
-            list.Add(obj);
-        
         //extract copied objects from buildings
         foreach(var keyValue in buildList)
             list.AddRange(keyValue.Value.gameObject.GetComponent<BuilderBase>().Ingredients);

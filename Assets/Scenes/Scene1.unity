@@ -5980,6 +5980,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8132737080449030737, guid: 0be2af38fcb8c6b4bbc9a07091e8ce68, type: 3}
+      propertyPath: buildSet.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 8132737080449030737, guid: 0be2af38fcb8c6b4bbc9a07091e8ce68, type: 3}
+      propertyPath: buildSet.Array.data[3]
+      value: 
+      objectReference: {fileID: 483365328}
     - target: {fileID: 8132737080449030739, guid: 0be2af38fcb8c6b4bbc9a07091e8ce68, type: 3}
       propertyPath: m_Name
       value: Installer
@@ -5993,6 +6001,11 @@ PrefabInstance:
 --- !u!1 &483365327 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8132737080449030739, guid: 0be2af38fcb8c6b4bbc9a07091e8ce68, type: 3}
+  m_PrefabInstance: {fileID: 483365326}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &483365328 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6243758530753648953, guid: 0be2af38fcb8c6b4bbc9a07091e8ce68, type: 3}
   m_PrefabInstance: {fileID: 483365326}
   m_PrefabAsset: {fileID: 0}
 --- !u!4 &483365331 stripped
@@ -10981,15 +10994,7 @@ MonoBehaviour:
       m_Image: {fileID: 0}
     - m_Text: B:Forest
       m_Image: {fileID: 0}
-    - m_Text: T:Ground
-      m_Image: {fileID: 0}
-    - m_Text: T:Grass
-      m_Image: {fileID: 0}
-    - m_Text: T:Stone
-      m_Image: {fileID: 0}
-    - m_Text: T:Water
-      m_Image: {fileID: 0}
-    - m_Text: T:Snow
+    - m_Text: R:Road
       m_Image: {fileID: 0}
   m_OnValueChanged:
     m_PersistentCalls:

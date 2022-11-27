@@ -32,7 +32,7 @@ public class PrefabObj : MonoBehaviour
 			renderers = this.GetComponent<Renderer>();
 
 			materialList.Clear();
-			materialList.Add(renderers.sharedMaterials.ToArray()[0]);
+			//materialList.Add(renderers.sharedMaterials.ToArray()[0]);
 			materialList.Add(ColorBtn.colorMaterial);
 
 			renderers.materials = materialList.ToArray();

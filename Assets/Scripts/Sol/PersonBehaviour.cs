@@ -12,7 +12,7 @@ public class PersonBehaviour : EntityEventListener<IPersonState>
     Chatting chat;
 
 
-    bool chatActivate = false;
+    public static bool chatActivate = false;
     public override void Attached()
     {
         
@@ -25,13 +25,17 @@ public class PersonBehaviour : EntityEventListener<IPersonState>
 
         Vector3 newPosition = transform.position;
         newPosition.y += 8.0f;
-        newPosition.z -= 10.0f;
+        newPosition.z -= 5.0f;
         cam.transform.position = newPosition;
     }
 
     public override void SimulateOwner()
     {
-        if (chatActivate) return;
+        
+        if (chatActivate) { 
+            //Debug.Log("ccccccccccccc");
+            return; 
+        }
         var speed = 4f;
         var movement = Vector3.zero;
         if (Input.GetKey(KeyCode.W)) { movement.z += 1; }
@@ -52,8 +56,9 @@ public class PersonBehaviour : EntityEventListener<IPersonState>
 
         if (Input.GetKeyDown(KeyCode.Return))
         {
-            chat.input.ActivateInputField();
-            chatActivate = true;
+            //chat.input.ActivateInputField();
+            //chatActivate = true;
+            //Debug.Log("pppppppppppp");
         }
 
         if (movement.x != 0.0f || movement.z != 0.0f)
@@ -65,17 +70,6 @@ public class PersonBehaviour : EntityEventListener<IPersonState>
             animator.SetBool("isRun", false);
         }
 
-        /*
-        Vector3 newPosition = new Vector3(transform.position.x, transform.position.y + 8.0f, transform.position.z - 10.0f);
-        //Debug.Log("x"+newPosition.x);
-        //Debug.Log("y"+newPosition.y);
-        //Debug.Log("z"+newPosition.z);
-        
-        cam.transform.position = newPosition;
-
-        //Vector3 TargetPos = newPosition;
-        //transform.position = Vector3.Lerp(transform.position,TargetPos, Time.deltaTime*2f);
-        */
         //yhchon11
         
         float temp =15f;
@@ -83,28 +77,18 @@ public class PersonBehaviour : EntityEventListener<IPersonState>
         
         if (cam_position.sqrMagnitude > temp)
         {
-            Debug.Log(cam_position.sqrMagnitude);
+            //Debug.Log(cam_position.sqrMagnitude);
 
-            Vector3 TargetPos = new Vector3(transform.position.x, transform.position.y+8.0f, transform.position.z-10.0f);
+            Vector3 TargetPos = new Vector3(transform.position.x, transform.position.y+8.0f, transform.position.z-5.0f);
             cam.transform.position = Vector3.Lerp(cam.transform.position, TargetPos, Time.deltaTime * 2f);
             
         }
         else
         {
-            Debug.Log(cam_position.sqrMagnitude);
+            //Debug.Log(cam_position.sqrMagnitude);
 
         }
-       
 
     }
-    /*
-    //yhchon11
-    private GameObject Target;
-    public float CameraZ = -10;
-    private void FixedUpdate()
-    {
-        Vector3 TargetPos = new Vector3(transform.position.x, transform.position.y, CameraZ);
-        cam.transform.position = Vector3.Lerp(transform.position, TargetPos, Time.deltaTime * 2f);
-    }
-    */
+
 }

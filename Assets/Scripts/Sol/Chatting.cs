@@ -28,7 +28,7 @@ public class Chatting : GlobalEventListener
         chatLog = gameObject.GetComponentInChildren<Text>();
         //input.text = "Hello!!!";
         chatLog.text = "hi";
-        input.ActivateInputField();
+        input.DeactivateInputField();
     }
     public void SendButtonOnClicked()
     {
@@ -54,9 +54,14 @@ public class Chatting : GlobalEventListener
             chat.Send();
             input.Select();
             input.text = "";
-			input.DeactivateInputField();
-
-		}
+            if (PersonBehaviour.chatActivate) { input.DeactivateInputField(); PersonBehaviour.chatActivate = false; }
+            else
+            {
+                input.ActivateInputField();PersonBehaviour.chatActivate = true;
+            }
+            //PersonBehaviour.chatActivate = false;
+            //Debug.Log("update");
+        }
     }
     void chatterUpdate()
     {

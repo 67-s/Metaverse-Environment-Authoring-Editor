@@ -12,6 +12,7 @@ public class Chatting : GlobalEventListener
     public Text chatLog;
     public Text chattingList;
     public InputField input;
+    public int flag = 0;
     ScrollRect scroll_rect = null;
     string chatters;
     // Start is called before the first frame update
@@ -27,7 +28,7 @@ public class Chatting : GlobalEventListener
         chatLog = gameObject.GetComponentInChildren<Text>();
         //input.text = "Hello!!!";
         chatLog.text = "hi";
-        input.ActivateInputField();
+        input.DeactivateInputField();
     }
     public void SendButtonOnClicked()
     {
@@ -53,8 +54,14 @@ public class Chatting : GlobalEventListener
             chat.Send();
             input.Select();
             input.text = "";
-			input.ActivateInputField();
-		}
+            if (PersonBehaviour.chatActivate) { input.DeactivateInputField(); PersonBehaviour.chatActivate = false; }
+            else
+            {
+                input.ActivateInputField();PersonBehaviour.chatActivate = true;
+            }
+            //PersonBehaviour.chatActivate = false;
+            //Debug.Log("update");
+        }
     }
     void chatterUpdate()
     {

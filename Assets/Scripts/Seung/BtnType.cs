@@ -11,5 +11,6 @@ public enum BtnType
 	GotoMetaverse,
 	EditRoomBack,
 	MiniMapTog,
-	Create
+	Create,
+	Access
 }

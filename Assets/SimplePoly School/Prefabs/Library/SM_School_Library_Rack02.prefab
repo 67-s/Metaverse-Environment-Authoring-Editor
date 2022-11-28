@@ -11,6 +11,8 @@ GameObject:
   - component: {fileID: 457940}
   - component: {fileID: 3366542}
   - component: {fileID: 2370566}
+  - component: {fileID: 7199435975871201235}
+  - component: {fileID: -4475684536927192410}
   m_Layer: 0
   m_Name: SM_School_Library_Rack02
   m_TagString: Untagged
@@ -83,3 +85,28 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &7199435975871201235
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 126552}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.4399999, y: 2.0399997, z: 0.30000007}
+  m_Center: {x: 0, y: 1.0199999, z: -0.000000044703484}
+--- !u!114 &-4475684536927192410
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 126552}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 90fbeea7ae1fe3249aa152d99faa994b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

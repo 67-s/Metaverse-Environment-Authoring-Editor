@@ -44,6 +44,10 @@ public class Installer : MonoBehaviour
     //Maps for locating buildings
     private int[,] buildMap = null;
 
+    //Count of tiles and buildings
+    public int NumberOfTileTypes => tileSet.Length;
+    public int NumberOfBuildingTypes => buildSet.Length;
+
     //Make a clone of the gameObject and place it
     GameObject CloneTile(int x, int z, int key)
     {
@@ -125,7 +129,7 @@ public class Installer : MonoBehaviour
     }
 
     //construct new building
-    public bool Build(int x, int z, int xWidth, int zWidth, int key, EBuildDirection direction)
+    public bool Build(int x, int z, int xWidth, int zWidth, int key, EBuildDirection direction = EBuildDirection.North)
     {
         //exceptions
         if (!Verify(x, z, xWidth, zWidth))
@@ -191,10 +195,6 @@ public class Installer : MonoBehaviour
     public List<GameObject> Extract()
     {
         List<GameObject> list = new();
-        
-        //extract tiles
-        foreach (var obj in tileMap)
-            list.Add(obj);
         
         //extract copied objects from buildings
         foreach(var keyValue in buildList)

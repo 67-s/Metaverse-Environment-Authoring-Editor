@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
@@ -16,31 +17,26 @@ public class BtnClick : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 	public TwoDiMap twoDiMap, miniMap;
 
 	CameraMove cameraMove;
-    Menu m;
-	static bool attend = false;
 
-    private void Start()
+	public TMP_Text text;
+
+	private void Start()
 	{
 		defaultScale = buttonScale.localScale;
 		cameraMove = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<CameraMove>();
 		roomObj = GameObject.Find("Mediator").GetComponent<Mediator>().element;
-		m = GameObject.Find("Canvas").GetComponent<Menu>();
-    }
-    public void BtnOnClick()
+	}
+	public void BtnOnClick()
 	{
 		switch (currType)
 		{
 			case BtnType.Start:
 			case BtnType.MakeRoom:
+			case BtnType.AttendRoom:
 			case BtnType.Finished:
-            case BtnType.Back:
+			case BtnType.Back:
 				CanvasGroupOn(nextGroup);
 				CanvasGroupOff(currGroup);
-                if (attend)
-                {
-					attend = false;
-					m.ShutDown();
-                }
 				break;
 			case BtnType.EditRoomBack:
 				roomObj.SetActive(false);
@@ -80,11 +76,11 @@ public class BtnClick : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 					int z = Math.Min(obj.Value.FstCol, obj.Value.SndCol);
                     int xWidth = Math.Abs(obj.Value.FstRow - obj.Value.SndRow) + 1;
                     int zWidth = Math.Abs(obj.Value.FstCol - obj.Value.SndCol) + 1;
-					installer.Build(x, z, xWidth, zWidth, 1, EBuildDirection.North);
+                    installer.Build(x, z, xWidth, zWidth, obj.Value.BuildIndex);
                 }
 				break;
 			case BtnType.GotoMetaverse:
-                m.StartAsServer();
+				SceneLoader.LoadSceneHandle("Scene2");
 				break;
 			case BtnType.Quit:
 #if UNITY_EDITOR
@@ -93,22 +89,19 @@ public class BtnClick : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 		Application.Quit();
 #endif
 				break;
-			
-			case BtnType.AttendRoom:
-				CanvasGroupOn(nextGroup);
-				CanvasGroupOff(currGroup);
-				attend = true;
-				m.StartAsClient();
+			case BtnType.Access:
+				//비밀번호 받아오기
+				Debug.Log(text.text.ToString());
 				break;
 		}
 	}
-	public void CanvasGroupOn(CanvasGroup cg)
+	public static void CanvasGroupOn(CanvasGroup cg)
 	{
 		cg.alpha = 1;
 		cg.interactable = true;
 		cg.blocksRaycasts = true;
 	}
-	public void CanvasGroupOff(CanvasGroup cg)
+	public static void CanvasGroupOff(CanvasGroup cg)
 	{
 		cg.alpha = 0;
 		cg.interactable = false;

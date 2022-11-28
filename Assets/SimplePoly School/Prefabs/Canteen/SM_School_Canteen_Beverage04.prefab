@@ -11,6 +11,8 @@ GameObject:
   - component: {fileID: 454880}
   - component: {fileID: 3311396}
   - component: {fileID: 2360258}
+  - component: {fileID: 1936880146944427260}
+  - component: {fileID: 8784159782118545192}
   m_Layer: 0
   m_Name: SM_School_Canteen_Beverage04
   m_TagString: Untagged
@@ -83,3 +85,28 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &1936880146944427260
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 106564}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.08238529, y: 0.30062357, z: 0.08662502}
+  m_Center: {x: -0.0000000055879354, y: 0.15031178, z: -0.0000000037252903}
+--- !u!114 &8784159782118545192
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 106564}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 90fbeea7ae1fe3249aa152d99faa994b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

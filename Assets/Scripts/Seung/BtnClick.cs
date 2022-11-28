@@ -35,7 +35,6 @@ public class BtnClick : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 		{
 			case BtnType.Start:
 			case BtnType.MakeRoom:
-			case BtnType.AttendRoom:
 			case BtnType.Finished:
 			case BtnType.Back:
 				CanvasGroupOn(nextGroup);
@@ -92,6 +91,11 @@ public class BtnClick : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 #else
 		Application.Quit();
 #endif
+				break;
+			case BtnType.AttendRoom:
+				CanvasGroupOn(nextGroup);
+				CanvasGroupOff(currGroup);
+				m.StartAsClient();
 				break;
 			case BtnType.Access:
 				//비밀번호 받아오기

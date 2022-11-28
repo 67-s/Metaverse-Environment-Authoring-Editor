@@ -18,6 +18,8 @@ public class BtnClick : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 
 	CameraMove cameraMove;
 
+	Menu m;
+
 	public TMP_Text text;
 
 	private void Start()
@@ -25,6 +27,7 @@ public class BtnClick : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 		defaultScale = buttonScale.localScale;
 		cameraMove = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<CameraMove>();
 		roomObj = GameObject.Find("Mediator").GetComponent<Mediator>().element;
+		m = GameObject.Find("Canvas").GetComponent<Menu>();
 	}
 	public void BtnOnClick()
 	{
@@ -81,6 +84,7 @@ public class BtnClick : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 				break;
 			case BtnType.GotoMetaverse:
 				//SceneLoader.LoadSceneHandle("Scene2");
+				m.StartAsServer();
 				break;
 			case BtnType.Quit:
 #if UNITY_EDITOR

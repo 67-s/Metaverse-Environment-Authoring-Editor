@@ -19,6 +19,7 @@ public class BtnClick : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 	CameraMove cameraMove;
 
 	Menu m;
+	bool attend = false;
 
 	public TMP_Text text;
 
@@ -39,6 +40,11 @@ public class BtnClick : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 			case BtnType.Back:
 				CanvasGroupOn(nextGroup);
 				CanvasGroupOff(currGroup);
+				if(attend)
+                {
+					attend = false;
+					m.ShutDown();
+                }
 				break;
 			case BtnType.EditRoomBack:
 				roomObj.SetActive(false);
@@ -95,11 +101,13 @@ public class BtnClick : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 			case BtnType.AttendRoom:
 				CanvasGroupOn(nextGroup);
 				CanvasGroupOff(currGroup);
+				attend = true;
 				m.StartAsClient();
 				break;
 			case BtnType.Access:
 				//비밀번호 받아오기
-				Debug.Log(text.text.ToString());
+				//Debug.Log(text.text.ToString());
+				m.JoinRoom(text.text.ToString());
 				break;
 		}
 	}

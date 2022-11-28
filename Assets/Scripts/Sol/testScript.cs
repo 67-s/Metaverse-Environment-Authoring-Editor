@@ -45,7 +45,7 @@ public class testScript : MonoBehaviour
         }
         else if (Input.GetKeyDown(KeyCode.R))
         {
-            m.JoinRoom();
+            //m.JoinRoom();
         }
     }
 

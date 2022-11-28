@@ -80,7 +80,7 @@ public class BtnClick : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
                 }
 				break;
 			case BtnType.GotoMetaverse:
-				SceneLoader.LoadSceneHandle("Scene2");
+				//SceneLoader.LoadSceneHandle("Scene2");
 				break;
 			case BtnType.Quit:
 #if UNITY_EDITOR

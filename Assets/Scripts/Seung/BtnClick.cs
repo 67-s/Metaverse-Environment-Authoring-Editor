@@ -106,7 +106,6 @@ public class BtnClick : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 				break;
 			case BtnType.Access:
 				//비밀번호 받아오기
-				//Debug.Log(text.text.ToString());
 				m.JoinRoom(text.text.ToString());
 				break;
 		}

@@ -35,12 +35,17 @@ public class ServerCallbacks : GlobalEventListener
         Debug.Log("connect request!!!");
         authenticationToken at = token as authenticationToken;
 
-        //if(roomName.Equals(at.roomName) && password.Equals(at.password))
         if (roomNameToPassword[at.roomName].Equals(at.password))
+        {
             BoltNetwork.Accept(endpoint);
-        
-
-        BoltNetwork.Refuse(endpoint);
+            Debug.Log("accept!");
+        }
+        else
+        {
+            BoltNetwork.Refuse(endpoint);
+            Debug.Log("refuse!");
+            Debug.Log(roomNameToPassword[at.roomName].Length + ";" + at.password.Length);
+        }
     }
 
     public override void SceneLoadLocalDone(string scene, IProtocolToken token)

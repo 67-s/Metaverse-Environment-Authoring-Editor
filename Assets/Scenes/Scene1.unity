@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028334, g: 0.2257134, b: 0.30692226, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -11450,13 +11450,13 @@ MonoBehaviour:
   m_Value: 0
   m_Options:
     m_Options:
-    - m_Text: Building
+    - m_Text: B:Cube
       m_Image: {fileID: 0}
-    - m_Text: School
+    - m_Text: B:OpenCover
       m_Image: {fileID: 0}
-    - m_Text: Office
+    - m_Text: B:Forest
       m_Image: {fileID: 0}
-    - m_Text: Building2
+    - m_Text: R:Road
       m_Image: {fileID: 0}
   m_OnValueChanged:
     m_PersistentCalls:
@@ -13882,6 +13882,63 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currType: 3
   inputField: {fileID: 1268863372}
+--- !u!1001 &1271341945
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 5690280562061543164, guid: 5855f3babb27b9545a08f63436b19ffb, type: 3}
+      propertyPath: m_Name
+      value: Prefab Catalog
+      objectReference: {fileID: 0}
+    - target: {fileID: 5690280562061543167, guid: 5855f3babb27b9545a08f63436b19ffb, type: 3}
+      propertyPath: m_RootOrder
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 5690280562061543167, guid: 5855f3babb27b9545a08f63436b19ffb, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.9145575
+      objectReference: {fileID: 0}
+    - target: {fileID: 5690280562061543167, guid: 5855f3babb27b9545a08f63436b19ffb, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 20.648817
+      objectReference: {fileID: 0}
+    - target: {fileID: 5690280562061543167, guid: 5855f3babb27b9545a08f63436b19ffb, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -40.782017
+      objectReference: {fileID: 0}
+    - target: {fileID: 5690280562061543167, guid: 5855f3babb27b9545a08f63436b19ffb, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5690280562061543167, guid: 5855f3babb27b9545a08f63436b19ffb, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5690280562061543167, guid: 5855f3babb27b9545a08f63436b19ffb, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5690280562061543167, guid: 5855f3babb27b9545a08f63436b19ffb, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5690280562061543167, guid: 5855f3babb27b9545a08f63436b19ffb, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5690280562061543167, guid: 5855f3babb27b9545a08f63436b19ffb, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5690280562061543167, guid: 5855f3babb27b9545a08f63436b19ffb, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 5855f3babb27b9545a08f63436b19ffb, type: 3}
 --- !u!1 &1298585783
 GameObject:
   m_ObjectHideFlags: 0
@@ -16538,7 +16595,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Building
+  m_text: B:Cube
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}

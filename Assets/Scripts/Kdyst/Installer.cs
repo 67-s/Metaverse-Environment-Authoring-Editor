@@ -207,6 +207,20 @@ public class Installer : MonoBehaviour
         return list;
     }
 
+
+    // extract all of the CreationData.
+    public List<CreationData> ExtractData()
+    {
+        List<CreationData> list = new();
+
+        //extract copied objects from buildings
+        foreach (var KeyValue in buildList)
+            list.AddRange(KeyValue.Value.gameObject.GetComponent<BuilderBase>().CreationDatas);
+
+        return list;
+    }
+
+
     // Start is called before the first frame update
     void Start()
     {

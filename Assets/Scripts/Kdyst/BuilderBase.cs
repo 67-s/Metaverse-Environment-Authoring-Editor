@@ -30,6 +30,8 @@ public abstract class BuilderBase : MonoBehaviour
      * Finds them using int32 type key.
      */
     private PrefabCatalog prefabCatalog = null;
+    private readonly List<CreationData> creationDatas = new();
+    public IList<CreationData> CreationDatas => creationDatas.AsReadOnly();
 
     /*
      * These are setter of properties.
@@ -66,13 +68,6 @@ public abstract class BuilderBase : MonoBehaviour
         return this;
     }
 
-    /*
-     * Register(): register
-     */
-    protected void Register(GameObject target)
-    {
-        ingredients.Add(target);
-    }
 
     /*
      * Spawn(): copy $(prefab) and place on $(position) from BuilderBase.
@@ -84,6 +79,14 @@ public abstract class BuilderBase : MonoBehaviour
         GameObject target = Instantiate(prefab, transform);
         target.transform.localPosition = position;
         target.transform.Rotate(Vector3.up, angle);
-        Register(target);
+        ingredients.Add(target);/*TODO: erase it*/
+
+        /*insert data*/
+        CreationData data = new()
+        {
+            Target = target,
+            Origin = key
+        };
+        creationDatas.Add(data);
     }
 }

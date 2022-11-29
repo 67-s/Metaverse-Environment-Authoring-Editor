@@ -19,9 +19,17 @@ public abstract class BuilderBase : MonoBehaviour
     /*
      * This is the list of GameObjects spawned by BuilderBase.Spawn().
      * It will be returned;
+     * (These properties are deprecated and soon be deleted)
      */
     private readonly List<GameObject> ingredients = new();
     public IList<GameObject> Ingredients => ingredients.AsReadOnly();
+
+
+    /*
+     * Object Management: Contains prefab.
+     * Finds them using int32 type key.
+     */
+    private PrefabCatalog prefabCatalog = null;
 
     /*
      * These are setter of properties.
@@ -52,6 +60,12 @@ public abstract class BuilderBase : MonoBehaviour
         return this;
     }
 
+    public BuilderBase SetPrefabCatalog(PrefabCatalog prefabCatalog)
+    {
+        this.prefabCatalog = prefabCatalog;
+        return this;
+    }
+
     /*
      * Register(): register
      */
@@ -64,8 +78,9 @@ public abstract class BuilderBase : MonoBehaviour
      * Spawn(): copy $(prefab) and place on $(position) from BuilderBase.
      * The object will be managed in arrays.
      */
-    protected void Spawn(GameObject prefab, Vector3 position, float angle)
+    protected void Spawn(int key, Vector3 position, float angle)
     {
+        GameObject prefab = prefabCatalog.Find(key);
         GameObject target = Instantiate(prefab, transform);
         target.transform.localPosition = position;
         target.transform.Rotate(Vector3.up, angle);

@@ -146,6 +146,7 @@ public class Installer : MonoBehaviour
 
         if (0 <= key && key < buildSet.Length)
         {
+            //get seed
             int seed = UnityEngine.Random.Range(int.MinValue, int.MaxValue);
 
             //spawn building
@@ -154,7 +155,8 @@ public class Installer : MonoBehaviour
                 .SetUnit(tileLength)
                 .SetGrid(xWidth, zWidth)
                 .SetDirection(direction)
-                .SetSeed(seed);
+                .SetSeed(seed)
+                .SetPrefabCatalog(GameObject.Find("Prefab Catalog").GetComponent<PrefabCatalog>());
             target.transform.Translate(new Vector3(x, 0, z) * tileLength);
             target.SetActive(true);
 
@@ -192,6 +194,7 @@ public class Installer : MonoBehaviour
     }
 
     // extract all of the Gameobjects that have mesh.
+    [Obsolete("Installer.cs: The method Installer.Extract() is deprecated.")]
     public List<GameObject> Extract()
     {
         List<GameObject> list = new();

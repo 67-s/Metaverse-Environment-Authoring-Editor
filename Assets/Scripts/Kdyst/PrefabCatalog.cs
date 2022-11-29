@@ -10,7 +10,7 @@ struct KeyValue
     public GameObject gameObject;
 }
 
-public class ObjectManager : MonoBehaviour
+public class PrefabCatalog : MonoBehaviour
 {
     [SerializeField] private List<KeyValue> prefabs = new();
     private readonly Dictionary<int, GameObject> mapper = new();

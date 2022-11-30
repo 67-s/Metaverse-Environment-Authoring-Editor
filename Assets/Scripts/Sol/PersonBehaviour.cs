@@ -21,8 +21,8 @@ public class PersonBehaviour : EntityEventListener<IPersonState>
         cam = GameObject.FindObjectOfType<Camera>();
 
         Vector3 newPosition = transform.position;
-        newPosition.y += 8.0f;
-        newPosition.z -= 10.0f;
+        newPosition.y += 20.0f;
+        newPosition.z -= 13.0f;
         cam.transform.position = newPosition;
     }
 
@@ -125,7 +125,7 @@ public class PersonBehaviour : EntityEventListener<IPersonState>
         {
             //Debug.Log(cam_position.sqrMagnitude);
 
-            Vector3 TargetPos = new Vector3(transform.position.x, transform.position.y+8.0f, transform.position.z-5.0f);
+            Vector3 TargetPos = new Vector3(transform.position.x, transform.position.y+20.0f, transform.position.z-13.0f);
             cam.transform.position = Vector3.Lerp(cam.transform.position, TargetPos, Time.deltaTime * 2f);
             
         }

@@ -9,25 +9,8 @@ using Photon.Bolt.Utils;
 public class NetworkCallbacks : GlobalEventListener
 {
     List<string> logMessages = new List<string>();
-    public GameObject prefab1;
-    public GameObject prefab2;
-    public GameObject prefab3;
-    /*
-    void OnGUI()
-    {
-        // only display max the 5 latest log messages
-        int maxMessages = Mathf.Min(5, logMessages.Count);
+    public List<GameObject> prefabs;
 
-        GUILayout.BeginArea(new Rect(Screen.width / 2 - 200, Screen.height - 100, 400, 100), GUI.skin.box);
-        
-        for (int i = 0; i < maxMessages; ++i)
-        {
-            GUILayout.Label(logMessages[i]);
-        }
-
-        GUILayout.EndArea();
-    }
-    */
     public override void SceneLoadLocalDone(string scene, IProtocolToken token)
     {
         base.SceneLoadLocalDone(scene, token);
@@ -43,21 +26,55 @@ public class NetworkCallbacks : GlobalEventListener
         if (mt != null)
         {
             Debug.Log("+++++++"+mt.mapInfos.Length);
-            for (int i = 0; i < mt.mapInfos.Length; i += 12)
+            for (int i = 0; i < mt.mapInfos.Length; i += 29)
             {
-                  
-                byte[] bytesX = { mt.mapInfos[i], mt.mapInfos[i + 1], mt.mapInfos[i + 2], mt.mapInfos[i + 3] };
-                byte[] bytesY = { mt.mapInfos[i+4], mt.mapInfos[i + 5], mt.mapInfos[i + 6], mt.mapInfos[i + 7] };
-                byte[] bytesZ = { mt.mapInfos[i+8], mt.mapInfos[i + 9], mt.mapInfos[i + 10], mt.mapInfos[i + 11] };
+                byte prefab = mt.mapInfos[i];  
+                byte[] bytesX = { mt.mapInfos[i+1], mt.mapInfos[i + 2], mt.mapInfos[i + 3], mt.mapInfos[i + 4] };
+                byte[] bytesY = { mt.mapInfos[i+5], mt.mapInfos[i + 6], mt.mapInfos[i + 7], mt.mapInfos[i + 8] };
+                byte[] bytesZ = { mt.mapInfos[i+9], mt.mapInfos[i + 10], mt.mapInfos[i + 11], mt.mapInfos[i + 12] };
+                byte[] bytesRX = { mt.mapInfos[i + 13], mt.mapInfos[i + 14], mt.mapInfos[i + 15], mt.mapInfos[i + 16] };
+                byte[] bytesRY = { mt.mapInfos[i + 17], mt.mapInfos[i + 18], mt.mapInfos[i + 19], mt.mapInfos[i + 20] };
+                byte[] bytesRZ = { mt.mapInfos[i + 21], mt.mapInfos[i + 22], mt.mapInfos[i + 23], mt.mapInfos[i + 24] };
+                byte[] bytesRW = { mt.mapInfos[i + 25], mt.mapInfos[i + 26], mt.mapInfos[i + 27], mt.mapInfos[i + 28] };
 
                 float x = System.BitConverter.ToSingle(bytesX, 0);
                 float y = System.BitConverter.ToSingle(bytesY, 0);
                 float z = System.BitConverter.ToSingle(bytesZ, 0);
+                float rx = System.BitConverter.ToSingle(bytesRX, 0);
+                float ry = System.BitConverter.ToSingle(bytesRY, 0);
+                float rz = System.BitConverter.ToSingle(bytesRZ, 0);
+                float rw = System.BitConverter.ToSingle(bytesRW, 0);
 
-                var cubePosition = new Vector3(x,y,z);
+                var position = new Vector3(x,y,z);
+                var rotation = new Quaternion(rx, ry, rz,rw);
 
-                Instantiate(prefab1, cubePosition, Quaternion.identity);
-
+                switch(prefab)
+                {
+                    case 0:
+                        Instantiate(prefabs[0], position, rotation);
+                        break;
+                    case 100:
+                        Instantiate(prefabs[1], position, rotation);
+                        break;
+                    case 101:
+                        Instantiate(prefabs[2], position, rotation);
+                        break;
+                    case 102:
+                        Instantiate(prefabs[3], position, rotation);
+                        break;
+                    case 200:
+                        Instantiate(prefabs[4], position, rotation);
+                        break;
+                    case 201:
+                        Instantiate(prefabs[5], position, rotation);
+                        break;
+                    case 202:
+                        Instantiate(prefabs[6], position, rotation);
+                        break;
+                    default:
+                        Instantiate(prefabs[7], position, rotation);
+                        break;
+                }
                 /*
                 if(mt.mapInfos[i] == 0)
                     Instantiate(prefab1, cubePosition, Quaternion.identity);

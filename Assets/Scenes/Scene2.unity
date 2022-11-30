@@ -416,7 +416,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: c85290217aef0864d95fed73736c7164, type: 2}
+  - {fileID: 2100000, guid: 7ad9c4653e1c259458909f58ababe2a0, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -455,7 +455,7 @@ Transform:
   m_GameObject: {fileID: 1028338054}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 10, y: 1, z: 10}
+  m_LocalScale: {x: 100, y: 1, z: 100}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -478,6 +478,7 @@ MonoBehaviour:
   chatLog: {fileID: 3156150361465879327}
   chattingList: {fileID: 0}
   input: {fileID: 3156150361238742994}
+  flag: 0
 --- !u!114 &1086118734
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1553,9 +1554,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d82bab379429fc44eaa8d7efd5e9fac3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  prefab1: {fileID: 194238, guid: 2d8b2b573ff5d1446ad22ce91ce6b07a, type: 3}
-  prefab2: {fileID: 131338, guid: 116737305aa4efa47a46823ce79fd449, type: 3}
-  prefab3: {fileID: 128788, guid: 0912ae1a0e5d8534f9347911cacbdc3e, type: 3}
+  prefabs:
+  - {fileID: 7586011778888054891, guid: 3fe23fdc87e41db47b57afb793187fa0, type: 3}
+  - {fileID: 141082, guid: 024b25fa4b8d0aa4c887fcd5e2324142, type: 3}
+  - {fileID: 194238, guid: 2d8b2b573ff5d1446ad22ce91ce6b07a, type: 3}
+  - {fileID: 193064, guid: 1304e9c16edcf5647b285a7357a404a8, type: 3}
+  - {fileID: 182984, guid: 08c9a4d48a0bffe4d8c1c7a0314de037, type: 3}
+  - {fileID: 118352, guid: abc3267f8e411394fa30664dcbf64546, type: 3}
+  - {fileID: 110834, guid: 5668aa894ea51e84786e2073020e7692, type: 3}
+  - {fileID: 125994, guid: 9dd17c2ce156b064f8d49a5d51e30af3, type: 3}
 --- !u!222 &3156150362984572450
 CanvasRenderer:
   m_ObjectHideFlags: 0

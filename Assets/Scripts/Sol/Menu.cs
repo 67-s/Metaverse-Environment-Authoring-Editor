@@ -33,15 +33,20 @@ public class Menu : GlobalEventListener
             //string matchName = Guid.NewGuid().ToString();
             PhotonRoomProperties props = new PhotonRoomProperties();
             MapInfoToken mt = new MapInfoToken();
-            List<GameObject> maps = GameObject.Find("Mediator").GetComponent<Mediator>().element.GetComponent<Installer>().Extract();
+            List<CreationData> maps = GameObject.Find("Mediator").GetComponent<Mediator>().element.GetComponent<Installer>().ExtractData();
 
             if(maps != null)
             {
                 foreach(var map in maps)
                 {
-                    mt.add(map.transform.position.x);
-                    mt.add(map.transform.position.y);
-                    mt.add(map.transform.position.z);
+                    mt.addByte((byte)map.Origin);
+                    mt.add(map.Target.transform.position.x);
+                    mt.add(map.Target.transform.position.y);
+                    mt.add(map.Target.transform.position.z);
+                    mt.add(map.Target.transform.rotation.x);
+                    mt.add(map.Target.transform.rotation.y);
+                    mt.add(map.Target.transform.rotation.z);
+                    mt.add(map.Target.transform.rotation.w);
                 }
             }
 

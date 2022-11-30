@@ -10,7 +10,7 @@ public class MapInfoToken : IProtocolToken
     public MapInfoToken()
     {
         cnt = 0;
-        mapInfos = new byte[4992];
+        mapInfos = new byte[4988];
     }
 
     public void add(float x)
@@ -22,6 +22,11 @@ public class MapInfoToken : IProtocolToken
         }
     }
 
+    public void addByte(byte x)
+    {
+        mapInfos[cnt++] = x;
+    }
+
     public void Write(UdpKit.UdpPacket packet)
     {
         packet.WriteByteArray(mapInfos);
@@ -30,6 +35,6 @@ public class MapInfoToken : IProtocolToken
 
     public void Read(UdpKit.UdpPacket packet)
     {
-        mapInfos = packet.ReadByteArray(4992);
+        mapInfos = packet.ReadByteArray(4988);
     }
 }

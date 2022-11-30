@@ -9,7 +9,8 @@ public class PersonBehaviour : EntityEventListener<IPersonState>
     Animator animator;
     Camera cam;
 
-
+    public static int plug = 0;
+    public static int plug_dance = 0;
     public override void Attached()
     {
         state.SetTransforms(state.PersonTransform, transform);
@@ -73,7 +74,7 @@ public class PersonBehaviour : EntityEventListener<IPersonState>
             rigid.AddForce(Vector3.up * 5.0f, ForceMode.Impulse);
         }
 
-        if(input.GetKeyDown(KeyCode.Return)
+        if(Input.GetKeyDown(KeyCode.Return))
         {
             //chat.input.ActivateInputField();
             //chatActivate = true;
@@ -91,13 +92,31 @@ public class PersonBehaviour : EntityEventListener<IPersonState>
             //animator.SetBool("hi", false);
         }
         //yhchon11
-        if (input.GetKeyDown(KeyCode.H))
+        if (Input.GetKey(KeyCode.H))
         {
-            animator.SetBool("hi", true);
+            if (plug == 0)
+            { 
+                animator.SetBool("hi", true);
+                plug = 1;
+            }
+            else if(plug==1)
+            {
+                animator.SetBool("hi", false);
+                plug = 0;
+            }
         }
-        if (input.GetKeyDown(KeyCode.D))
+        if (Input.GetKey(KeyCode.M))
         {
-            animator.SetBool("dance", true);
+            if (plug_dance == 0)
+            {
+                animator.SetBool("dance", true);
+                plug_dance = 1;
+            }
+            else if (plug_dance == 1)
+            {
+                animator.SetBool("dance", false);
+                plug_dance = 0;
+            }
         }
 
         //yhchon11
@@ -119,8 +138,8 @@ public class PersonBehaviour : EntityEventListener<IPersonState>
 
         }
 
-        cam.transform.position = newPosition;
-        */
+        //cam.transform.position = newPosition;
+        
     }
 
 }

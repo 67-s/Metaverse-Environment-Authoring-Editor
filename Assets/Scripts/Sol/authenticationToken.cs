@@ -4,18 +4,15 @@ using Photon.Bolt;
 
 public class authenticationToken : IProtocolToken
 {
-    public string roomName;
     public string password;
     public void Write(UdpKit.UdpPacket packet)
     {
-        packet.WriteString(roomName);
         packet.WriteString(password);
         //바이트 2개 붙이는거.
     }
 
     public void Read(UdpKit.UdpPacket packet)
     {
-        roomName = packet.ReadString();
         password = packet.ReadString();
     }
 }

@@ -145,7 +145,6 @@ public class Menu : GlobalEventListener
     public void JoinRoom(string pw)
     {
         authenticationToken at = new authenticationToken();
-        at.roomName = roomName;
         at.password = pw;
         BoltMatchmaking.JoinSession(roomName,(IProtocolToken)at);
     }

@@ -87,11 +87,6 @@ public class NetworkCallbacks : GlobalEventListener
             
         }
     }
-
-    public override void OnEvent(LogEvent evnt)
-    {
-        logMessages.Insert(0, evnt.Message);
-    }
    
     public override void ConnectRefused(UdpEndPoint endpoint, IProtocolToken token)
     {
@@ -103,10 +98,4 @@ public class NetworkCallbacks : GlobalEventListener
     {
         base.ConnectAttempt(endpoint, token);
     }
-    /*
-    public override void ConnectRequest(UdpEndPoint endpoint, IProtocolToken token)
-    {
-        base.ConnectRequest(endpoint, token);
-        BoltNetwork.Accept(endpoint);
-    }*/
 }

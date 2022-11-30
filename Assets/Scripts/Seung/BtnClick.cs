@@ -18,6 +18,9 @@ public class BtnClick : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 
 	CameraMove cameraMove;
 
+	Menu m;
+	bool attend = false;
+
 	public TMP_Text text;
 
 	private void Start()
@@ -25,6 +28,7 @@ public class BtnClick : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 		defaultScale = buttonScale.localScale;
 		cameraMove = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<CameraMove>();
 		roomObj = GameObject.Find("Mediator").GetComponent<Mediator>().element;
+		m = GameObject.Find("Canvas").GetComponent<Menu>();
 	}
 	public void BtnOnClick()
 	{
@@ -32,11 +36,15 @@ public class BtnClick : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 		{
 			case BtnType.Start:
 			case BtnType.MakeRoom:
-			case BtnType.AttendRoom:
 			case BtnType.Finished:
 			case BtnType.Back:
 				CanvasGroupOn(nextGroup);
 				CanvasGroupOff(currGroup);
+				if(attend)
+                {
+					attend = false;
+					m.ShutDown();
+                }
 				break;
 			case BtnType.EditRoomBack:
 				roomObj.SetActive(false);
@@ -80,7 +88,8 @@ public class BtnClick : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
                 }
 				break;
 			case BtnType.GotoMetaverse:
-				SceneLoader.LoadSceneHandle("Scene2");
+				//SceneLoader.LoadSceneHandle("Scene2");
+				m.StartAsServer();
 				break;
 			case BtnType.Quit:
 #if UNITY_EDITOR
@@ -89,9 +98,15 @@ public class BtnClick : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 		Application.Quit();
 #endif
 				break;
+			case BtnType.AttendRoom:
+				CanvasGroupOn(nextGroup);
+				CanvasGroupOff(currGroup);
+				attend = true;
+				m.StartAsClient();
+				break;
 			case BtnType.Access:
 				//비밀번호 받아오기
-				Debug.Log(text.text.ToString());
+				m.JoinRoom(text.text.ToString().Substring(0,text.text.ToString().Length-1));
 				break;
 		}
 	}

@@ -49,10 +49,6 @@ MonoBehaviour:
   zWidth: 0
   direction: 0
   seed: 0
-  treeSet:
-  - {fileID: 182984, guid: 08c9a4d48a0bffe4d8c1c7a0314de037, type: 3}
-  - {fileID: 118352, guid: abc3267f8e411394fa30664dcbf64546, type: 3}
-  - {fileID: 110834, guid: 5668aa894ea51e84786e2073020e7692, type: 3}
   numberOfTreePerTile: 5
 --- !u!1 &6243758530753648953
 GameObject:
@@ -70,7 +66,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &8692759056657718158
 Transform:
   m_ObjectHideFlags: 0
@@ -103,7 +99,6 @@ MonoBehaviour:
   zWidth: 0
   direction: 0
   seed: 0
-  floorPrefab: {fileID: 125994, guid: 9dd17c2ce156b064f8d49a5d51e30af3, type: 3}
 --- !u!1 &7988261959144437122
 GameObject:
   m_ObjectHideFlags: 0
@@ -153,9 +148,6 @@ MonoBehaviour:
   zWidth: 2
   direction: 0
   seed: 0
-  wallPrefab: {fileID: 141082, guid: 024b25fa4b8d0aa4c887fcd5e2324142, type: 3}
-  cornerPrefab: {fileID: 194238, guid: 2d8b2b573ff5d1446ad22ce91ce6b07a, type: 3}
-  floorPrefab: {fileID: 193064, guid: 1304e9c16edcf5647b285a7357a404a8, type: 3}
 --- !u!1 &8132737080229861582
 GameObject:
   m_ObjectHideFlags: 0
@@ -361,6 +353,7 @@ MonoBehaviour:
   - {fileID: 8132737080229861582}
   - {fileID: 7988261959144437122}
   - {fileID: 5748419187065534857}
+  - {fileID: 6243758530753648953}
   actionResize: 0
   actionResizeXSize: 0
   actionResizeZSize: 0

@@ -1,0 +1,65 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &5690280562061543164
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5690280562061543167}
+  - component: {fileID: 5690280562061543166}
+  m_Layer: 0
+  m_Name: Prefab Catalog
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5690280562061543167
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5690280562061543164}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.9145575, y: 20.648817, z: -40.782017}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5690280562061543166
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5690280562061543164}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8f90351ab6118c34cb0dbb3075dd7fa7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  prefabs:
+  - key: 0
+    gameObject: {fileID: 7586011778888054891, guid: 3fe23fdc87e41db47b57afb793187fa0, type: 3}
+  - key: 100
+    gameObject: {fileID: 141082, guid: 024b25fa4b8d0aa4c887fcd5e2324142, type: 3}
+  - key: 101
+    gameObject: {fileID: 194238, guid: 2d8b2b573ff5d1446ad22ce91ce6b07a, type: 3}
+  - key: 102
+    gameObject: {fileID: 193064, guid: 1304e9c16edcf5647b285a7357a404a8, type: 3}
+  - key: 200
+    gameObject: {fileID: 182984, guid: 08c9a4d48a0bffe4d8c1c7a0314de037, type: 3}
+  - key: 201
+    gameObject: {fileID: 118352, guid: abc3267f8e411394fa30664dcbf64546, type: 3}
+  - key: 202
+    gameObject: {fileID: 110834, guid: 5668aa894ea51e84786e2073020e7692, type: 3}
+  - key: 300
+    gameObject: {fileID: 125994, guid: 9dd17c2ce156b064f8d49a5d51e30af3, type: 3}
+  actionSpawn: 0
+  actionSpawnKey: 0

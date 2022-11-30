@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class ForestField : BuilderBase
 {
-    [SerializeField] private GameObject[] treeSet;
+    private static readonly int[] treeSet = {200, 201, 202};
     [SerializeField] private int numberOfTreePerTile = 3;
 
     // Start is called before the first frame update
@@ -49,7 +49,7 @@ public class ForestField : BuilderBase
                     //spawning object randomly in (xDiv, zDiv)
                     float xConst = 10f * xWidth / xDiv;
                     float zConst = 10f * zWidth / zDiv;
-                    GameObject target = treeSet[random.Next(treeSet.Length)];
+                    var target = treeSet[random.Next(treeSet.Length)];
                     Spawn(target,
                         new Vector3(
                                 xConst * (x + randf(random)),

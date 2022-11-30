@@ -18,6 +18,7 @@ public class Menu : GlobalEventListener
     {
         base.BoltStartBegin();
         BoltNetwork.RegisterTokenClass<MapInfoToken>();
+        BoltNetwork.RegisterTokenClass<authenticationToken>();
     }
     
     public override void BoltStartDone()
@@ -32,16 +33,18 @@ public class Menu : GlobalEventListener
             //string matchName = Guid.NewGuid().ToString();
             PhotonRoomProperties props = new PhotonRoomProperties();
             MapInfoToken mt = new MapInfoToken();
+            List<GameObject> maps = GameObject.Find("Mediator").GetComponent<Mediator>().element.GetComponent<Installer>().Extract();
 
-            /*
-            mt.mapInfos = new byte[10];
-            mt.mapInfos[0] = 5;
-            mt.mapInfos[1] = 5;
-            */
+            if(maps != null)
+            {
+                foreach(var map in maps)
+                {
+                    mt.add(map.transform.position.x);
+                    mt.add(map.transform.position.y);
+                    mt.add(map.transform.position.z);
+                }
+            }
 
-            for(int i=0; i<5000; ++i)
-                mt.add(i%3);
-            
             props.AddRoomProperty("roomName", roomName,true);
             props.AddRoomProperty("password", password);
             props.AddRoomProperty("connectionLimit", connectionLimit);
@@ -75,36 +78,30 @@ public class Menu : GlobalEventListener
             {
                 object Value = photonSession.Properties["roomName"];
                 rm = Value.ToString();
-                //Debug.Log("@@@@@roomName@@@@@: " + Value.ToString());
             }
             if (photonSession.Properties.ContainsKey("password"))
             {
                 object Value = photonSession.Properties["password"];
-                //Debug.Log("@@@@@password@@@@@: " + Value.ToString());
-                if (password != Value.ToString())
-                    continue;
             }
             if (photonSession.Properties.ContainsKey("connectionLimit"))
             {
                 object Value = photonSession.Properties["connectionLimit"];
-                //Debug.Log("@@@@@connectionLimit@@@@@: " + Value.ToString());
             }
             if (photonSession.Properties.ContainsKey("roomIntro"))
             {
                 object Value = photonSession.Properties["roomIntro"];
-                //Debug.Log("@@@@@roomIntro@@@@@: " + Value.ToString());
                 ri = Value.ToString();
             }
 
-
+            /*
             if (udpSession.HostName.Equals(roomName))
             {
                 if (udpSession.Source == UdpSessionSource.Photon)
                 {
-                    //BoltMatchmaking.JoinSession(udpSession);
+                    BoltMatchmaking.JoinSession(udpSession);
                 }
             }
-
+            */
 			roomList.WhenRoomCreated(rm,ri);
         }        
     }
@@ -134,9 +131,18 @@ public class Menu : GlobalEventListener
         BoltLauncher.StartClient();
     }
 
-    public void JoinRoom()
+    public void ShutDown()
     {
-        BoltMatchmaking.JoinSession(roomName);
+        BoltLauncher.Shutdown();
+    }
+
+
+    public void JoinRoom(string pw)
+    {
+        authenticationToken at = new authenticationToken();
+        at.roomName = roomName;
+        at.password = pw;
+        BoltMatchmaking.JoinSession(roomName,(IProtocolToken)at);
     }
 
     public List<string> GetRoomNames()

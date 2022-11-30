@@ -1,41 +1,31 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Photon.Bolt;
-using System.Net;
 
 public class PersonBehaviour : EntityEventListener<IPersonState>
 {
     Rigidbody rigid;
     Animator animator;
     Camera cam;
-    Chatting chat;
 
 
-    public static bool chatActivate = false;
     public override void Attached()
     {
-        
         state.SetTransforms(state.PersonTransform, transform);
         rigid = GetComponent<Rigidbody>();
         animator = GetComponent<Animator>();
         state.SetAnimator(animator);
         cam = GameObject.FindObjectOfType<Camera>();
-        chat = GameObject.Find("Canvas").GetComponent<Chatting>();
 
         Vector3 newPosition = transform.position;
         newPosition.y += 8.0f;
-        newPosition.z -= 5.0f;
+        newPosition.z -= 10.0f;
         cam.transform.position = newPosition;
     }
 
     public override void SimulateOwner()
     {
-        
-        if (chatActivate) { 
-            //Debug.Log("ccccccccccccc");
-            return; 
-        }
         var speed = 4f;
         var movement = Vector3.zero;
         if (Input.GetKey(KeyCode.W)) { 
@@ -83,7 +73,7 @@ public class PersonBehaviour : EntityEventListener<IPersonState>
             rigid.AddForce(Vector3.up * 5.0f, ForceMode.Impulse);
         }
 
-        if (Input.GetKeyDown(KeyCode.Return))
+        if(input.GetKeyDown(KeyCode.Return)
         {
             //chat.input.ActivateInputField();
             //chatActivate = true;
@@ -92,7 +82,7 @@ public class PersonBehaviour : EntityEventListener<IPersonState>
 
         if (movement.x != 0.0f || movement.z != 0.0f)
         {
-            animator.SetBool("isRun", true);   
+            animator.SetBool("isRun", true);
         }
         else
         {
@@ -101,16 +91,17 @@ public class PersonBehaviour : EntityEventListener<IPersonState>
             //animator.SetBool("hi", false);
         }
         //yhchon11
-        
-        if (Input.GetKeyDown(KeyCode.H))
+        if (input.GetKeyDown(KeyCode.H))
         {
             animator.SetBool("hi", true);
         }
-        if (Input.GetKeyDown(KeyCode.D))
+        if (input.GetKeyDown(KeyCode.D))
         {
             animator.SetBool("dance", true);
         }
 
+        //yhchon11
+        
         float temp =15f;
         Vector3 cam_position = new Vector3(cam.transform.position.x-transform.position.x,cam.transform.position.y-transform.position.y,cam.transform.position.z-transform.position.z);
         
@@ -128,6 +119,8 @@ public class PersonBehaviour : EntityEventListener<IPersonState>
 
         }
 
+        cam.transform.position = newPosition;
+        */
     }
 
 }

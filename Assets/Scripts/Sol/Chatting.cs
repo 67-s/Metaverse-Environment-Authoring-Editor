@@ -55,11 +55,11 @@ public class Chatting : GlobalEventListener
             input.Select();
             input.text = "";
             
-            /*if (PersonBehaviour.chatActivate) { input.DeactivateInputField(); PersonBehaviour.chatActivate = false; }
+            if (PersonBehaviour.chatActivate) { input.DeactivateInputField(); PersonBehaviour.chatActivate = false; }
             else
             {
                 input.ActivateInputField();PersonBehaviour.chatActivate = true;
-            }*/
+            }
 
             //PersonBehaviour.chatActivate = false;
             //Debug.Log("update");

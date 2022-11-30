@@ -11,6 +11,7 @@ public class PersonBehaviour : EntityEventListener<IPersonState>
 
     public static int plug = 0;
     public static int plug_dance = 0;
+    public static bool chatActivate = false;
     public override void Attached()
     {
         state.SetTransforms(state.PersonTransform, transform);
@@ -29,6 +30,7 @@ public class PersonBehaviour : EntityEventListener<IPersonState>
     {
         var speed = 4f;
         var movement = Vector3.zero;
+        if (chatActivate) return;
         if (Input.GetKey(KeyCode.W)) { 
             movement.z += 1;
             transform.eulerAngles = new Vector3(0, 0, 0);
@@ -71,14 +73,7 @@ public class PersonBehaviour : EntityEventListener<IPersonState>
 
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            rigid.AddForce(Vector3.up * 5.0f, ForceMode.Impulse);
-        }
-
-        if(Input.GetKeyDown(KeyCode.Return))
-        {
-            //chat.input.ActivateInputField();
-            //chatActivate = true;
-            //Debug.Log("pppppppppppp");
+            rigid.AddForce(Vector3.up * 10.0f, ForceMode.Impulse);
         }
 
         if (movement.x != 0.0f || movement.z != 0.0f)
@@ -91,8 +86,10 @@ public class PersonBehaviour : EntityEventListener<IPersonState>
             animator.SetBool("isRun", false);
             //animator.SetBool("hi", false);
         }
+
+
         //yhchon11
-        if (Input.GetKey(KeyCode.H))
+        if ( Input.GetKeyDown(KeyCode.H))
         {
             if (plug == 0)
             { 
@@ -105,7 +102,7 @@ public class PersonBehaviour : EntityEventListener<IPersonState>
                 plug = 0;
             }
         }
-        if (Input.GetKey(KeyCode.M))
+        if (Input.GetKeyDown(KeyCode.M))
         {
             if (plug_dance == 0)
             {

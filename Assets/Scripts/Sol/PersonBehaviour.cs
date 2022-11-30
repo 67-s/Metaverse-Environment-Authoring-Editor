@@ -41,6 +41,7 @@ public class PersonBehaviour : EntityEventListener<IPersonState>
         if (Input.GetKey(KeyCode.W)) { 
             movement.z += 1;
             transform.eulerAngles = new Vector3(0, 0, 0);
+            //animator.SetBool("hi", false);
         }
         if (Input.GetKey(KeyCode.S)) {
             movement.z -= 1; 
@@ -91,15 +92,25 @@ public class PersonBehaviour : EntityEventListener<IPersonState>
 
         if (movement.x != 0.0f || movement.z != 0.0f)
         {
-            animator.SetBool("isRun", true);
+            animator.SetBool("isRun", true);   
         }
         else
         {
+            //animator.SetBool("hi", false);
             animator.SetBool("isRun", false);
+            //animator.SetBool("hi", false);
         }
-
         //yhchon11
         
+        if (Input.GetKeyDown(KeyCode.H))
+        {
+            animator.SetBool("hi", true);
+        }
+        if (Input.GetKeyDown(KeyCode.D))
+        {
+            animator.SetBool("dance", true);
+        }
+
         float temp =15f;
         Vector3 cam_position = new Vector3(cam.transform.position.x-transform.position.x,cam.transform.position.y-transform.position.y,cam.transform.position.z-transform.position.z);
         

@@ -47,7 +47,7 @@ public class NetworkCallbacks : GlobalEventListener
 
                 var position = new Vector3(x,y,z);
                 var rotation = new Quaternion(rx, ry, rz,rw);
-
+                
                 switch(prefab)
                 {
                     case 0:
@@ -75,14 +75,7 @@ public class NetworkCallbacks : GlobalEventListener
                         Instantiate(prefabs[7], position, rotation);
                         break;
                 }
-                /*
-                if(mt.mapInfos[i] == 0)
-                    Instantiate(prefab1, cubePosition, Quaternion.identity);
-                else if (mt.mapInfos[i] == 1)
-                    Instantiate(prefab2, cubePosition, Quaternion.identity);
-                else
-                    Instantiate(prefab3, cubePosition, Quaternion.identity);
-                */
+                
             }
             
         }

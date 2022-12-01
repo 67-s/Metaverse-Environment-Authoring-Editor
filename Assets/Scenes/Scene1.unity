@@ -2407,9 +2407,9 @@ CanvasGroup:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 73968323}
   m_Enabled: 1
-  m_Alpha: 1
-  m_Interactable: 1
-  m_BlocksRaycasts: 1
+  m_Alpha: 0
+  m_Interactable: 0
+  m_BlocksRaycasts: 0
   m_IgnoreParentGroups: 0
 --- !u!114 &73968326
 MonoBehaviour:
@@ -19758,9 +19758,9 @@ CanvasGroup:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 956036348}
   m_Enabled: 1
-  m_Alpha: 0
+  m_Alpha: 1
   m_Interactable: 1
-  m_BlocksRaycasts: 0
+  m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 0
 --- !u!114 &956036351
 MonoBehaviour:
@@ -22990,7 +22990,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1119044450}
   - component: {fileID: 1119044449}
-  - component: {fileID: 1119044448}
   m_Layer: 0
   m_Name: CharacterCamera
   m_TagString: Untagged
@@ -22998,14 +22997,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!81 &1119044448
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1119044447}
-  m_Enabled: 1
 --- !u!20 &1119044449
 Camera:
   m_ObjectHideFlags: 0

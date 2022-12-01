@@ -8,14 +8,38 @@ public class PrefabObj : MonoBehaviour
 	Material outline;
 	Renderer renderers;
 	List<Material> materialList = new List<Material>();
+	bool selected = false;
 
 	void Start()
 	{
 		outline = new Material(Shader.Find("Outlined/NewOcclusionOutline"));
 	}
+	private void Update()
+	{
+		if (selected && Input.GetMouseButtonDown(1))
+		{
+			transform.eulerAngles = new Vector3(0,90,0) + transform.eulerAngles;
+		}
+
+		float wheelInput = Input.GetAxis("Mouse ScrollWheel");
+		if (selected && wheelInput > 0)
+		{
+			transform.localScale += new Vector3(0.1f, 0.1f, 0.1f);
+		}
+		else if (wheelInput < 0)
+		{
+			transform.localScale -= new Vector3(0.1f, 0.1f, 0.1f);
+		}
+
+		if (selected && Input.GetKeyDown(KeyCode.D))
+		{
+			Destroy(gameObject);
+		}
+	}
 
 	private void OnMouseDown()
 	{
+		selected = true;
 		if (!ColorBtn.colorFlag)
 		{
 			renderers = this.GetComponent<Renderer>();
@@ -56,6 +80,8 @@ public class PrefabObj : MonoBehaviour
 		{
 			ColorBtn.colorFlag = false;
 		}
+
+		selected = false;
 	}
 
 	public void OnMouseDrag()

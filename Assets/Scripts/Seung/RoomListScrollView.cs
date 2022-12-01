@@ -10,6 +10,7 @@ public class RoomListScrollView : MonoBehaviour
 	public GameObject roomContent;
 	private static int roomCount = 0;
 	private Dictionary<string, GameObject> roomLists = new Dictionary<string, GameObject>();
+	private static string selectedRoomName = null;
 
 	public void WhenRoomCreated(string roomName, string roomIntro)
 	{
@@ -42,11 +43,18 @@ public class RoomListScrollView : MonoBehaviour
 		{
 			roomCount--;
 			btnText.text = "";
+			selectedRoomName = currObject.name;
 		}
 		else if (roomCount == 0)
 		{
 			btnText.text = "O";
 			roomCount++;
+			selectedRoomName = null;
 		}
+	}
+
+	public string GetSelectedRoomName()
+	{
+		return selectedRoomName;
 	}
 }

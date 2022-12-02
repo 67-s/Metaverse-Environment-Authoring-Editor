@@ -16,6 +16,15 @@ MonoBehaviour:
   Prefabs:
   - {fileID: 0}
   - {fileID: 7162513569287457536, guid: 0638195c4f0f7974aa05342fa2ac227f, type: 3}
+  - {fileID: 1481911021682527131, guid: 0b568f39c4eadbc47b023ace1066cd13, type: 3}
+  - {fileID: 5922184155180251546, guid: 4511b61008e1db64285fa4c84f81f540, type: 3}
+  - {fileID: 4625956039010664151, guid: e31f627b23ddb0941a2a6781bcfa6f41, type: 3}
+  - {fileID: 4291044877630742796, guid: 6012fd3ff17e5f74cb268cce5eee9bcd, type: 3}
+  - {fileID: 7126483378491798447, guid: 2d7f310e3e054c64692327f588bb3c08, type: 3}
+  - {fileID: 3028663495564269958, guid: 88ca510dafa3a8842b62a1c17662146c, type: 3}
+  - {fileID: 8054105317727217433, guid: debf17d9a4aacdf4d94e609c1c9b28e1, type: 3}
+  - {fileID: 874070575788199436, guid: a12ec8e5d3bc16c4881cdb5daf1038af, type: 3}
+  - {fileID: 6893560147234267463, guid: 5c4e5a861ed8d154b92b76bf5ea855c1, type: 3}
   - {fileID: 5296653459994946401, guid: eedb7abee4e1eae42a6a9583c9dd178f, type: 3}
   - {fileID: 5299217392147575579, guid: 6beedaba1fadeb04dac09d91d707e64d, type: 3}
   SearchPaths: []

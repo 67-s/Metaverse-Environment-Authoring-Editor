@@ -13,6 +13,7 @@ public class Menu : GlobalEventListener
     string password;
     int connectionLimit;
     string roomIntro;
+    RoomListScrollView roomList;
 
     public override void BoltStartBegin()
     {
@@ -27,6 +28,7 @@ public class Menu : GlobalEventListener
         password = GameObject.Find("RmPwdInputField").GetComponent<RoomData>().GetPassword();
         connectionLimit = GameObject.Find("RmLimitNumberInputField").GetComponent<RoomData>().GetNumberOfPeople();
         roomIntro = GameObject.Find("RmIntroInputField").GetComponent<RoomData>().GetIntro();
+        roomList = GameObject.Find("RoomList").GetComponentInChildren<RoomListScrollView>();
 
         if (BoltNetwork.IsServer)
         {
@@ -68,7 +70,7 @@ public class Menu : GlobalEventListener
     {
         Debug.LogFormat("Session list updated: {0} total sessions", sessionList.Count);
 
-        RoomListScrollView roomList = GameObject.Find("RoomList").GetComponentInChildren<RoomListScrollView>();
+        //RoomListScrollView roomList = GameObject.Find("RoomList").GetComponentInChildren<RoomListScrollView>();
         roomList.ClearList();
 
         foreach (var session in sessionList)

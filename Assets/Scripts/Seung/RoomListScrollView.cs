@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
@@ -43,13 +44,13 @@ public class RoomListScrollView : MonoBehaviour
 		{
 			roomCount--;
 			btnText.text = "";
-			selectedRoomName = currObject.name;
+			selectedRoomName = null;
 		}
 		else if (roomCount == 0)
 		{
 			btnText.text = "O";
 			roomCount++;
-			selectedRoomName = null;
+			selectedRoomName = currObject.transform.parent.gameObject.GetComponentInChildren<TMP_Text>().text.Split(":")[0];
 		}
 	}
 

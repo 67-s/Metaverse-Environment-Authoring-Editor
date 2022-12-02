@@ -17,15 +17,6 @@ public abstract class BuilderBase : MonoBehaviour
     [SerializeField] protected int seed;
 
     /*
-     * This is the list of GameObjects spawned by BuilderBase.Spawn().
-     * It will be returned;
-     * (These properties are deprecated and soon be deleted)
-     */
-    private readonly List<GameObject> ingredients = new();
-    public IList<GameObject> Ingredients => ingredients.AsReadOnly();
-
-
-    /*
      * Object Management: Contains prefab.
      * Finds them using int32 type key.
      */
@@ -79,7 +70,6 @@ public abstract class BuilderBase : MonoBehaviour
         GameObject target = Instantiate(prefab, transform);
         target.transform.localPosition = position;
         target.transform.Rotate(Vector3.up, angle);
-        ingredients.Add(target);/*TODO: erase it*/
 
         /*insert data*/
         CreationData data = new()

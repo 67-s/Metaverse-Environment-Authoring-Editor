@@ -193,20 +193,6 @@ public class Installer : MonoBehaviour
         return count;
     }
 
-    // extract all of the Gameobjects that have mesh.
-    [Obsolete("Installer.cs: The method Installer.Extract() is deprecated.")]
-    public List<GameObject> Extract()
-    {
-        List<GameObject> list = new();
-        
-        //extract copied objects from buildings
-        foreach(var keyValue in buildList)
-            list.AddRange(keyValue.Value.gameObject.GetComponent<BuilderBase>().Ingredients);
-        
-        //return the list of the object
-        return list;
-    }
-
 
     // extract all of the CreationData.
     public List<CreationData> ExtractData()

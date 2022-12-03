@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class ForestField : BuilderBase
 {
-    private static readonly int[] treeSet = {200, 201, 202};
+    [SerializeField] private int[] treeSet = {20, 21, 22};
     [SerializeField] private int numberOfTreePerTile = 3;
 
     // Start is called before the first frame update

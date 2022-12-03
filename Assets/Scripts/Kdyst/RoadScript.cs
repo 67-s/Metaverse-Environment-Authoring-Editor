@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class RoadScript : BuilderBase
 {
-    private const int floorPrefab = 300;
+    [SerializeField] private int floorPrefab = 30;
 
     // Start is called before the first frame update
     void Start()

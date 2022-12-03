@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class OpenCoveredHouse : BuilderBase
 {
-    private const int wallPrefab = 100;
-    private const int cornerPrefab = 101;
-    private const int floorPrefab = 102;
+    [SerializeField] private int wallPrefab = 10;
+    [SerializeField] private int cornerPrefab = 11;
+    [SerializeField] private int floorPrefab = 12;
 
     // Start is called before the first frame update
     void Start()

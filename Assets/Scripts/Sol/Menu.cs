@@ -144,11 +144,12 @@ public class Menu : GlobalEventListener
     }
 
 
-    public void JoinRoom(string pw)
+    public void JoinRoom(string rm,string pw)
     {
         authenticationToken at = new authenticationToken();
         at.password = pw;
-        BoltMatchmaking.JoinSession(roomName,(IProtocolToken)at);
+        Debug.Log(rm.Length+":"+rm);
+        BoltMatchmaking.JoinSession(rm,(IProtocolToken)at);
     }
 
     public List<string> GetRoomNames()

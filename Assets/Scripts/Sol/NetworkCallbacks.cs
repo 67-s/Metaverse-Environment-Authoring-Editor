@@ -45,7 +45,7 @@ public class NetworkCallbacks : GlobalEventListener
                 float rz = System.BitConverter.ToSingle(bytesRZ, 0);
                 float rw = System.BitConverter.ToSingle(bytesRW, 0);
 
-                var position = new Vector3(x,y,z);
+                var position = new Vector3(x,y,z) * 3.0f;
                 var rotation = new Quaternion(rx, ry, rz,rw);
                 
                 switch(prefab)

@@ -16,10 +16,42 @@ public class NetworkCallbacks : GlobalEventListener
         base.SceneLoadLocalDone(scene, token);
 
         //캐릭터 생성 부분
-        
         var spawnPosition = new Vector3(Random.Range(-8, 8), 0.0f, Random.Range(-8, 8));
 
-        BoltNetwork.Instantiate(BoltPrefabs.Ch_01, spawnPosition, Quaternion.identity);
+        switch (CharacterModelCamMove.GetCharacterIdx())
+        {
+            case 0:
+                BoltNetwork.Instantiate(BoltPrefabs.Ch_01, spawnPosition, Quaternion.identity);
+                break;
+            case 1:
+                BoltNetwork.Instantiate(BoltPrefabs.Ch_02, spawnPosition, Quaternion.identity);
+                break;
+            case 2:
+                BoltNetwork.Instantiate(BoltPrefabs.Ch_03, spawnPosition, Quaternion.identity);
+                break;
+            case 3:
+                BoltNetwork.Instantiate(BoltPrefabs.Ch_04, spawnPosition, Quaternion.identity);
+                break;
+            case 4:
+                BoltNetwork.Instantiate(BoltPrefabs.Ch_05, spawnPosition, Quaternion.identity);
+                break;
+            case 5:
+                BoltNetwork.Instantiate(BoltPrefabs.Ch_06, spawnPosition, Quaternion.identity);
+                break;
+            case 6:
+                BoltNetwork.Instantiate(BoltPrefabs.Ch_07, spawnPosition, Quaternion.identity);
+                break;
+            case 7:
+                BoltNetwork.Instantiate(BoltPrefabs.Ch_08, spawnPosition, Quaternion.identity);
+                break;
+            case 8:
+                BoltNetwork.Instantiate(BoltPrefabs.Ch_09, spawnPosition, Quaternion.identity);
+                break;
+            case 9:
+                BoltNetwork.Instantiate(BoltPrefabs.Ch_10, spawnPosition, Quaternion.identity);
+                break;
+
+        }
 
         MapInfoToken mt = token as MapInfoToken;
 

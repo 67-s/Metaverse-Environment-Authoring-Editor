@@ -105,9 +105,9 @@ public class BtnClick : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 				m.StartAsClient();
 				break;
 			case BtnType.Access:
-				//비밀번호 받아오기
-				Debug.Log(GameObject.Find("RoomList").GetComponentInChildren<RoomListScrollView>().GetSelectedRoomName());
-				m.JoinRoom(text.text.ToString().Substring(0,text.text.ToString().Length-1));
+				string rm = GameObject.Find("RoomList").GetComponentInChildren<RoomListScrollView>().GetSelectedRoomName();
+				m.JoinRoom(rm.Substring(0,rm.Length-1),
+					text.text.ToString().Substring(0,text.text.ToString().Length-1));
 				break;
 		}
 	}

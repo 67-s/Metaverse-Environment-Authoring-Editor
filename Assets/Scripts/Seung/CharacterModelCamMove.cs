@@ -33,7 +33,7 @@ public class CharacterModelCamMove : MonoBehaviour
 			cam.transform.position += new Vector3(-10, 0, 0);
 	}
 
-	public int GetCharacterIdx()
+	static public int GetCharacterIdx()
 	{
 		return characterIdx;
 	}

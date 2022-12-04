@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028334, g: 0.2257134, b: 0.30692226, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028305, g: 0.22571313, b: 0.3069213, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -2952,7 +2952,6 @@ GameObject:
   - component: {fileID: 79581387}
   - component: {fileID: 79581386}
   - component: {fileID: 79581391}
-  - component: {fileID: 79581390}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -3047,18 +3046,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
---- !u!114 &79581390
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 79581385}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d79af0a763f2b4260aa3fbc0f2972d0b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &79581391
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -18398,7 +18385,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8605057654363716649, guid: 0638195c4f0f7974aa05342fa2ac227f, type: 3}
       propertyPath: m_UseGravity
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8675822793788598463, guid: 0638195c4f0f7974aa05342fa2ac227f, type: 3}
       propertyPath: m_RootOrder
@@ -18959,6 +18946,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 920968486}
+  - component: {fileID: 920968487}
   m_Layer: 0
   m_Name: CharacterModel
   m_TagString: Untagged
@@ -18991,6 +18979,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &920968487
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 920968485}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 28bdb5b5a31d90d41a79c312b28e982f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &922235898
 GameObject:
   m_ObjectHideFlags: 0

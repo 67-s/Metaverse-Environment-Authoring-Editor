@@ -1,3 +1,4 @@
+using System;
 using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -32,6 +33,16 @@ public class BuildListScrollView : MonoBehaviour
 		GameObject currObject = EventSystem.current.currentSelectedGameObject.transform.parent.gameObject;
 		Area currArea = currObject.GetComponent<BuildContent>().Area;
 
+		{
+			int x = Math.Min(currArea.FstRow, currArea.SndRow);
+			int z = Math.Min(currArea.FstCol, currArea.SndCol);
+			int xWidth = Math.Abs(currArea.FstRow - currArea.SndRow) + 1;
+			int zWidth = Math.Abs(currArea.FstCol - currArea.SndCol) + 1;
+			GameObject.Find("Mediator")
+				.GetComponent<Mediator>().element
+				.GetComponent<Installer>()
+				.Remove(x, z, xWidth, zWidth);
+		}
 		twoDiMap.DelBuildArea(currArea, true);
 		miniMap.DelBuildArea(currArea, false);
 		Destroy(currObject);

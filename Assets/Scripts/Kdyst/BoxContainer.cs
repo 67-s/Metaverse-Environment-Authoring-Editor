@@ -8,7 +8,7 @@ public class BoxContainer : BuilderBase
     public float marginRatio = 0.01f;
     public float heightRatio = 1.2f;
 
-    private const int whiteBoxID = 0;
+    [SerializeField] private int whiteBoxID = 0;
 
     // Start is called before the first frame update
     void Start()

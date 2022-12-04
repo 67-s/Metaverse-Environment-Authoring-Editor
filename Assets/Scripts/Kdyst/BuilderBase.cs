@@ -13,17 +13,7 @@ public abstract class BuilderBase : MonoBehaviour
     [SerializeField] protected int xWidth;
     [SerializeField] protected int zWidth;
 
-    [SerializeField] protected EBuildDirection direction;
     [SerializeField] protected int seed;
-
-    /*
-     * This is the list of GameObjects spawned by BuilderBase.Spawn().
-     * It will be returned;
-     * (These properties are deprecated and soon be deleted)
-     */
-    private readonly List<GameObject> ingredients = new();
-    public IList<GameObject> Ingredients => ingredients.AsReadOnly();
-
 
     /*
      * Object Management: Contains prefab.
@@ -50,11 +40,6 @@ public abstract class BuilderBase : MonoBehaviour
         return this;
     }
 
-    public BuilderBase SetDirection(EBuildDirection direction)
-    {
-        this.direction = direction;
-        return this;
-    }
 
     public BuilderBase SetSeed(int seed)
     {
@@ -75,11 +60,16 @@ public abstract class BuilderBase : MonoBehaviour
      */
     protected void Spawn(int key, Vector3 position, float angle)
     {
+        Spawn(key, position, Vector3.one, angle);
+    }
+
+    protected void Spawn(int key, Vector3 position, Vector3 scale, float angle)
+    {
         GameObject prefab = prefabCatalog.Find(key);
         GameObject target = Instantiate(prefab, transform);
         target.transform.localPosition = position;
+        target.transform.localScale = scale;
         target.transform.Rotate(Vector3.up, angle);
-        ingredients.Add(target);/*TODO: erase it*/
 
         /*insert data*/
         CreationData data = new()

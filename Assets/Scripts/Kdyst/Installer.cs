@@ -3,6 +3,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
+using Newtonsoft.Json.Bson;
+using JetBrains.Annotations;
 
 public class Installer : MonoBehaviour
 {
@@ -47,6 +49,8 @@ public class Installer : MonoBehaviour
     //Count of tiles and buildings
     public int NumberOfTileTypes => tileSet.Length;
     public int NumberOfBuildingTypes => buildSet.Length;
+
+
 
     //Make a clone of the gameObject and place it
     GameObject CloneTile(int x, int z, int key)
@@ -129,7 +133,7 @@ public class Installer : MonoBehaviour
     }
 
     //construct new building
-    public bool Build(int x, int z, int xWidth, int zWidth, int key, EBuildDirection direction = EBuildDirection.North)
+    public bool Build(int x, int z, int xWidth, int zWidth, int key)
     {
         //exceptions
         if (!Verify(x, z, xWidth, zWidth))
@@ -154,7 +158,6 @@ public class Installer : MonoBehaviour
             target.GetComponent<BuilderBase>()
                 .SetUnit(tileLength)
                 .SetGrid(xWidth, zWidth)
-                .SetDirection(direction)
                 .SetSeed(seed)
                 .SetPrefabCatalog(GameObject.Find("Prefab Catalog").GetComponent<PrefabCatalog>());
             target.transform.Translate(new Vector3(x, 0, z) * tileLength);
@@ -193,18 +196,23 @@ public class Installer : MonoBehaviour
         return count;
     }
 
-    // extract all of the Gameobjects that have mesh.
-    [Obsolete("Installer.cs: The method Installer.Extract() is deprecated.")]
-    public List<GameObject> Extract()
+
+    /*
+     * Manage Additional GameObject In this field
+     */
+    
+    //Additional Data of Objects
+    private readonly Dictionary<int, CreationData> additionalData = new();
+    private int additionalDataID = 0;
+    public int AdditionalData_Add(CreationData creationData)
     {
-        List<GameObject> list = new();
-        
-        //extract copied objects from buildings
-        foreach(var keyValue in buildList)
-            list.AddRange(keyValue.Value.gameObject.GetComponent<BuilderBase>().Ingredients);
-        
-        //return the list of the object
-        return list;
+        additionalData.Add(additionalDataID, creationData);
+        return additionalDataID++;
+    }
+    public void AdditionalData_Remove(int key)
+    {
+        if (additionalData.ContainsKey(key))
+            additionalData.Remove(key);
     }
 
 
@@ -216,6 +224,8 @@ public class Installer : MonoBehaviour
         //extract copied objects from buildings
         foreach (var KeyValue in buildList)
             list.AddRange(KeyValue.Value.gameObject.GetComponent<BuilderBase>().CreationDatas);
+
+        list.AddRange(additionalData.Values);//additional data
 
         return list;
     }
@@ -242,11 +252,18 @@ public class Installer : MonoBehaviour
     public int actionBuildX, actionBuildZ;
     public int actionBuildXWidth, actionBuildZWidth;
     public int actionBuildKey;
-    public EBuildDirection actionBuildDirection;
 
     public bool actionRemove = false;
     public int actionRemoveX, actionRemoveZ;
     public int actionRemoveXWidth, actionRemoveZWidth;
+
+    public bool actionInclude = false;
+    public GameObject actionIncludeObject;
+
+    public bool actionExclude = false;
+    public int actionExcludeKey;
+
+    public bool actionExtract = false;
 
     // Update is called once per frame
     void Update()
@@ -264,12 +281,31 @@ public class Installer : MonoBehaviour
         if(actionBuild)
         {
             actionBuild = false;
-            Build(actionBuildX, actionBuildZ, actionBuildXWidth, actionBuildZWidth, actionBuildKey, actionBuildDirection);
+            Build(actionBuildX, actionBuildZ, actionBuildXWidth, actionBuildZWidth, actionBuildKey);
         }
         if(actionRemove)
         {
             actionRemove = false;
             Remove(actionRemoveX, actionRemoveZ, actionRemoveXWidth, actionRemoveZWidth);
+        }
+        if (actionInclude)
+        {
+            actionInclude = false;
+            int key = AdditionalData_Add(new CreationData() { Target = actionIncludeObject, Origin = -additionalDataID });
+            Debug.Log("Kdyst/Installer.cs: Testmode ActionInclude read (key = " + key + ")");
+        }
+        if(actionExclude)
+        {
+            actionExclude = false;
+            AdditionalData_Remove(actionExcludeKey);
+        }
+        if(actionExtract)
+        {
+            actionExtract = false;
+            foreach(var cd in ExtractData())
+            {
+                Debug.Log("Kdyst/Installer.cs: Extract Mode read (Origin = " + cd.Origin + ", pos.x = " + cd.Target.transform.position.x + ")");
+            }
         }
     }
 }

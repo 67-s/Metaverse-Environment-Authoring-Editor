@@ -66,9 +66,15 @@ public abstract class BuilderBase : MonoBehaviour
      */
     protected void Spawn(int key, Vector3 position, float angle)
     {
+        Spawn(key, position, Vector3.one, angle);
+    }
+
+    protected void Spawn(int key, Vector3 position, Vector3 scale, float angle)
+    {
         GameObject prefab = prefabCatalog.Find(key);
         GameObject target = Instantiate(prefab, transform);
         target.transform.localPosition = position;
+        target.transform.localScale = scale;
         target.transform.Rotate(Vector3.up, angle);
 
         /*insert data*/

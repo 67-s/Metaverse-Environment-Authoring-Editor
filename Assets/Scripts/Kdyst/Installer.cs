@@ -129,7 +129,7 @@ public class Installer : MonoBehaviour
     }
 
     //construct new building
-    public bool Build(int x, int z, int xWidth, int zWidth, int key, EBuildDirection direction = EBuildDirection.North)
+    public bool Build(int x, int z, int xWidth, int zWidth, int key)
     {
         //exceptions
         if (!Verify(x, z, xWidth, zWidth))
@@ -154,7 +154,6 @@ public class Installer : MonoBehaviour
             target.GetComponent<BuilderBase>()
                 .SetUnit(tileLength)
                 .SetGrid(xWidth, zWidth)
-                .SetDirection(direction)
                 .SetSeed(seed)
                 .SetPrefabCatalog(GameObject.Find("Prefab Catalog").GetComponent<PrefabCatalog>());
             target.transform.Translate(new Vector3(x, 0, z) * tileLength);
@@ -228,7 +227,6 @@ public class Installer : MonoBehaviour
     public int actionBuildX, actionBuildZ;
     public int actionBuildXWidth, actionBuildZWidth;
     public int actionBuildKey;
-    public EBuildDirection actionBuildDirection;
 
     public bool actionRemove = false;
     public int actionRemoveX, actionRemoveZ;
@@ -250,7 +248,7 @@ public class Installer : MonoBehaviour
         if(actionBuild)
         {
             actionBuild = false;
-            Build(actionBuildX, actionBuildZ, actionBuildXWidth, actionBuildZWidth, actionBuildKey, actionBuildDirection);
+            Build(actionBuildX, actionBuildZ, actionBuildXWidth, actionBuildZWidth, actionBuildKey);
         }
         if(actionRemove)
         {

@@ -13,7 +13,6 @@ public abstract class BuilderBase : MonoBehaviour
     [SerializeField] protected int xWidth;
     [SerializeField] protected int zWidth;
 
-    [SerializeField] protected EBuildDirection direction;
     [SerializeField] protected int seed;
 
     /*
@@ -41,11 +40,6 @@ public abstract class BuilderBase : MonoBehaviour
         return this;
     }
 
-    public BuilderBase SetDirection(EBuildDirection direction)
-    {
-        this.direction = direction;
-        return this;
-    }
 
     public BuilderBase SetSeed(int seed)
     {

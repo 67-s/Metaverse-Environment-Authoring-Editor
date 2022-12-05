@@ -10,11 +10,12 @@ public class NetworkCallbacks : GlobalEventListener
 {
     List<string> logMessages = new List<string>();
     public List<GameObject> prefabs;
+    PrefabCatalog prefabList;
 
     public override void SceneLoadLocalDone(string scene, IProtocolToken token)
     {
         base.SceneLoadLocalDone(scene, token);
-
+        prefabList = GameObject.Find("Prefab Catalog").GetComponent<PrefabCatalog>();
         //캐릭터 생성 부분
         var spawnPosition = new Vector3(Random.Range(-8, 8), 0.0f, Random.Range(-8, 8));
 
@@ -79,35 +80,37 @@ public class NetworkCallbacks : GlobalEventListener
 
                 var position = new Vector3(x,y,z) * 3.0f;
                 var rotation = new Quaternion(rx, ry, rz,rw);
-                
-                switch(prefab)
+
+                Instantiate(prefabList.Find(prefab), position, rotation);
+                /*
+                switch (prefab)
                 {
                     case 0:
                         Instantiate(prefabs[0], position, rotation);
                         break;
-                    case 100:
+                    case 10:
                         Instantiate(prefabs[1], position, rotation);
                         break;
-                    case 101:
+                    case 11:
                         Instantiate(prefabs[2], position, rotation);
                         break;
-                    case 102:
+                    case 12:
                         Instantiate(prefabs[3], position, rotation);
                         break;
-                    case 200:
+                    case 20:
                         Instantiate(prefabs[4], position, rotation);
                         break;
-                    case 201:
+                    case 21:
                         Instantiate(prefabs[5], position, rotation);
                         break;
-                    case 202:
+                    case 22:
                         Instantiate(prefabs[6], position, rotation);
                         break;
                     default:
                         Instantiate(prefabs[7], position, rotation);
                         break;
                 }
-                
+                */
             }
             
         }

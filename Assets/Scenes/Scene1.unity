@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028305, g: 0.22571313, b: 0.3069213, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028331, g: 0.2257133, b: 0.3069217, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -375,9 +375,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cbea03359c1bfb0409921a53b16819f5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  prefab: {fileID: 163660, guid: 80a1fcf2c380e784494991fa6ecb9c1f, type: 3}
   centerTofloor: 0000000001000000
   canvasGroups: []
+  catalogIdx: 119
 --- !u!114 &5506907
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1955,9 +1955,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cbea03359c1bfb0409921a53b16819f5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  prefab: {fileID: 129858, guid: f2f2806b7b7291a42ae7050c0b8f8e06, type: 3}
   centerTofloor: 0000000001000000
   canvasGroups: []
+  catalogIdx: 114
 --- !u!114 &61433993
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2564,9 +2564,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cbea03359c1bfb0409921a53b16819f5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  prefab: {fileID: 132376, guid: 79bf4fae8c14b1f49884682ec6c0be6c, type: 3}
   centerTofloor: 0000000001000000
   canvasGroups: []
+  catalogIdx: 116
 --- !u!114 &74252639
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2702,7 +2702,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cbea03359c1bfb0409921a53b16819f5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  prefab: {fileID: 0}
   centerTofloor: 
   canvasGroups:
   - {fileID: 1070919485}
@@ -2710,6 +2709,7 @@ MonoBehaviour:
   - {fileID: 1126521770}
   - {fileID: 1948917868}
   - {fileID: 712220621}
+  catalogIdx: 0
 --- !u!114 &75091747
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3942,7 +3942,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cbea03359c1bfb0409921a53b16819f5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  prefab: {fileID: 0}
   centerTofloor: 
   canvasGroups:
   - {fileID: 1070919485}
@@ -3950,6 +3949,7 @@ MonoBehaviour:
   - {fileID: 1126521770}
   - {fileID: 1948917868}
   - {fileID: 712220621}
+  catalogIdx: 0
 --- !u!114 &112352758
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4766,9 +4766,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cbea03359c1bfb0409921a53b16819f5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  prefab: {fileID: 166388, guid: 9b6c90cff4b852d42bbe82224725c8ed, type: 3}
   centerTofloor: 0000000001000000
   canvasGroups: []
+  catalogIdx: 131
 --- !u!114 &142798793
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6023,9 +6023,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cbea03359c1bfb0409921a53b16819f5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  prefab: {fileID: 189208, guid: 8147c6afefbfdd441aae3c6a4ecd62cb, type: 3}
   centerTofloor: 0000000001000000
   canvasGroups: []
+  catalogIdx: 130
 --- !u!114 &200165557
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6223,9 +6223,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cbea03359c1bfb0409921a53b16819f5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  prefab: {fileID: 192034, guid: c2c9428de1fa9584480043d5ab13c2c4, type: 3}
   centerTofloor: 0000000001000000
   canvasGroups: []
+  catalogIdx: 115
 --- !u!114 &201804549
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6710,9 +6710,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cbea03359c1bfb0409921a53b16819f5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  prefab: {fileID: 167308, guid: a9d5136f0ac58444e975355818f3df0e, type: 3}
   centerTofloor: 0000000001000000
   canvasGroups: []
+  catalogIdx: 132
 --- !u!114 &237479062
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9905,9 +9905,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cbea03359c1bfb0409921a53b16819f5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  prefab: {fileID: 177804, guid: abc72f3c5546b0443a57ab20f4d137f4, type: 3}
   centerTofloor: 0000000001000000
   canvasGroups: []
+  catalogIdx: 118
 --- !u!114 &477848645
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10487,9 +10487,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cbea03359c1bfb0409921a53b16819f5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  prefab: {fileID: 199972, guid: c6099162f10232d4f956a3551f509c3f, type: 3}
   centerTofloor: 0000000001000000
   canvasGroups: []
+  catalogIdx: 105
 --- !u!114 &509779744
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11823,9 +11823,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cbea03359c1bfb0409921a53b16819f5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  prefab: {fileID: 128292, guid: 1a72a1582b1373c45a2655db5865bd28, type: 3}
   centerTofloor: 0000000001000000
   canvasGroups: []
+  catalogIdx: 133
 --- !u!114 &576425013
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12601,9 +12601,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cbea03359c1bfb0409921a53b16819f5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  prefab: {fileID: 186362, guid: fe19002229db39947a848faf6eee7893, type: 3}
   centerTofloor: 0000000001000000
   canvasGroups: []
+  catalogIdx: 120
 --- !u!114 &637784673
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13371,9 +13371,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cbea03359c1bfb0409921a53b16819f5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  prefab: {fileID: 134022, guid: 0911821dbf10bfd4283bc799d453cd5b, type: 3}
   centerTofloor: 0000000001000000
   canvasGroups: []
+  catalogIdx: 127
 --- !u!114 &680182708
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13571,9 +13571,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cbea03359c1bfb0409921a53b16819f5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  prefab: {fileID: 173030, guid: 3f9fa891de0f00044ba6cf4b17b63c06, type: 3}
   centerTofloor: 0000000001000000
   canvasGroups: []
+  catalogIdx: 108
 --- !u!114 &681546052
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13771,9 +13771,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cbea03359c1bfb0409921a53b16819f5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  prefab: {fileID: 144774, guid: 99f86f9de9da1594596c00048244b7b9, type: 3}
   centerTofloor: 0000000001000000
   canvasGroups: []
+  catalogIdx: 128
 --- !u!114 &682329936
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16510,9 +16510,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cbea03359c1bfb0409921a53b16819f5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  prefab: {fileID: 117334, guid: e7c62f7fbb311224cae043d4bcc1c3fd, type: 3}
   centerTofloor: 0000000001000000
   canvasGroups: []
+  catalogIdx: 124
 --- !u!114 &789598723
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16710,9 +16710,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cbea03359c1bfb0409921a53b16819f5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  prefab: {fileID: 198566, guid: 8e6d26bcd54c9834abcb468e95e04548, type: 3}
   centerTofloor: 0000000001000000
   canvasGroups: []
+  catalogIdx: 122
 --- !u!114 &790336991
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -17460,9 +17460,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cbea03359c1bfb0409921a53b16819f5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  prefab: {fileID: 172840, guid: af0a70ac9262c274cb48bfc12529658a, type: 3}
   centerTofloor: 0000000001000000
   canvasGroups: []
+  catalogIdx: 101
 --- !u!114 &822688197
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -20477,9 +20477,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cbea03359c1bfb0409921a53b16819f5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  prefab: {fileID: 126552, guid: 6a85507ed4124b343895b2211c746d9e, type: 3}
   centerTofloor: 0000000001000000
   canvasGroups: []
+  catalogIdx: 121
 --- !u!114 &981656410
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -20993,9 +20993,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cbea03359c1bfb0409921a53b16819f5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  prefab: {fileID: 172000, guid: 2fbd82902d012524989d1c84b6f8f1a7, type: 3}
   centerTofloor: 0000000001000000
   canvasGroups: []
+  catalogIdx: 126
 --- !u!114 &997574293
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -23503,9 +23503,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cbea03359c1bfb0409921a53b16819f5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  prefab: {fileID: 130608, guid: 965b5d882ed264f41b52d7b8a99cd29e, type: 3}
   centerTofloor: 0000000001000000
   canvasGroups: []
+  catalogIdx: 112
 --- !u!114 &1128065767
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -24582,7 +24582,71 @@ MonoBehaviour:
   childCatalogs: []
   prefabs:
   - key: 101
+    gameObject: {fileID: 172840, guid: af0a70ac9262c274cb48bfc12529658a, type: 3}
+  - key: 102
+    gameObject: {fileID: 106564, guid: 3b91aa1e76c34de4d91b0da0e4592e97, type: 3}
+  - key: 103
+    gameObject: {fileID: 125612, guid: a360f7f2b67e8f742a553711784c2cc2, type: 3}
+  - key: 104
+    gameObject: {fileID: 189246, guid: 935360314f0d31c458983e9b29b96e3e, type: 3}
+  - key: 105
+    gameObject: {fileID: 199972, guid: c6099162f10232d4f956a3551f509c3f, type: 3}
+  - key: 106
+    gameObject: {fileID: 114904, guid: 834db60616348cc4a9c420e5c006bee5, type: 3}
+  - key: 107
+    gameObject: {fileID: 140278, guid: 0a33d7faeb45efb469b498cba9125f8b, type: 3}
+  - key: 108
+    gameObject: {fileID: 173030, guid: 3f9fa891de0f00044ba6cf4b17b63c06, type: 3}
+  - key: 109
+    gameObject: {fileID: 107148, guid: cb96436908018f74495a2cbbfa925d87, type: 3}
+  - key: 110
+    gameObject: {fileID: 117616, guid: 95bb1d9a5ed6c8b4ea86db3d7e4f155e, type: 3}
+  - key: 111
+    gameObject: {fileID: 110474, guid: 0d3a63b43199d584b90286295e3392c9, type: 3}
+  - key: 112
+    gameObject: {fileID: 130608, guid: 965b5d882ed264f41b52d7b8a99cd29e, type: 3}
+  - key: 113
+    gameObject: {fileID: 189722, guid: e5cbb0280b8425145a1d4349efb60ecb, type: 3}
+  - key: 114
+    gameObject: {fileID: 129858, guid: f2f2806b7b7291a42ae7050c0b8f8e06, type: 3}
+  - key: 115
+    gameObject: {fileID: 192034, guid: c2c9428de1fa9584480043d5ab13c2c4, type: 3}
+  - key: 116
+    gameObject: {fileID: 132376, guid: 79bf4fae8c14b1f49884682ec6c0be6c, type: 3}
+  - key: 117
+    gameObject: {fileID: 153304, guid: 61e427e54adfe32478ba8b6b6f6c0eb1, type: 3}
+  - key: 118
+    gameObject: {fileID: 177804, guid: abc72f3c5546b0443a57ab20f4d137f4, type: 3}
+  - key: 119
+    gameObject: {fileID: 163660, guid: 80a1fcf2c380e784494991fa6ecb9c1f, type: 3}
+  - key: 120
+    gameObject: {fileID: 186362, guid: fe19002229db39947a848faf6eee7893, type: 3}
+  - key: 121
+    gameObject: {fileID: 126552, guid: 6a85507ed4124b343895b2211c746d9e, type: 3}
+  - key: 122
+    gameObject: {fileID: 198566, guid: 8e6d26bcd54c9834abcb468e95e04548, type: 3}
+  - key: 123
+    gameObject: {fileID: 179810, guid: 1a103ad49adc4544b98a7f0bb26f4ef2, type: 3}
+  - key: 124
+    gameObject: {fileID: 117334, guid: e7c62f7fbb311224cae043d4bcc1c3fd, type: 3}
+  - key: 125
+    gameObject: {fileID: 194238, guid: 8cce62dc3f6a8e5418e3cc7eba36df8a, type: 3}
+  - key: 126
+    gameObject: {fileID: 172000, guid: 2fbd82902d012524989d1c84b6f8f1a7, type: 3}
+  - key: 127
+    gameObject: {fileID: 134022, guid: 0911821dbf10bfd4283bc799d453cd5b, type: 3}
+  - key: 128
+    gameObject: {fileID: 144774, guid: 99f86f9de9da1594596c00048244b7b9, type: 3}
+  - key: 129
+    gameObject: {fileID: 104476, guid: 1b4f7cb42b162544aa5e7b124d33588e, type: 3}
+  - key: 130
+    gameObject: {fileID: 189208, guid: 8147c6afefbfdd441aae3c6a4ecd62cb, type: 3}
+  - key: 131
+    gameObject: {fileID: 166388, guid: 9b6c90cff4b852d42bbe82224725c8ed, type: 3}
+  - key: 132
     gameObject: {fileID: 167308, guid: a9d5136f0ac58444e975355818f3df0e, type: 3}
+  - key: 133
+    gameObject: {fileID: 128292, guid: 1a72a1582b1373c45a2655db5865bd28, type: 3}
   actionSpawn: 0
   actionSpawnKey: 0
 --- !u!4 &1224741744
@@ -27090,9 +27154,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cbea03359c1bfb0409921a53b16819f5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  prefab: {fileID: 189722, guid: e5cbb0280b8425145a1d4349efb60ecb, type: 3}
   centerTofloor: 0000000001000000
   canvasGroups: []
+  catalogIdx: 113
 --- !u!114 &1389964434
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -27978,9 +28042,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cbea03359c1bfb0409921a53b16819f5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  prefab: {fileID: 189246, guid: 935360314f0d31c458983e9b29b96e3e, type: 3}
   centerTofloor: 0000000001000000
   canvasGroups: []
+  catalogIdx: 104
 --- !u!114 &1451014596
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -29212,9 +29276,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cbea03359c1bfb0409921a53b16819f5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  prefab: {fileID: 104476, guid: 1b4f7cb42b162544aa5e7b124d33588e, type: 3}
   centerTofloor: 0000000001000000
   canvasGroups: []
+  catalogIdx: 129
 --- !u!114 &1508920194
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -32301,9 +32365,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cbea03359c1bfb0409921a53b16819f5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  prefab: {fileID: 179810, guid: 1a103ad49adc4544b98a7f0bb26f4ef2, type: 3}
   centerTofloor: 0000000001000000
   canvasGroups: []
+  catalogIdx: 123
 --- !u!114 &1681761014
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -33849,9 +33913,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cbea03359c1bfb0409921a53b16819f5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  prefab: {fileID: 114904, guid: 834db60616348cc4a9c420e5c006bee5, type: 3}
   centerTofloor: 0000000001000000
   canvasGroups: []
+  catalogIdx: 106
 --- !u!114 &1796342006
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -34049,9 +34113,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cbea03359c1bfb0409921a53b16819f5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  prefab: {fileID: 194238, guid: 8cce62dc3f6a8e5418e3cc7eba36df8a, type: 3}
   centerTofloor: 0000000001000000
   canvasGroups: []
+  catalogIdx: 125
 --- !u!114 &1801550956
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -35233,9 +35297,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cbea03359c1bfb0409921a53b16819f5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  prefab: {fileID: 153304, guid: 61e427e54adfe32478ba8b6b6f6c0eb1, type: 3}
   centerTofloor: 0000000001000000
   canvasGroups: []
+  catalogIdx: 117
 --- !u!114 &1846144516
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -35703,9 +35767,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cbea03359c1bfb0409921a53b16819f5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  prefab: {fileID: 125612, guid: a360f7f2b67e8f742a553711784c2cc2, type: 3}
   centerTofloor: 0000000001000000
   canvasGroups: []
+  catalogIdx: 103
 --- !u!114 &1858210149
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -38199,9 +38263,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cbea03359c1bfb0409921a53b16819f5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  prefab: {fileID: 110474, guid: 0d3a63b43199d584b90286295e3392c9, type: 3}
   centerTofloor: 0000000001000000
   canvasGroups: []
+  catalogIdx: 111
 --- !u!114 &1987544418
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -38711,9 +38775,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cbea03359c1bfb0409921a53b16819f5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  prefab: {fileID: 117616, guid: 95bb1d9a5ed6c8b4ea86db3d7e4f155e, type: 3}
   centerTofloor: 0000000001000000
   canvasGroups: []
+  catalogIdx: 110
 --- !u!114 &2036927984
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -39223,9 +39287,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cbea03359c1bfb0409921a53b16819f5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  prefab: {fileID: 106564, guid: 3b91aa1e76c34de4d91b0da0e4592e97, type: 3}
   centerTofloor: 0000000001000000
   canvasGroups: []
+  catalogIdx: 102
 --- !u!114 &2050863837
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -39931,9 +39995,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cbea03359c1bfb0409921a53b16819f5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  prefab: {fileID: 140278, guid: 0a33d7faeb45efb469b498cba9125f8b, type: 3}
   centerTofloor: 0000000001000000
   canvasGroups: []
+  catalogIdx: 107
 --- !u!114 &2091126183
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -40592,9 +40656,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cbea03359c1bfb0409921a53b16819f5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  prefab: {fileID: 107148, guid: cb96436908018f74495a2cbbfa925d87, type: 3}
   centerTofloor: 0000000001000000
   canvasGroups: []
+  catalogIdx: 109
 --- !u!114 &2130101306
 MonoBehaviour:
   m_ObjectHideFlags: 0

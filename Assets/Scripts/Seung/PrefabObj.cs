@@ -39,7 +39,7 @@ public class PrefabObj : MonoBehaviour
 		{
 			transform.localScale += new Vector3(0.1f, 0.1f, 0.1f);
 		}
-		else if (wheelInput < 0)
+		else if (selected && wheelInput < 0)
 		{
 			transform.localScale -= new Vector3(0.1f, 0.1f, 0.1f);
 		}

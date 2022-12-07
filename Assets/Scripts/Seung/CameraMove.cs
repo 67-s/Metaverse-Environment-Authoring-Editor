@@ -17,6 +17,11 @@ public class CameraMove : MonoBehaviour
 		tan20 = Mathf.Tan(20 * Mathf.PI / 180);
 		tan80 = Mathf.Tan(80 * Mathf.PI / 180);
 	}
+	private void Start()
+	{
+		Screen.SetResolution(1920, 1080, false);
+	}
+
 	void Update()
 	{
 		if (IsCameraActive)

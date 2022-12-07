@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using static UnityEngine.GraphicsBuffer;
 
 public class PrefabObj : MonoBehaviour
 {
@@ -9,6 +10,18 @@ public class PrefabObj : MonoBehaviour
 	Renderer renderers;
 	List<Material> materialList = new List<Material>();
 	bool selected = false;
+	Installer installer;
+	CreationData data;
+
+	private void Awake()
+	{
+		data = new()
+		{
+			Target = gameObject
+		};
+		installer = GameObject.Find("Mediator").GetComponentInChildren<Installer>();
+		data.Origin = installer.AdditionalData_Add(data);
+	}
 
 	void Start()
 	{
@@ -33,6 +46,7 @@ public class PrefabObj : MonoBehaviour
 
 		if (selected && Input.GetKeyDown(KeyCode.D))
 		{
+			installer.AdditionalData_Remove(data.Origin);
 			Destroy(gameObject);
 		}
 	}

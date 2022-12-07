@@ -6,11 +6,22 @@ using UnityEngine;
 
 public class DragAndDropBtn : MonoBehaviour
 {
-	public GameObject prefab;
+	GameObject prefab;
 	public int[] centerTofloor;
 	private GameObject currObj = null;
 	public CanvasGroup[] canvasGroups;
 	private static int canvasGroupIdx = 0;
+	public int catalogIdx;
+
+	private void Awake()
+	{
+		if (catalogIdx >= 101)
+		{
+			GameObject obj = GameObject.Find("Furniture Catalog");
+			PrefabCatalog catalog = obj.GetComponent<PrefabCatalog>();
+			prefab = catalog.Find(catalogIdx);
+		}
+	}
 
 	public void BeginDrag()
 	{

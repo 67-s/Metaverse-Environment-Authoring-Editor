@@ -11,20 +11,11 @@ public class PrefabObj : MonoBehaviour
 	List<Material> materialList = new List<Material>();
 	bool selected = false;
 	Installer installer;
-	CreationData data;
-
-	private void Awake()
-	{
-		data = new()
-		{
-			Target = gameObject
-		};
-		installer = GameObject.Find("Mediator").GetComponentInChildren<Installer>();
-		data.Origin = installer.AdditionalData_Add(data);
-	}
+	int token = -1;
 
 	void Start()
 	{
+		installer = GameObject.Find("Mediator").GetComponentInChildren<Installer>();
 		outline = new Material(Shader.Find("Outlined/NewOcclusionOutline"));
 	}
 	private void Update()
@@ -46,7 +37,7 @@ public class PrefabObj : MonoBehaviour
 
 		if (selected && Input.GetKeyDown(KeyCode.D))
 		{
-			installer.AdditionalData_Remove(data.Origin);
+			installer.AdditionalData_Remove(token);
 			Destroy(gameObject);
 		}
 	}
@@ -110,5 +101,10 @@ public class PrefabObj : MonoBehaviour
 			else
 				gameObject.transform.position = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, 10));
 		}
+	}
+
+	public void SetToken(int token_)
+	{
+		token = token_;
 	}
 }

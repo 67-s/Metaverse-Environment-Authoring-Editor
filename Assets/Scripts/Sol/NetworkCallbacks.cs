@@ -11,11 +11,14 @@ public class NetworkCallbacks : GlobalEventListener
     List<string> logMessages = new List<string>();
     public List<GameObject> prefabs;
     PrefabCatalog prefabList;
+    List<Material> materialList = new List<Material>();
+    IndexToMaterial colorObject;
 
     public override void SceneLoadLocalDone(string scene, IProtocolToken token)
     {
         base.SceneLoadLocalDone(scene, token);
         prefabList = GameObject.Find("Prefab Catalog").GetComponent<PrefabCatalog>();
+        colorObject = GameObject.Find("IndexToMaterial").GetComponent<IndexToMaterial>();
         //캐릭터 생성 부분
         var spawnPosition = new Vector3(Random.Range(-8, 8), 0.0f, Random.Range(-8, 8));
 
@@ -59,9 +62,9 @@ public class NetworkCallbacks : GlobalEventListener
         if (mt != null)
         {
             Debug.Log("+++++++"+mt.mapInfos.Length);
-            for (int i = 0; i < mt.mapInfos.Length; i += 29)
+            for (int i = 0; i < mt.mapInfos.Length; i += 30)
             {
-                byte prefab = mt.mapInfos[i];  
+                byte prefab = mt.mapInfos[i];
                 byte[] bytesX = { mt.mapInfos[i+1], mt.mapInfos[i + 2], mt.mapInfos[i + 3], mt.mapInfos[i + 4] };
                 byte[] bytesY = { mt.mapInfos[i+5], mt.mapInfos[i + 6], mt.mapInfos[i + 7], mt.mapInfos[i + 8] };
                 byte[] bytesZ = { mt.mapInfos[i+9], mt.mapInfos[i + 10], mt.mapInfos[i + 11], mt.mapInfos[i + 12] };
@@ -69,6 +72,7 @@ public class NetworkCallbacks : GlobalEventListener
                 byte[] bytesRY = { mt.mapInfos[i + 17], mt.mapInfos[i + 18], mt.mapInfos[i + 19], mt.mapInfos[i + 20] };
                 byte[] bytesRZ = { mt.mapInfos[i + 21], mt.mapInfos[i + 22], mt.mapInfos[i + 23], mt.mapInfos[i + 24] };
                 byte[] bytesRW = { mt.mapInfos[i + 25], mt.mapInfos[i + 26], mt.mapInfos[i + 27], mt.mapInfos[i + 28] };
+                byte color = mt.mapInfos[i + 29];
 
                 float x = System.BitConverter.ToSingle(bytesX, 0);
                 float y = System.BitConverter.ToSingle(bytesY, 0);
@@ -82,36 +86,14 @@ public class NetworkCallbacks : GlobalEventListener
                 var rotation = new Quaternion(rx, ry, rz,rw);
 
                 GameObject instance = Instantiate(prefabList.Find(prefab), position, rotation);
-                Destroy(instance.GetComponent<PrefabObj>());
-                /*
-                switch (prefab)
+                if (color != 11)
                 {
-                    case 0:
-                        Instantiate(prefabs[0], position, rotation);
-                        break;
-                    case 10:
-                        Instantiate(prefabs[1], position, rotation);
-                        break;
-                    case 11:
-                        Instantiate(prefabs[2], position, rotation);
-                        break;
-                    case 12:
-                        Instantiate(prefabs[3], position, rotation);
-                        break;
-                    case 20:
-                        Instantiate(prefabs[4], position, rotation);
-                        break;
-                    case 21:
-                        Instantiate(prefabs[5], position, rotation);
-                        break;
-                    case 22:
-                        Instantiate(prefabs[6], position, rotation);
-                        break;
-                    default:
-                        Instantiate(prefabs[7], position, rotation);
-                        break;
+                    materialList.Clear();
+                    materialList.Add(colorObject.IndexToColor(color));
+                    instance.GetComponent<Renderer>().materials = materialList.ToArray();
                 }
-                */
+                Destroy(instance.GetComponent<PrefabObj>());
+                
             }
             
         }

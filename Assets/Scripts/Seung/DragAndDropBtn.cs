@@ -12,6 +12,9 @@ public class DragAndDropBtn : MonoBehaviour
 	public CanvasGroup[] canvasGroups;
 	private static int canvasGroupIdx = 0;
 	public int catalogIdx;
+	Installer installer;
+	CreationData data;
+	
 
 	private void Awake()
 	{
@@ -30,6 +33,15 @@ public class DragAndDropBtn : MonoBehaviour
 
 		currObj = Instantiate(prefab);
 		currObj.GetComponentInChildren<BoxCollider>().enabled = false;
+
+		data = new()
+		{
+			Target = gameObject,
+			Origin = catalogIdx
+		};
+		installer = GameObject.Find("Mediator").GetComponentInChildren<Installer>();
+		int token = installer.AdditionalData_Add(data);
+		currObj.GetComponent<PrefabObj>().SetToken(token);
 
 		if (Physics.Raycast(ray, out hit, 1000f))
 			currObj.transform.position = new Vector3(hit.point.x, hit.point.y, hit.point.z);

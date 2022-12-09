@@ -81,7 +81,8 @@ public class NetworkCallbacks : GlobalEventListener
                 var position = new Vector3(x,y,z) * 3.0f;
                 var rotation = new Quaternion(rx, ry, rz,rw);
 
-                Instantiate(prefabList.Find(prefab), position, rotation);
+                GameObject instance = Instantiate(prefabList.Find(prefab), position, rotation);
+                Destroy(instance.GetComponent<PrefabObj>());
                 /*
                 switch (prefab)
                 {

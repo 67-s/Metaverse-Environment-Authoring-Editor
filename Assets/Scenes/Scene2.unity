@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.18028331, g: 0.2257133, b: 0.3069217, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028305, g: 0.22571313, b: 0.3069213, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -123,6 +123,63 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1001 &190843477
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 5843180063764406725, guid: a090ef777bdd46041af3c7fbf19158d2, type: 3}
+      propertyPath: m_Name
+      value: Furniture Catalog
+      objectReference: {fileID: 0}
+    - target: {fileID: 5843180063764406747, guid: a090ef777bdd46041af3c7fbf19158d2, type: 3}
+      propertyPath: m_RootOrder
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5843180063764406747, guid: a090ef777bdd46041af3c7fbf19158d2, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 2.405171
+      objectReference: {fileID: 0}
+    - target: {fileID: 5843180063764406747, guid: a090ef777bdd46041af3c7fbf19158d2, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 35.70846
+      objectReference: {fileID: 0}
+    - target: {fileID: 5843180063764406747, guid: a090ef777bdd46041af3c7fbf19158d2, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -16.050354
+      objectReference: {fileID: 0}
+    - target: {fileID: 5843180063764406747, guid: a090ef777bdd46041af3c7fbf19158d2, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5843180063764406747, guid: a090ef777bdd46041af3c7fbf19158d2, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5843180063764406747, guid: a090ef777bdd46041af3c7fbf19158d2, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5843180063764406747, guid: a090ef777bdd46041af3c7fbf19158d2, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5843180063764406747, guid: a090ef777bdd46041af3c7fbf19158d2, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5843180063764406747, guid: a090ef777bdd46041af3c7fbf19158d2, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5843180063764406747, guid: a090ef777bdd46041af3c7fbf19158d2, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: a090ef777bdd46041af3c7fbf19158d2, type: 3}
 --- !u!850595691 &213266297
 LightingSettings:
   m_ObjectHideFlags: 0
@@ -514,6 +571,11 @@ MonoBehaviour:
   m_FirstSelected: {fileID: 0}
   m_sendNavigationEvents: 1
   m_DragThreshold: 10
+--- !u!1 &1160318892 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5843180063764406725, guid: a090ef777bdd46041af3c7fbf19158d2, type: 3}
+  m_PrefabInstance: {fileID: 190843477}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1505474074
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -532,7 +594,7 @@ PrefabInstance:
     - target: {fileID: 5690280562061543166, guid: 5855f3babb27b9545a08f63436b19ffb, type: 3}
       propertyPath: childCatalogs.Array.data[0]
       value: 
-      objectReference: {fileID: 5690280562061543164, guid: 5855f3babb27b9545a08f63436b19ffb, type: 3}
+      objectReference: {fileID: 1160318892}
     - target: {fileID: 5690280562061543167, guid: 5855f3babb27b9545a08f63436b19ffb, type: 3}
       propertyPath: m_RootOrder
       value: 4

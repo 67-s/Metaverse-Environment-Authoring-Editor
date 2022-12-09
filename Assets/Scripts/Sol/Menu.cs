@@ -15,6 +15,47 @@ public class Menu : GlobalEventListener
     string roomIntro;
     RoomListScrollView roomList;
 
+    byte MaterialNameToIndex(string name)
+    {
+        switch(name)
+        {
+            case "Red (Instance)":
+                return 0;
+                break;
+            case "Blue (Instance)":
+                return 1;
+                break;
+            case "Cyan (Instance)":
+                return 2;
+                break;
+            case "Gray (Instance)":
+                return 3;
+                break;
+            case "Green (Instance)":
+                return 4;
+                break;
+            case "Lavender (Instance)":
+                return 5;
+                break;
+            case "Magenta (Instance)":
+                return 6;
+                break;
+            case "Orange (Instance)":
+                return 7;
+                break;
+            case "Black (Instance)":
+                return 8;
+                break;
+            case "SkyBlue (Instance)":
+                return 9;
+                break;
+            default :
+                return 10;
+                break;
+        }
+
+    }
+
     public override void BoltStartBegin()
     {
         base.BoltStartBegin();
@@ -41,6 +82,8 @@ public class Menu : GlobalEventListener
             {
                 foreach(var map in maps)
                 {
+                    byte index = MaterialNameToIndex(map.Target.GetComponent<Renderer>().materials[0].name);
+                    Debug.Log("@@@@@@@"+index);
                     mt.addByte((byte)map.Origin);
                     mt.add(map.Target.transform.position.x);
                     mt.add(map.Target.transform.position.y);

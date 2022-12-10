@@ -44,6 +44,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8f90351ab6118c34cb0dbb3075dd7fa7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  childCatalogs: []
   prefabs:
   - key: 0
     gameObject: {fileID: 7586011778888054891, guid: 3fe23fdc87e41db47b57afb793187fa0, type: 3}
@@ -61,5 +62,11 @@ MonoBehaviour:
     gameObject: {fileID: 110834, guid: 5668aa894ea51e84786e2073020e7692, type: 3}
   - key: 30
     gameObject: {fileID: 125994, guid: 9dd17c2ce156b064f8d49a5d51e30af3, type: 3}
+  - key: 40
+    gameObject: {fileID: 117992, guid: d4116ef35cdf94c4b8a11978c8ff2324, type: 3}
+  - key: 50
+    gameObject: {fileID: 189116, guid: df526ff999b92eb4784b903245073620, type: 3}
+  - key: 51
+    gameObject: {fileID: 121404, guid: f2049dfed6713724793a65dd763075b6, type: 3}
   actionSpawn: 0
   actionSpawnKey: 0

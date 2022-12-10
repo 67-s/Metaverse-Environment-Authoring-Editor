@@ -36,7 +36,7 @@ public class DragAndDropBtn : MonoBehaviour
 
 		data = new()
 		{
-			Target = gameObject,
+			Target = currObj,
 			Origin = catalogIdx
 		};
 		installer = GameObject.Find("Mediator").GetComponentInChildren<Installer>();

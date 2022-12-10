@@ -1,5 +1,54 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &3436211686483098424
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2400740426555269169}
+  - component: {fileID: 5504753252788728587}
+  m_Layer: 0
+  m_Name: Stadium
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!4 &2400740426555269169
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3436211686483098424}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 8132737080449030736}
+  m_RootOrder: 11
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5504753252788728587
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3436211686483098424}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 503cb5216a07e8449bcd639177099b4e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  unit: 0
+  xWidth: 0
+  zWidth: 0
+  seed: 0
+  benchPrefabs: 3200000033000000
 --- !u!1 &5748419187065534857
 GameObject:
   m_ObjectHideFlags: 0
@@ -327,6 +376,7 @@ Transform:
   - {fileID: 5546951718819483021}
   - {fileID: 8692759056657718158}
   - {fileID: 6152484220187029482}
+  - {fileID: 2400740426555269169}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -357,6 +407,7 @@ MonoBehaviour:
   - {fileID: 7988261959144437122}
   - {fileID: 5748419187065534857}
   - {fileID: 8570775300315464606}
+  - {fileID: 3436211686483098424}
   - {fileID: 6243758530753648953}
   actionResize: 0
   actionResizeXSize: 0

@@ -86,6 +86,10 @@ public class NetworkCallbacks : GlobalEventListener
                 var rotation = new Quaternion(rx, ry, rz,rw);
 
                 GameObject instance = Instantiate(prefabList.Find(prefab), position, rotation);
+                if(instance.name.Equals("SM_School_Env_Floor10(Clone)") || instance.name.Equals("SM_School_Env_Floor2(Clone)"))
+                    instance.GetComponent<Transform>().localScale = new Vector3(5.0f, 5.0f, 5.0f);
+                else
+                    instance.GetComponent<Transform>().localScale = new Vector3(3.0f, 3.0f, 3.0f);
                 if (color != 11)
                 {
                     materialList.Clear();

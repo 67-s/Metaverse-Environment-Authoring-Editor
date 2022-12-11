@@ -82,14 +82,48 @@ public class NetworkCallbacks : GlobalEventListener
                 float rz = System.BitConverter.ToSingle(bytesRZ, 0);
                 float rw = System.BitConverter.ToSingle(bytesRW, 0);
 
-                var position = new Vector3(x,y,z) * 3.0f;
+                var position = new Vector3(x,y,z)*3;
                 var rotation = new Quaternion(rx, ry, rz,rw);
 
                 GameObject instance = Instantiate(prefabList.Find(prefab), position, rotation);
-                if(instance.name.Equals("SM_School_Env_Floor10(Clone)") || instance.name.Equals("SM_School_Env_Floor2(Clone)"))
-                    instance.GetComponent<Transform>().localScale = new Vector3(5.0f, 5.0f, 5.0f);
-                else
-                    instance.GetComponent<Transform>().localScale = new Vector3(3.0f, 3.0f, 3.0f);
+                float unit = 15.0f;
+                switch(prefab)
+                {
+                    case 10:
+                        instance.GetComponent<Transform>().localScale = Vector3.one * unit / 6;
+                        break;
+                    case 11:
+                        instance.GetComponent<Transform>().localScale = Vector3.one * unit / 6;
+                        break;
+                    case 12:
+                        instance.GetComponent<Transform>().localScale = Vector3.one * unit / 3;
+                        break;
+                    case 30:
+                        instance.GetComponent<Transform>().localScale = Vector3.one * unit / 3;
+                        break;
+                    case 20:
+                        instance.GetComponent<Transform>().localScale = Vector3.one * unit / 10;
+                        break;
+                    case 21:
+                        instance.GetComponent<Transform>().localScale = Vector3.one * unit / 10;
+                        break;
+                    case 22:
+                        instance.GetComponent<Transform>().localScale = Vector3.one * unit / 10;
+                        break;
+                    case 40:
+                        instance.GetComponent<Transform>().localScale = Vector3.one * unit / 14;
+                        break;
+                    case 50:
+                        instance.GetComponent<Transform>().localScale = Vector3.one * unit / 16;
+                        break;
+                    case 51:
+                        instance.GetComponent<Transform>().localScale = Vector3.one * unit / 16;
+                        break;
+                    default:
+                        instance.GetComponent<Transform>().localScale = Vector3.one * unit / 5;
+                        break;
+                }
+
                 if (color != 11)
                 {
                     materialList.Clear();

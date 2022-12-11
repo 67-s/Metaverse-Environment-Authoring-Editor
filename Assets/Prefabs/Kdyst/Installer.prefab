@@ -98,7 +98,7 @@ MonoBehaviour:
   zWidth: 0
   seed: 0
   treeSet: 140000001500000016000000
-  numberOfTreePerTile: 5
+  numberOfTreePerTile: 2
 --- !u!1 &6243758530753648953
 GameObject:
   m_ObjectHideFlags: 0
